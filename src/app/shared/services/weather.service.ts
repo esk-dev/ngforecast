@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-    Observable,
-    map,
-    switchMap,
-    tap
-} from 'rxjs';
+import { Observable, map, switchMap, tap } from 'rxjs';
 import { ApiService } from './api.service';
 import { StoreService } from './store.service';
 import { LocationService } from './location.service';
@@ -12,10 +7,7 @@ import { shortWeather } from '../models/models';
 import { dailyWeather } from '../models/models';
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
-    constructor(
-        private _api: ApiService,
-        private params: LocationService,
-    ) {}
+    constructor(private _api: ApiService, private params: LocationService) {}
 
     getShortWeather(city: string): Observable<shortWeather> {
         return this._api.getWeather(city).pipe(
@@ -50,9 +42,10 @@ export class WeatherService {
     getTodayHighlights(city: string): Observable<any> {
         return this.params.getParams(city).pipe(
             switchMap((params: any) => {
-                return this._api.getTodayHighlightsWeather(params.lon, params.lat).pipe(
-                    map((response: any) =>
-                        ({
+                return this._api
+                    .getTodayHighlightsWeather(params.lon, params.lat)
+                    .pipe(
+                        map((response: any) => ({
                             devPoint: response.current.dew_point,
                             pressure: response.current.pressure,
                             windDeg: response.current.wind_deg,
@@ -61,10 +54,9 @@ export class WeatherService {
                             sunset: new Date(response.current.sunset * 1000),
                             uvi: response.current.uvi,
                             visibility: response.current.visibility,
-                        })
-                    )
-                )
+                        }))
+                    );
             })
-        )
+        );
     }
 }

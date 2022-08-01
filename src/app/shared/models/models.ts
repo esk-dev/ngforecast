@@ -9,13 +9,14 @@ export interface shortWeather {
 }
 export interface dailyWeather {}
 export interface todayHighlights {
+    devPoint: number;
     pressure: number;
-    clouds: number;
-    uvi: number;
+    windDeg: number;
+    windSpeed: number;
     sunrise: number;
     sunset: number;
+    uvi: number;
     visibility: number;
-    dewPoint: number;
 }
 
 export interface params {

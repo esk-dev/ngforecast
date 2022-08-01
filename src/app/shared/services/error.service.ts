@@ -12,7 +12,7 @@ export class ErrorService {
         if (error.status === 0) {
             console.error('An error occurred:', error.error);
         } else {
-            console.error(error)
+            console.error(error);
             this.NotificationService.showError(
                 `Backend returned code ${error.status}, body was: ${error.error.error.message}`
             );

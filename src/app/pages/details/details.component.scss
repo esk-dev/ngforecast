@@ -1,8 +1,11 @@
+.details-search {
+    width: 49vw;
+}
 .details-wrapper {
     display: grid;
     grid-auto-rows: auto;
     grid-row-gap: 1vh;
-    max-width: 1440px;  
+    max-width: 1440px;
 
     // .details-week-grid {
     //     display: flex;

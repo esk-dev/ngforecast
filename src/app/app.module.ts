@@ -36,11 +36,11 @@ import { TodayHighlightsComponent } from './components/today-highlights/today-hi
         DailyweatherComponent,
         SearchpageComponent,
         DetailsComponent,
-        TodayHighlightsComponent
+        TodayHighlightsComponent,
     ],
     bootstrap: [AppComponent],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true }
-    ]
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true },
+    ],
 })
 export class AppModule {}
