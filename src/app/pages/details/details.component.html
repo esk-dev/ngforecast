@@ -1,19 +1,8 @@
-<!-- <section class="details-search">
-    <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
-</section> -->
 <section class="details-wrapper">
-    <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
-    <app-weathercard
-        *ngIf="shortWeather$ | async"
-        [weather$]="shortWeather$ | async">
-    </app-weathercard>
-    <ng-container *ngIf="todayHighlights$ | async">
-        <app-today-highlights [todayHighlights$]="todayHighlights$ | async">
-        </app-today-highlights>
-    </ng-container>
-    <app-dailyweather
-        *ngIf="dailyWeather$ | async"
-        [dailyWeather$]="dailyWeather$ | async">
-    </app-dailyweather>
-    <!-- <div class="details-week-grid"></div> -->
+  <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
+  <app-weathercard [weather$]="weather$"> </app-weathercard>
+  <app-today-highlights [weather$]="weather$"> </app-today-highlights>
+  <ng-container *ngIf="dailyWeather$ | async">
+    <app-dailyweather [dailyWeather$]="dailyWeather$"> </app-dailyweather>
+  </ng-container>
 </section>

@@ -15,24 +15,24 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 
 const MaterialComponents = [
-    MatFormFieldModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatSidenavModule,
-    MatCardModule,
-    MatTooltipModule,
-    MatTabsModule,
-    MatGridListModule,
-    MatTableModule,
+  MatFormFieldModule,
+  MatToolbarModule,
+  MatIconModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatSnackBarModule,
+  MatSidenavModule,
+  MatCardModule,
+  MatTooltipModule,
+  MatTabsModule,
+  MatGridListModule,
+  MatTableModule,
 ];
 
 @NgModule({
-    declarations: [],
-    imports: [CommonModule],
-    exports: [MaterialComponents],
+  declarations: [],
+  imports: [CommonModule],
+  exports: [MaterialComponents],
 })
 export class MaterialModule {}
