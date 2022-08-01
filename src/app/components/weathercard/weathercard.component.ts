@@ -1,40 +1,12 @@
-import {
-    Component,
-    OnChanges,
-    SimpleChanges,
-    Input,
-    OnDestroy,
-} from '@angular/core';
-import { WeatherService } from './weather.service';
-import { currentWeather } from '../../shared/models/currentWeather';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { shortWeather } from '../../shared/models/models';
 @Component({
     selector: 'app-weathercard',
     templateUrl: './weathercard.component.html',
     styleUrls: ['./weathercard.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class WeathercardComponent implements OnChanges, OnDestroy {
-    // to do: add eslint, remove logic from component to service
-    weather!: currentWeather;
-    subscription: any;
-    @Input() city!: string;
-
-    constructor(public _getData: WeatherService) {
-        console.log('constructor');
-        this.subscription = this._getData.weatherData$.subscribe(
-            v => (this.weather = v)
-        );
-    }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (
-            changes['city'].currentValue !== changes['city'].previousValue &&
-            changes['city'].currentValue !== ''
-        )
-            this._getData.getWeatherFromApi(changes['city'].currentValue);
-        console.log(changes);
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
-    }
+export class WeathercardComponent {
+    @Input() weather$!: shortWeather;
+    constructor() {}
 }

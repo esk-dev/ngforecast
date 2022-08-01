@@ -1,14 +1,19 @@
+<!-- <section class="details-search">
+    <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
+</section> -->
 <section class="details-wrapper">
-    <div class="left-details-box">
-        <app-search></app-search>
-        <app-weathercard></app-weathercard>
-    </div>
-    <div class="right-details-box">
-        <div class="right-details-box__header">
-            <mat-card>work</mat-card>
-        </div>
-        <div class="right-details-box__footer">
-            <mat-card>work</mat-card>
-        </div>
-    </div>
+    <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
+    <app-weathercard
+        *ngIf="shortWeather$ | async"
+        [weather$]="shortWeather$ | async">
+    </app-weathercard>
+    <ng-container *ngIf="todayHighlights$ | async">
+        <app-today-highlights [todayHighlights$]="todayHighlights$ | async">
+        </app-today-highlights>
+    </ng-container>
+    <app-dailyweather
+        *ngIf="dailyWeather$ | async"
+        [dailyWeather$]="dailyWeather$ | async">
+    </app-dailyweather>
+    <!-- <div class="details-week-grid"></div> -->
 </section>

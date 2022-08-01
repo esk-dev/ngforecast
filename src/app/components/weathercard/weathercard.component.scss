@@ -1,45 +1,85 @@
 mat-card {
-  margin: 0 auto;
-}
-mat-card > mat-card-header {
-  justify-content: flex-start;
-}
+  min-width: 256px;
 
-mat-card-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+  mat-card-header {
+    justify-content: flex-start;
+  }
 
-.mat-card-rigth-box {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1vh;
-}
-.mat-card-left-box {
-  display: flex;
-  flex-direction: column;
-  gap: 1vh;
-  justify-content: flex-end;
-}
+  mat-card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-.mat-card-left-box * {
-  margin: 0 0 ;
-  text-align: left;
-  align-items: center;
-}
-.mat-card-left-box > img {
-  width: 80px;
-  height: 80px;
-}
-.mat-card-rigth-box > mat-card-subtitle {
-  margin: 0 0 ;
-  text-align: left;
-  align-items: center;
-}
+    .mat-card-rigth-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1vh;
+      align-items: end;
 
-mat-card-actions {
-  display: flex;
-  justify-content: center;
+      mat-card-subtitle {
+        margin: 0 0 ;
+        text-align: left;
+        align-items: center;
+      }
+    }
+
+    .mat-card-left-box {
+      display: flex;
+      flex-direction: column;
+      gap: 1vh;
+      justify-content: flex-end;
+
+      * {
+        margin: 0 0 ;
+        text-align: left;
+        align-items: center;
+      }
+      
+      img {
+          width: 48px;
+          height: 48px;
+        }
+    }
+  } 
 }
+// mat-card > mat-card-header {
+//   justify-content: flex-start;
+// }
+
+// mat-card-content {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// }
+
+// .mat-card-rigth-box {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr;
+//   gap: 1vh;
+// }
+// .mat-card-left-box {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1vh;
+//   justify-content: flex-end;
+// }
+
+// .mat-card-left-box * {
+//   margin: 0 0 ;
+//   text-align: left;
+//   align-items: center;
+// }
+// .mat-card-left-box > img {
+//   width: 48px;
+//   height: 48px;
+// }
+// .mat-card-rigth-box > mat-card-subtitle {
+//   margin: 0 0 ;
+//   text-align: left;
+//   align-items: center;
+// }
+
+// mat-card-actions {
+//   justify-content: space-between;
+// }
 

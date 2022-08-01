@@ -1,0 +1,16 @@
+<div class="daily-week-grid">
+    <div class="daily-week-title">
+        <mat-card-title>Week</mat-card-title>
+    </div>
+    <div class="daily-week-weather">
+        <mat-card class="day-card" *ngFor="let day of dailyWeather$">
+            <mat-card-subtitle>{{
+                day?.date | date: 'EE d'
+            }}</mat-card-subtitle>
+            <mat-card-content>
+                <img src="assets/{{ day?.icon }}.svg" />
+                <mat-card-subtitle>{{ day?.temperature }}°C</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

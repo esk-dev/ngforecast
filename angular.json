@@ -29,9 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              {
-                "input": "src/theme.scss"
-              }
+              "src/theme.scss"
             ],
             "scripts": []
           },
@@ -100,9 +98,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              {
-                "input": "src/theme.scss"
-              }
+              "src/theme.scss"
+
             ],
             "scripts": []
           }

@@ -1,0 +1,40 @@
+.daily-week-grid {
+  display: flex;
+  flex-direction: column;
+
+  .daily-week-weather {
+        display: grid;
+        grid-template: auto/repeat(8, max-content);
+        gap: 1vh 1vw;
+        
+
+      .day-card {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          height: 75px;
+          width: 45px;
+          margin: 0 0;
+          
+          * {
+              text-align: center;
+              margin: 0;
+          }
+
+          img {
+              height: 48px;
+              width: 48px;
+          }
+      } 
+  }
+}
+
+@media screen and (max-width: 768px) {
+    .daily-week-grid {
+        .daily-week-weather {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+    }
+}

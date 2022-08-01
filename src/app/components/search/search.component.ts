@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
-import { InputCatchService } from '../../shared/inputcatch.service';
+import { AutoComplete } from '../../shared/services/autocomplete.service';
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
@@ -10,25 +10,22 @@ import { InputCatchService } from '../../shared/inputcatch.service';
 })
 export class SearchComponent implements OnInit {
     @Output() newSearchEvent = new EventEmitter<string>();
-    inputFormControl = new FormControl<string>('');
+    searchForm = new FormGroup({
+        inputFormControl: new FormControl<string>('', Validators.required),
+    });
     autoCompleteNames$!: Observable<string[]>;
-    constructor(public _catchInputVal: InputCatchService) {}
+    constructor(public _catchInputVal: AutoComplete) {}
     ngOnInit() {
-        this.inputFormControl.valueChanges
-            .pipe(
-                filter(
-                    (value: string | null) =>
-                        value !== null && value?.length > 2
-                ),
-                distinctUntilChanged(),
-                debounceTime(500)
-            )
+        this.searchForm.controls.inputFormControl.valueChanges
+            .pipe(distinctUntilChanged(), debounceTime(500))
             .subscribe((value: any) => {
                 this.autoCompleteNames$ =
                     this._catchInputVal.getAutoCompleteArray(value);
             });
     }
     setFindCity(input: any) {
-        this.newSearchEvent.emit(input);
+        if (this.searchForm.valid) {
+            this.newSearchEvent.emit(input);
+        }
     }
 }
