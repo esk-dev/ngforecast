@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { distinctUntilChanged, filter, Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs';
 import { ApiService } from './api.service';
 @Injectable({
@@ -10,6 +10,8 @@ export class AutoComplete {
 
     getAutoCompleteArray(value: string): Observable<string[]> {
         return of(value).pipe(
+            distinctUntilChanged(),
+            filter(val => val.length !== 0),
             switchMap((value: string) => this._api.getAutoComplete(value)),
             map((response: Observable<any>) => {
                 let arr: string[] = [];

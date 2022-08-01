@@ -3,34 +3,19 @@
 </section>
 <section class="details-wrapper">
     <app-weathercard
-        *ngIf="shortWeather$"
-        [weather$]="shortWeather$ | async"></app-weathercard>
+        *ngIf="shortWeather$ | async"
+        [weather$]="shortWeather$ | async"
+    >
+    </app-weathercard>
+    <app-today-highlights
+    *ngIf="todayHighlights$ | async"
+    [todayHighlights$]="todayHighlights$ | async"
+    >
+    </app-today-highlights>
     <app-dailyweather
-        *ngIf="dailyWeather$"
+        *ngIf="dailyWeather$ | async"
         [dailyWeather$]="dailyWeather$ | async"
-        class="details-daily-grid"></app-dailyweather>
-
-    <div class="details-week-grid"></div>
-    <div class="details-today-grid">
-        <div class="details-today-highlights">
-            <mat-card class="details-today-card">
-                <mat-card-subtitle>vis_km </mat-card-subtitle>
-            </mat-card>
-            <mat-card class="details-today-card">
-                <mat-card-subtitle>gust_kph </mat-card-subtitle>
-            </mat-card>
-            <mat-card class="details-today-card">
-                <mat-card-subtitle>wind_degree wind_dir</mat-card-subtitle>
-            </mat-card>
-            <mat-card class="details-today-card">
-                <mat-card-subtitle>pressure_mb</mat-card-subtitle>
-            </mat-card>
-            <mat-card class="details-today-card">
-                <mat-card-subtitle>Properties </mat-card-subtitle>
-            </mat-card>
-            <mat-card class="details-today-card">
-                <mat-card-subtitle>Properties </mat-card-subtitle>
-            </mat-card>
-        </div>
-    </div>
+        class="details-week-grid">
+    </app-dailyweather>
+    <!-- <div class="details-week-grid"></div> -->
 </section>
