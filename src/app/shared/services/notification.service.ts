@@ -4,8 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root',
 })
 export class NotificationService {
-
-  constructor(public zone: NgZone, public snackBar: MatSnackBar) { }
+  constructor(public zone: NgZone, public snackBar: MatSnackBar) {}
 
   showSucces(message: string) {
     this.zone.run(() => {
@@ -15,8 +14,7 @@ export class NotificationService {
 
   showError(message: string) {
     this.zone.run(() => {
-      this.snackBar.open(message, 'Close', {duration: 5000});
+      this.snackBar.open(message, 'Close', { duration: 5000 });
     });
   }
-
 }

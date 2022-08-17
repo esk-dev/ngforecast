@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-
+import { weather } from '../../shared/models/models';
 @Component({
   selector: 'app-today-highlights',
   templateUrl: './today-highlights.component.html',
@@ -7,8 +7,6 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodayHighlightsComponent {
-
-  constructor() { }
-  @Input() todayHighlights$: any;
-
+  constructor() {}
+  @Input() weather$: any;
 }

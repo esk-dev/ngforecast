@@ -18,29 +18,29 @@ import { DetailsComponent } from './pages/details/details.component';
 import { DailyweatherComponent } from './components/dailyweather/dailyweather.component';
 import { TodayHighlightsComponent } from './components/today-highlights/today-highlights.component';
 @NgModule({
-    imports: [
-        BrowserAnimationsModule,
-        BrowserModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        RouterModule,
-        AppRoutingModule,
-        HttpClientModule,
-    ],
-    declarations: [
-        AppComponent,
-        SearchComponent,
-        HeaderComponent,
-        FooterComponent,
-        WeathercardComponent,
-        DailyweatherComponent,
-        SearchpageComponent,
-        DetailsComponent,
-        TodayHighlightsComponent
-    ],
-    bootstrap: [AppComponent],
-    providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true }
-    ]
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
+  declarations: [
+    AppComponent,
+    SearchComponent,
+    HeaderComponent,
+    FooterComponent,
+    WeathercardComponent,
+    DailyweatherComponent,
+    SearchpageComponent,
+    DetailsComponent,
+    TodayHighlightsComponent,
+  ],
+  bootstrap: [AppComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true },
+  ],
 })
 export class AppModule {}
