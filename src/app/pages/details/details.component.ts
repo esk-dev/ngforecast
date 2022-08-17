@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from '../../shared/services/weather.service';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, tap, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, tap, ReplaySubject } from 'rxjs';
 import {
   DailyWeather,
   TodayHighlights,
@@ -17,25 +17,32 @@ export class DetailsComponent {
     public route: ActivatedRoute,
     public WeatherService: WeatherService
   ) {
-    // this.dailyWeather$ = this.WeatherService.getDailyWeather(
-    //   this.city$.getValue()
-    // );
-    // this.shortWeather$ = this.WeatherService.getShortWeather(
-    //   this.city$.getValue()
-    // );
-    // this.todayHighlights$ = this.WeatherService.getTodayHighlights(
-    //   this.city$
-    // );
+    this.subscription = this.city$.subscribe((city: string) => {
+        this.dailyWeather$ = this.WeatherService.getDailyWeather(
+          city
+        );
+        this.shortWeather$ = this.WeatherService.getShortWeather(
+          city
+        );
+        this.todayHighlights$ = this.WeatherService.getTodayHighlights(
+          city
+        );
+    })
   }
 
+  subscription: Subscription;
   isLoading: Boolean = false;
   dailyWeather$: Observable<DailyWeather>;
   shortWeather$: Observable<ShortWeather>;
   todayHighlights$: Observable<TodayHighlights>;
-  city$: ReplaySubject<string> = new ReplaySubject();
+  city$: BehaviorSubject<string> = new BehaviorSubject('New york');
 
   onSearch(city: string) {
       this.city$.next(city);
       console.log(this.city$);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

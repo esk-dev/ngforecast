@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
 import { DailyWeather } from '../../shared/models/models';
 @Component({
   selector: 'app-dailyweather',
