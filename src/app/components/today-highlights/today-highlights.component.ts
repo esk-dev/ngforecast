@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { weather } from '../../shared/models/models';
+import { TodayHighlights } from '../../shared/models/models';
 @Component({
   selector: 'app-today-highlights',
   templateUrl: './today-highlights.component.html',
@@ -8,5 +8,5 @@ import { weather } from '../../shared/models/models';
 })
 export class TodayHighlightsComponent {
   constructor() {}
-  @Input() weather$: any;
+  @Input() todayHighlights$: any;
 }

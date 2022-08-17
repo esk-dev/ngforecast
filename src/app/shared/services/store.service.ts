@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { dailyWeather, params } from '../models/models';
 @Injectable({ providedIn: 'root' })
 export class StoreService {
   constructor() {}

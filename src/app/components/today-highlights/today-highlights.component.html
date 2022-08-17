@@ -1,35 +1,6 @@
 <div class="today-highlights">
-  <mat-card class="today-card">
-    <mat-card-subtitle>{{
-      weather$?.todayHighlights?.devPoint | async
-    }}</mat-card-subtitle>
-  </mat-card>
-  <mat-card class="today-card">
-    <mat-card-subtitle>{{
-      weather$?.todayHighlights?.pressure | async
-    }}</mat-card-subtitle>
-  </mat-card>
-  <mat-card class="today-card">
-    <mat-card-subtitle
-      >{{ weather$?.todayHighlights?.windDeg | async }}
-    </mat-card-subtitle>
-    <mat-card-subtitle>
-      {{ weather$?.todayHighlights?.windSpeed | async }}</mat-card-subtitle
-    >
-  </mat-card>
-  <mat-card class="today-card">
-    <mat-card-subtitle>{{
-      weather$?.todayHighlights?.uv | async
-    }}</mat-card-subtitle>
-  </mat-card>
-  <mat-card class="today-card">
-    <mat-card-subtitle
-      >{{ weather$?.todayHighlights?.visibility | async }}
-    </mat-card-subtitle>
-  </mat-card>
-  <mat-card class="today-card">
-    <mat-card-subtitle>
-      {{ weather$?.todayHighlights?.airQuality.co | async }}
-    </mat-card-subtitle>
+  <mat-card class="today-card" *ngFor="let prop of todayHighlights$ | async | keyvalue">
+    <mat-card-subtitle>{{prop.key}}</mat-card-subtitle>
+    <mat-card-subtitle> {{prop.value}}</mat-card-subtitle>
   </mat-card>
 </div>

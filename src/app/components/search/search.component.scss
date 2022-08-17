@@ -1,10 +1,19 @@
 mat-form-field {
   width: 100%;
-  margin-right: 1vh;
 }
 
 section {
   display: grid;
   grid-template-columns: auto min-content;
   align-items: baseline;
+
+  form {
+    display: grid;
+    grid-template-columns: 20fr 1fr;
+
+    .search-btn{
+      font-size: 24px;
+      align-items: center;
+    }
+  }
 }

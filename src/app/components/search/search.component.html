@@ -1,8 +1,9 @@
 <section>
   <form [formGroup]="searchForm">
     <mat-form-field color="accent" appearance="legacy">
+      <mat-label>Type city</mat-label>
       <input
-        type="text"
+        type="search"
         matInput
         formControlName="inputFormControl"
         [matAutocomplete]="auto"
@@ -22,14 +23,15 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-  </form>
-  <button
+    <button
     type="button"
-    mat-raised-button
+    matSuffix
+    mat-icon-button
     color="accent"
     class="search-btn"
     (click)="this.setFindCity(this.searchForm.controls.inputFormControl.value)"
   >
-    Search
+    <mat-icon>search</mat-icon>
   </button>
+  </form>
 </section>

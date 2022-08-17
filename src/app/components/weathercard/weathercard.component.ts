@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { weather } from '../../shared/models/models';
+import { ShortWeather } from '../../shared/models/models';
 @Component({
   selector: 'app-weathercard',
   templateUrl: './weathercard.component.html',
@@ -8,6 +8,6 @@ import { weather } from '../../shared/models/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WeathercardComponent {
-  @Input() weather$!: any;
+  @Input() shortWeather!: any;
   constructor() {}
 }

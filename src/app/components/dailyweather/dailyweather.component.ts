@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { dailyWeather } from '../../shared/models/models';
+import { DailyWeather } from '../../shared/models/models';
 @Component({
   selector: 'app-dailyweather',
   templateUrl: './dailyweather.component.html',

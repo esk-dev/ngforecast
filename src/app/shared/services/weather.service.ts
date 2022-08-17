@@ -3,45 +3,41 @@ import { Observable, map, switchMap, tap } from 'rxjs';
 import { ApiService } from './api.service';
 import { StoreService } from './store.service';
 import { LocationService } from './location.service';
-import { weather } from '../models/models';
-import { dailyWeather } from '../models/models';
+import { DailyWeather, TodayHighlights, ShortWeather } from '../models/models';
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
   constructor(private _api: ApiService, private params: LocationService) {}
 
-  getWeather(city: string): Observable<weather> {
+  getShortWeather(city: string): Observable<ShortWeather> {
     return this._api.getWeather(city).pipe(
       map((response: any) => ({
-        shortWeather: {
-          location: response.location.name,
-          icon: response.current.condition.icon,
-          condition: response.current.condition.text,
-          temperature: response.current.temp_c,
-          wind: response.current.wind_kph,
-          humidity: response.current.humidity,
-          feelslike: response.current.feelslike_c,
-        },
-        todayHighlights: {
+        location: response.location.name,
+        icon: response.current.condition.icon,
+        condition: response.current.condition.text,
+        temperature: response.current.temp_c,
+        wind: response.current.wind_kph,
+        humidity: response.current.humidity,
+        feelslike: response.current.feelslike_c,
+        })
+      )
+    )
+  }
+
+  getTodayHighlights(city: string): Observable<TodayHighlights> {
+    return this._api.getTodayHighlightsWeather(city).pipe(
+      map((response: any) => ({
           isDay: response.current.is_day,
           pressure: response.current.pressure_mb,
           windDir: response.current.wind_dir,
           windSpeed: response.current.wind_kph,
           uv: response.current.uv,
           visibility: response.current.vis_km,
-          airQuality: {
-            co: response.current.air_quality.co,
-            no: response.current.air_quality.no2,
-            o: response.current.air_quality.o3,
-            so: response.current.air_quality.so2,
-            pm25: response.current.air_quality.pm2_5,
-            pm10: response.current.air_quality.pm10,
-          },
-        },
-      }))
-    );
+        })
+      )
+    )
   }
 
-  getDailyWeather(city: string): Observable<dailyWeather> {
+  getDailyWeather(city: string): Observable<DailyWeather> {
     return this.params.getParams(city).pipe(
       switchMap((params: any) => {
         return this._api.getDailyWeather(params.lon, params.lat).pipe(
