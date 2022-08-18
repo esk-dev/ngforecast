@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-improt { Router } from ' @angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ShortWeather } from '../../shared/models/models';
 import { WeatherService } from '../../shared/services/weather.service';
@@ -12,14 +12,14 @@ export class SearchpageComponent implements OnInit, OnDestroy {
   shortWeather$!: ShortWeather;
   city$: BehaviorSubject<string> = new BehaviorSubject<string>('London');
   subscription: Subscription;
-  constructor(public WeatherService: WeatherService, private router: Router  )) {}
+  constructor(public WeatherService: WeatherService, private router: Router ) {}
 
   ngOnInit(): void {
     this.onSearch(this.city$.getValue());
   }
 
   routeToDetails() {
-    this.router.navigate(['/details', { city: this.city$.getValye() }]);
+    this.router.navigate(['/details', this.city$.getValue() ]);
   }
   onSearch(city: string) {
     if (city) {

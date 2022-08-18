@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from '../../shared/services/weather.service';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, Subscription, tap, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, map, tap, ReplaySubject } from 'rxjs';
 import {
   DailyWeather,
   TodayHighlights,
@@ -14,9 +14,13 @@ import {
 })
 export class DetailsComponent {
   constructor(
-    public route: ActivatedRoute,
+    public ActivatedRoute: ActivatedRoute,
     public WeatherService: WeatherService
   ) {
+    this.subscription2 = this.ActivatedRoute.paramMap.pipe(
+      map((params: any) => params.get('city'))).subscribe((city: string) => {
+        this.city$.next(city);
+      });
     this.subscription = this.city$.subscribe((city: string) => {
         this.dailyWeather$ = this.WeatherService.getDailyWeather(
           city
@@ -29,13 +33,14 @@ export class DetailsComponent {
         );
     })
   }
-
+  
   subscription: Subscription;
+  subscription2: Subscription;
   isLoading: Boolean = false;
   dailyWeather$: Observable<DailyWeather>;
   shortWeather$: Observable<ShortWeather>;
   todayHighlights$: Observable<TodayHighlights>;
-  city$: BehaviorSubject<string> = new BehaviorSubject('New york');
+  city$: BehaviorSubject<string> = new BehaviorSubject('new york');
 
   onSearch(city: string) {
       this.city$.next(city);
@@ -44,5 +49,6 @@ export class DetailsComponent {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
   }
 }
