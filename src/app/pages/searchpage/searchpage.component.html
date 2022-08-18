@@ -1,4 +1,8 @@
 <section class="container">
-  <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
-  <app-weathercard [shortWeather]="shortWeather$"></app-weathercard>
+  <app-search (newSearchEvent)="onSearch($event)"></app-search>
+  <app-weathercard [shortWeather]="shortWeather$">
+    <app-button (buttonAction)="routeToDetails()">
+      Details
+    </app-button>
+  </app-weathercard>
 </section>

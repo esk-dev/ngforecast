@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { DailyweatherComponent } from './components/dailyweather/dailyweather.component';
 import { TodayHighlightsComponent } from './components/today-highlights/today-highlights.component';
+import { ButtonComponent } from './components/button/button.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -37,6 +38,7 @@ import { TodayHighlightsComponent } from './components/today-highlights/today-hi
     SearchpageComponent,
     DetailsComponent,
     TodayHighlightsComponent,
+    ButtonComponent
   ],
   bootstrap: [AppComponent],
   providers: [
