@@ -18,23 +18,21 @@ export class WeatherService {
         wind: response.current.wind_kph,
         humidity: response.current.humidity,
         feelslike: response.current.feelslike_c,
-        })
-      )
-    )
+      }))
+    );
   }
 
   getTodayHighlights(city: string): Observable<TodayHighlights> {
     return this._api.getTodayHighlightsWeather(city).pipe(
       map((response: any) => ({
-          isDay: response.current.is_day,
-          pressure: response.current.pressure_mb,
-          windDir: response.current.wind_dir,
-          windSpeed: response.current.wind_kph,
-          uv: response.current.uv,
-          visibility: response.current.vis_km,
-        })
-      )
-    )
+        isDay: response.current.is_day,
+        pressure: response.current.pressure_mb,
+        windDir: response.current.wind_dir,
+        windSpeed: response.current.wind_kph,
+        uv: response.current.uv,
+        visibility: response.current.vis_km,
+      }))
+    );
   }
 
   getDailyWeather(city: string): Observable<DailyWeather> {

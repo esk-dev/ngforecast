@@ -12,14 +12,14 @@ export class SearchpageComponent implements OnInit, OnDestroy {
   shortWeather$!: ShortWeather;
   city$: BehaviorSubject<string> = new BehaviorSubject<string>('London');
   subscription: Subscription;
-  constructor(public WeatherService: WeatherService, private router: Router ) {}
+  constructor(public WeatherService: WeatherService, private router: Router) {}
 
   ngOnInit(): void {
     this.onSearch(this.city$.getValue());
   }
 
   routeToDetails() {
-    this.router.navigate(['/details', this.city$.getValue() ]);
+    this.router.navigate(['/details', this.city$.getValue()]);
   }
   onSearch(city: string) {
     if (city) {

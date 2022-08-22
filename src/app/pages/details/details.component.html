@@ -1,12 +1,13 @@
 <section class="container details-wrapper">
-    <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
-    <ng-container *ngIf="!isLoading else loading">
-      <app-weathercard [shortWeather]="shortWeather$ | async" > </app-weathercard>
-      <app-today-highlights [todayHighlights$]="todayHighlights$"> </app-today-highlights>
-      <app-dailyweather [dailyWeather$]="dailyWeather$ | async"> </app-dailyweather>
-    </ng-container>
+  <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
+  <ng-container *ngIf="!isLoading; else loading">
+    <app-weathercard [shortWeather]="shortWeather$ | async"> </app-weathercard>
+    <app-today-highlights [todayHighlights$]="todayHighlights$">
+    </app-today-highlights>
+    <app-dailyweather [dailyWeather$]="dailyWeather$ | async">
+    </app-dailyweather>
+  </ng-container>
 </section>
-
 
 <ng-template #loading>
   <div class="container details-wrapper">Loading...</div>

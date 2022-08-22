@@ -24,14 +24,16 @@
       </mat-autocomplete>
     </mat-form-field>
     <button
-    type="button"
-    matSuffix
-    mat-icon-button
-    color="accent"
-    class="search-btn"
-    (click)="this.setFindCity(this.searchForm.controls.inputFormControl.value)"
-  >
-    <mat-icon>search</mat-icon>
-  </button>
+      type="button"
+      matSuffix
+      mat-icon-button
+      color="accent"
+      class="search-btn"
+      (click)="
+        this.setFindCity(this.searchForm.controls.inputFormControl.value)
+      "
+    >
+      <mat-icon>search</mat-icon>
+    </button>
   </form>
 </section>
