@@ -19,7 +19,7 @@ import {
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.scss'],
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnDestroy {
   constructor(
     public ActivatedRoute: ActivatedRoute,
     public WeatherService: WeatherService

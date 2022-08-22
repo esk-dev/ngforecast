@@ -37,7 +37,7 @@ import { TodayHighlightsComponent } from './components/today-highlights/today-hi
     SearchpageComponent,
     DetailsComponent,
     TodayHighlightsComponent,
-    ButtonComponent
+    ButtonComponent,
   ],
   bootstrap: [AppComponent],
   providers: [
