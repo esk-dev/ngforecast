@@ -12,12 +12,14 @@ body {
 }
 
 .container {
-  width: 80%;
+  display: grid;
   max-width: 1440px;
+  min-height: 80vh;
   will-change: contents;
   height: max-content;
   margin: 0 auto;
   animation: fadeIn 1s forwards;
+  align-content: center;
 }
 
 mat-toolbar {

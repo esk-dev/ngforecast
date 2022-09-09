@@ -1,13 +1,13 @@
-.details-wrapper {
-    display: grid;
-    grid-template-rows: 1fr 2fr 2fr 2fr;
-    grid-row-gap: 1vh;
-}
+// .details-wrapper {
+//     display: grid;
+//     grid-template-rows: 1fr 2fr 2fr 2fr;
+//     grid-row-gap: 1vh;
+// }
 
-@media screen and (max-width: 768px) {
-    .details-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 2vh;
-    }
-}
+// @media screen and (max-width: 768px) {
+//     .details-wrapper {
+//         display: flex;
+//         flex-direction: column;
+//         gap: 2vh;
+//     }
+// }

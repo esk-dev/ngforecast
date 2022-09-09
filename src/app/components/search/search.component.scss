@@ -6,14 +6,13 @@ section {
   display: grid;
   grid-template-columns: auto min-content;
   align-items: baseline;
+}
+form {
+  display: grid;
+  grid-template-columns: 20fr 1fr;
 
-  form {
-    display: grid;
-    grid-template-columns: 20fr 1fr;
-
-    .search-btn{
-      font-size: 24px;
-      align-items: center;
-    }
+  .search-btn{
+    font-size: 24px;
+    align-items: center;
   }
 }

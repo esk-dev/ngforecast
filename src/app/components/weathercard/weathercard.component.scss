@@ -1,90 +1,49 @@
 mat-card {
   min-width: 256px;
-
-  mat-card-header {
-    justify-content: flex-start;
-  }
-
-  mat-card-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    .mat-card-rigth-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1vh;
-      align-items: end;
-
-      mat-card-subtitle {
-        margin: 0 0 ;
-        text-align: left;
-        align-items: center;
-      }
-    }
-
-    .mat-card-left-box {
-      display: flex;
-      flex-direction: column;
-      gap: 1vh;
-      justify-content: flex-end;
-
-      * {
-        margin: 0 0 ;
-        text-align: left;
-        align-items: center;
-      }
-      
-      img {
-          width: 48px;
-          height: 48px;
-        }
-    }
-  }
-  mat-card-actions {
-    margin: 0;
-    display: flex;
-
-  }
 }
-// mat-card > mat-card-header {
-//   justify-content: flex-start;
-// }
+mat-card-header {
+  justify-content: flex-start;
+}
+mat-card-title {
+  margin: 0;
+}
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.mat-card-rigth-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1vh;
+  align-items: end;
+}
+mat-card-subtitle {
+  margin: 0 0 ;
+  text-align: left;
+  align-items: center;
+}
 
-// mat-card-content {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// }
+.mat-card-left-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  justify-content: flex-end;
 
-// .mat-card-rigth-box {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr;
-//   gap: 1vh;
-// }
-// .mat-card-left-box {
-//   display: flex;
-//   flex-direction: column;
-//   gap: 1vh;
-//   justify-content: flex-end;
-// }
+  * {
+    margin: 0 0 ;
+    text-align: left;
+    align-items: center;
+  }
+  
+  img {
+      width: 48px;
+      height: 48px;
+    }
+}
+  
+mat-card-actions {
+  margin: 0;
+  display: flex;
 
-// .mat-card-left-box * {
-//   margin: 0 0 ;
-//   text-align: left;
-//   align-items: center;
-// }
-// .mat-card-left-box > img {
-//   width: 48px;
-//   height: 48px;
-// }
-// .mat-card-rigth-box > mat-card-subtitle {
-//   margin: 0 0 ;
-//   text-align: left;
-//   align-items: center;
-// }
-
-// mat-card-actions {
-//   justify-content: space-between;
-// }
-
+}
