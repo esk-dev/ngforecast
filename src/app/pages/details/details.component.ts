@@ -1,38 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { WeatherService } from '../../shared/services/weather.service';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subscription,
+  map,
+  tap,
+  ReplaySubject,
+} from 'rxjs';
+import {
+  DailyWeather,
+  TodayHighlights,
+  ShortWeather,
+} from '../../shared/models/models';
 @Component({
-    selector: 'app-details',
-    templateUrl: './details.component.html',
-    styleUrls: ['./details.component.scss'],
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss'],
 })
-export class DetailsComponent implements OnInit {
-    constructor(
-        public route: ActivatedRoute,
-        public WeatherService: WeatherService
-    ) {}
-    isLoading: Boolean = true;
-    dailyWeather$: Observable<any>;
-    shortWeather$: Observable<any>;
-    todayHighlights$: Observable<any>;
-    stream$: any;
-    city$: BehaviorSubject<string> = new BehaviorSubject<string>('London');
-    ngOnInit(): void {
-        this.onSearch('london');
-    }
-    onSearch(city: string) {
-        if (city !== this.city$.getValue()) {
-            this.city$.next(city);
-            this.dailyWeather$ = this.WeatherService.getDailyWeather(
-                this.city$.getValue()
-            ).pipe(tap(() => console.log('loading')));
-            this.shortWeather$ = this.WeatherService.getShortWeather(
-                this.city$.getValue()
-            ).pipe(tap(() => console.log('loading')));
-            this.todayHighlights$ = this.WeatherService.getTodayHighlights(
-                this.city$.getValue()
-            ).pipe(tap(() => console.log('loading')));
-        } else console.log('input city');
-    }
+export class DetailsComponent implements OnDestroy {
+  constructor(
+    public ActivatedRoute: ActivatedRoute,
+    public WeatherService: WeatherService
+  ) {
+    this.subscription2 = this.ActivatedRoute.paramMap
+      .pipe(map((params: any) => params.get('city')))
+      .subscribe((city: string) => {
+        this.city$.next(city);
+      });
+    this.subscription = this.city$.subscribe((city: string) => {
+      this.dailyWeather$ = this.WeatherService.getDailyWeather(city);
+      this.shortWeather$ = this.WeatherService.getShortWeather(city);
+      this.todayHighlights$ = this.WeatherService.getTodayHighlights(city);
+    });
+  }
+
+  subscription: Subscription;
+  subscription2: Subscription;
+  isLoading: Boolean = false;
+  dailyWeather$: Observable<DailyWeather>;
+  shortWeather$: Observable<ShortWeather>;
+  todayHighlights$: Observable<TodayHighlights>;
+  city$: BehaviorSubject<string> = new BehaviorSubject('new york');
+
+  onSearch(city: string) {
+    this.city$.next(city);
+    console.log(this.city$);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
+  }
 }

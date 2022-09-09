@@ -1,36 +1,39 @@
 <section>
-    <form [formGroup]="searchForm">
-        <mat-form-field color="accent" appearance="legacy">
-            <input
-                type="text"
-                matInput
-                formControlName="inputFormControl"
-                [matAutocomplete]="auto"
-                (keyup.enter)="
-                    this.setFindCity(
-                        this.searchForm.controls.inputFormControl.value
-                    )
-                " />
-            <mat-error *ngIf="searchForm.invalid"
-                >Type city to search weather
-            </mat-error>
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option
-                    *ngFor="let city of autoCompleteNames$ | async"
-                    [value]="city">
-                    {{ city }}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </form>
+  <form [formGroup]="searchForm">
+    <mat-form-field color="accent" appearance="legacy">
+      <mat-label>Type city</mat-label>
+      <input
+        type="search"
+        matInput
+        formControlName="inputFormControl"
+        [matAutocomplete]="auto"
+        (keyup.enter)="
+          this.setFindCity(this.searchForm.controls.inputFormControl.value)
+        "
+      />
+      <mat-error *ngIf="searchForm.invalid"
+        >Type city to search weather
+      </mat-error>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let city of autoCompleteNames$ | async"
+          [value]="city"
+        >
+          {{ city }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
     <button
-        type="button"
-        mat-raised-button
-        color="accent"
-        class="search-btn"
-        (click)="
-            this.setFindCity(this.searchForm.controls.inputFormControl.value)
-        ">
-        Search
+      type="button"
+      matSuffix
+      mat-icon-button
+      color="accent"
+      class="search-btn"
+      (click)="
+        this.setFindCity(this.searchForm.controls.inputFormControl.value)
+      "
+    >
+      <mat-icon>search</mat-icon>
     </button>
+  </form>
 </section>

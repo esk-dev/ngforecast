@@ -1,7 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import 'animate.css/animate.css';
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  height: 100%;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 80%;
+  max-width: 1440px;
+  will-change: contents;
+  height: max-content;
+  margin: 0 auto;
+  animation: fadeIn 1s forwards;
+}
 
 mat-toolbar {
   height: 7vh;
@@ -11,5 +28,5 @@ mat-toolbar {
 }
 
 mat-card {
-  box-shadow: 0px 0px 15px -7px rgb(0 0 0 / 20%), 0px 0px 19px -15px rgb(0 0 0 / 14%), 3px 0px 2px -4px rgb(0 0 0 / 16%) !important;
+  box-shadow: 0px 0px 15px -7px rgb(0 0 0 / 20%), 0px 0px 19px -15px rgb(0 0 0 / 14%), 3px 0px 2px -4px rgb(0 0 0 / 16%);
 }

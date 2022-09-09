@@ -5,17 +5,17 @@ import { params } from '../models/models';
 import { ApiService } from './api.service';
 import { StoreService } from './store.service';
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class LocationService {
-    constructor(private _store: StoreService, private _api: ApiService) {}
+  constructor(private _store: StoreService, private _api: ApiService) {}
 
-    getParams(city: string): Observable<params> {
-        return this._api.getLocationParams(city).pipe(
-            map((response: any) => ({
-                lat: response[0].lat,
-                lon: response[0].lon,
-            }))
-        );
-    }
+  getParams(city: string): Observable<params> {
+    return this._api.getLocationParams(city).pipe(
+      map((response: any) => ({
+        lat: response[0].lat,
+        lon: response[0].lon,
+      }))
+    );
+  }
 }

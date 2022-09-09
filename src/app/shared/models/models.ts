@@ -1,25 +1,28 @@
-export interface shortWeather {
-    location: string;
-    icon: string;
-    condition: string;
-    temperature: number;
-    wind: number;
-    humidity: number;
-    feelslike: number;
+export interface ShortWeather {
+  location: string;
+  icon: string;
+  condition: string;
+  temperature: number;
+  wind: number;
+  humidity: number;
+  feelslike: number;
 }
-export interface dailyWeather {}
-export interface todayHighlights {
-    devPoint: number;
-    pressure: number;
-    windDeg: number;
-    windSpeed: number;
-    sunrise: number;
-    sunset: number;
-    uvi: number;
-    visibility: number;
+export interface TodayHighlights {
+  isDay: number;
+  pressure: number;
+  windDir: number;
+  windSpeed: number;
+  uv: number;
+  visibility: number;
+}
+
+export interface DailyWeather {
+  date: number;
+  icon: string;
+  temperature: number;
 }
 
 export interface params {
-    lat: number;
-    lon: number;
+  lat: number;
+  lon: number;
 }
