@@ -1,6 +1,6 @@
-<section>
-    <app-search (newSearchEvent)="this.onSearch($event)"></app-search>
-    <app-weathercard
-        *ngIf="shortWeather$ | async"
-        [weather$]="shortWeather$ | async"></app-weathercard>
+<section class="container">
+  <app-search (newSearchEvent)="onSearch($event)"></app-search>
+  <app-weathercard [shortWeather]="shortWeather$">
+    <app-button (buttonAction)="routeToDetails()"> Details </app-button>
+  </app-weathercard>
 </section>

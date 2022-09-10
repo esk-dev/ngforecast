@@ -1,26 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { shortWeather } from '../../shared/models/models';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { ShortWeather } from '../../shared/models/models';
 import { WeatherService } from '../../shared/services/weather.service';
 @Component({
-    selector: 'app-searchpage',
-    templateUrl: './searchpage.component.html',
-    styleUrls: ['./searchpage.component.scss'],
+  selector: 'app-searchpage',
+  templateUrl: './searchpage.component.html',
+  styleUrls: ['./searchpage.component.scss'],
 })
-export class SearchpageComponent implements OnInit {
-    shortWeather$!: Observable<shortWeather>;
-    city$: BehaviorSubject<string> = new BehaviorSubject<string>('London');
-    constructor(public WeatherService: WeatherService) {}
+export class SearchpageComponent implements OnInit, OnDestroy {
+  shortWeather$!: ShortWeather;
+  city$: BehaviorSubject<string> = new BehaviorSubject<string>('London');
+  subscription: Subscription;
+  constructor(public WeatherService: WeatherService, private router: Router) {}
 
-    ngOnInit(): void {
-        this.onSearch('new york');
+  ngOnInit(): void {
+    this.onSearch(this.city$.getValue());
+  }
+
+  routeToDetails() {
+    this.router.navigate(['/details', this.city$.getValue()]);
+  }
+  onSearch(city: string) {
+    if (city) {
+      this.city$.next(city);
+      this.subscription = this.WeatherService.getShortWeather(
+        this.city$.getValue()
+      ).subscribe((shortWeather) => (this.shortWeather$ = shortWeather));
     }
-    onSearch(city: string) {
-        if (city) {
-            this.city$.next(city);
-        }
-        this.shortWeather$ = this.WeatherService.getShortWeather(
-            this.city$.getValue()
-        );
-    }
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 }

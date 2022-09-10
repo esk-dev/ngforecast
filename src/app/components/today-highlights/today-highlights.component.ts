@@ -1,12 +1,12 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { todayHighlights } from '../../shared/models/models';
+import { TodayHighlights } from '../../shared/models/models';
 @Component({
-    selector: 'app-today-highlights',
-    templateUrl: './today-highlights.component.html',
-    styleUrls: ['./today-highlights.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-today-highlights',
+  templateUrl: './today-highlights.component.html',
+  styleUrls: ['./today-highlights.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodayHighlightsComponent {
-    constructor() {}
-    @Input() todayHighlights$: todayHighlights;
+  constructor() {}
+  @Input() todayHighlights$: any;
 }
