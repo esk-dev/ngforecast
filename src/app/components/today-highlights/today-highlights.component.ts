@@ -1,4 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
 import { TodayHighlights } from '../../shared/models/models';
 @Component({
   selector: 'app-today-highlights',
@@ -8,5 +9,5 @@ import { TodayHighlights } from '../../shared/models/models';
 })
 export class TodayHighlightsComponent {
   constructor() {}
-  @Input() todayHighlights$: any;
+  @Input() todayHighlights$: Observable<TodayHighlights>;
 }

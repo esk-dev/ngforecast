@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { DailyWeather } from '../../shared/models/models';
 @Component({
@@ -7,7 +14,10 @@ import { DailyWeather } from '../../shared/models/models';
   styleUrls: ['./dailyweather.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DailyweatherComponent {
+export class DailyweatherComponent implements OnChanges {
   constructor() {}
-  @Input() dailyWeather$: any;
+  @Input() dailyWeather$: Array<DailyWeather>;
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
 }

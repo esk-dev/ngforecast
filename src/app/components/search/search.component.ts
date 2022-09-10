@@ -1,31 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  Observable,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { AutoComplete } from '../../shared/services/autocomplete.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
+  constructor(public _catchInputVal: AutoComplete) {}
+
   @Output() newSearchEvent = new EventEmitter<string>();
-  searchForm = new FormGroup({
+
+  autoCompleteNames$!: Observable<string[]>;
+
+  destroy$: Subject<boolean> = new Subject();
+
+  form = new FormGroup({
     inputFormControl: new FormControl<string>('', Validators.required),
   });
-  autoCompleteNames$!: Observable<string[]>;
-  constructor(public _catchInputVal: AutoComplete) {}
-  ngOnInit() {
-    this.searchForm.controls.inputFormControl.valueChanges
-      .pipe(distinctUntilChanged(), debounceTime(500))
-      .subscribe((value: any) => {
+
+  ngOnInit(): void {
+    this.form.controls.inputFormControl.valueChanges
+      .pipe(distinctUntilChanged(), debounceTime(500), takeUntil(this.destroy$))
+      .subscribe((value: string) => {
         this.autoCompleteNames$ =
           this._catchInputVal.getAutoCompleteArray(value);
       });
   }
-  setFindCity(input: any) {
-    if (this.searchForm.valid) {
+
+  setFindCity(input: string): void {
+    if (this.form.valid) {
       this.newSearchEvent.emit(input);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }

@@ -8,6 +8,6 @@ import { ShortWeather } from '../../shared/models/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WeathercardComponent {
-  @Input() shortWeather!: any;
+  @Input() shortWeather: ShortWeather;
   constructor() {}
 }

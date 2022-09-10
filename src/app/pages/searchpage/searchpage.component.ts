@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { ShortWeather } from '../../shared/models/models';
@@ -8,10 +8,9 @@ import { WeatherService } from '../../shared/services/weather.service';
   templateUrl: './searchpage.component.html',
   styleUrls: ['./searchpage.component.scss'],
 })
-export class SearchpageComponent implements OnInit, OnDestroy {
-  shortWeather$!: ShortWeather;
+export class SearchpageComponent implements OnInit {
+  shortWeather$: Observable<ShortWeather>;
   city$: BehaviorSubject<string> = new BehaviorSubject<string>('London');
-  subscription: Subscription;
   constructor(public WeatherService: WeatherService, private router: Router) {}
 
   ngOnInit(): void {
@@ -24,12 +23,9 @@ export class SearchpageComponent implements OnInit, OnDestroy {
   onSearch(city: string) {
     if (city) {
       this.city$.next(city);
-      this.subscription = this.WeatherService.getShortWeather(
+      this.shortWeather$ = this.WeatherService.getShortWeather(
         this.city$.getValue()
-      ).subscribe((shortWeather) => (this.shortWeather$ = shortWeather));
+      );
     }
-  }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }
