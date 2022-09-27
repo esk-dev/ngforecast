@@ -7,16 +7,17 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DailyWeather } from '../../shared/models/models';
+import { Forecast } from '../../shared/models/models';
+
 @Component({
-  selector: 'app-dailyweather',
-  templateUrl: './dailyweather.component.html',
-  styleUrls: ['./dailyweather.component.scss'],
+  selector: 'app-forecast',
+  templateUrl: './forecast.component.html',
+  styleUrls: ['./forecast.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DailyweatherComponent implements OnChanges {
+export class ForecastComponent implements OnChanges {
   constructor() {}
-  @Input() dailyWeather$: Array<DailyWeather>;
+  @Input() forecast: Forecast;
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
   }

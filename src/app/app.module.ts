@@ -14,8 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 import { AppComponent } from './app.component';
-import { DetailsComponent } from './pages/details/details.component';
-import { DailyweatherComponent } from './components/dailyweather/dailyweather.component';
+import { ForecastComponent } from './components/forecast/forecast.component';
 import { TodayHighlightsComponent } from './components/today-highlights/today-highlights.component';
 import { ButtonComponent } from './components/button/button.component';
 @NgModule({
@@ -34,9 +33,8 @@ import { ButtonComponent } from './components/button/button.component';
     HeaderComponent,
     FooterComponent,
     WeathercardComponent,
-    DailyweatherComponent,
+    ForecastComponent,
     SearchpageComponent,
-    DetailsComponent,
     TodayHighlightsComponent,
     ButtonComponent,
   ],

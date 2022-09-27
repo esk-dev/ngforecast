@@ -1,6 +1,12 @@
 <div class="wrapper">
   <header>
-    <app-header></app-header>
+    <app-header>
+      <app-search
+        class="searchbar"
+        searchbar
+        (newSearchEvent)="this.onSearch($event)"
+      ></app-search>
+    </app-header>
   </header>
   <main class="page">
     <router-outlet></router-outlet>

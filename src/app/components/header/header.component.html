@@ -1,10 +1,8 @@
 <mat-toolbar>
   <mat-card-title>Weather</mat-card-title>
-  <div class="example-button-row">
-    <a mat-button routerLink="search">Search</a>
-    <a mat-button routerLink="details/:london" ActivatedRoute="active"
-      >Details</a
-    >
+  <ng-content select="[searchbar]"></ng-content>
+  <!-- <div class="router-btns">
+    <a mat-button routerLink="search/:city">Search</a>
     <a mat-button>Home</a>
-  </div>
+  </div> -->
 </mat-toolbar>

@@ -2,22 +2,13 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px 5px;
+    height: 100%;
 }
 .today-card {
     flex-grow: 1;
+    width: 30%;
     mat-card-subtitle {
         margin: 0;
         text-align: center;
     }
 }
-// @media screen and (max-width: 768px) {
-// .today-highlights {
-//     display: flex;
-//     flex-wrap: wrap;
-// }
-// .today-card {
-//     height: 100px;
-//     min-width: 33%;
-//     width: auto;
-// }
-// }

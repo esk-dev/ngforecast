@@ -1,11 +1,6 @@
 mat-card {
   min-width: 256px;
-}
-mat-card-header {
-  justify-content: flex-start;
-}
-mat-card-title {
-  margin: 0;
+  height: 100%;
 }
 mat-card-content {
   display: flex;
@@ -40,10 +35,4 @@ mat-card-subtitle {
       width: 48px;
       height: 48px;
     }
-}
-
-mat-card-actions {
-  margin: 0;
-  display: flex;
-
 }

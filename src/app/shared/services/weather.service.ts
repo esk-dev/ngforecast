@@ -3,7 +3,7 @@ import { Observable, map, switchMap, tap } from 'rxjs';
 import { ApiService } from './api.service';
 import { StoreService } from './store.service';
 import { LocationService } from './location.service';
-import { DailyWeather, TodayHighlights, ShortWeather } from '../models/models';
+import { Forecast, TodayHighlights, ShortWeather } from '../models/models';
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
   constructor(private _api: ApiService, private params: LocationService) {}
@@ -35,10 +35,10 @@ export class WeatherService {
     );
   }
 
-  getDailyWeather(city: string): Observable<Array<DailyWeather>> {
+  getForecast(city: string): Observable<Array<Forecast>> {
     return this.params.getParams(city).pipe(
       switchMap((params: any) => {
-        return this._api.getDailyWeather(params.lon, params.lat).pipe(
+        return this._api.getForecast(params.lon, params.lat).pipe(
           map((response: any) =>
             response.daily.map((el: any) => ({
               date: new Date(el.dt * 1000),

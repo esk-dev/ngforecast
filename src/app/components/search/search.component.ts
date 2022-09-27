@@ -8,7 +8,7 @@ import {
   Subject,
   takeUntil,
 } from 'rxjs';
-import { AutoComplete } from '../../shared/services/autocomplete.service';
+import { AutoComplete } from './autocomplete.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',

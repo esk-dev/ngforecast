@@ -16,7 +16,7 @@ export interface TodayHighlights {
   visibility: number;
 }
 
-export interface DailyWeather {
+export interface Forecast {
   date: number;
   icon: string;
   temperature: number;
