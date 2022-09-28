@@ -1,12 +1,12 @@
 <section>
   <form [formGroup]="form">
-    <mat-form-field color="accent" appearance="legacy">
-      <mat-label>Type city</mat-label>
+    <mat-form-field color="accent" appearance="outline">
       <input
         type="search"
         matInput
         formControlName="inputFormControl"
         [matAutocomplete]="auto"
+        placeholder="Type city.."
         (keyup.enter)="
           this.setFindCity(this.form.controls.inputFormControl.value)
         "

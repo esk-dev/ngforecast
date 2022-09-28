@@ -8,10 +8,10 @@ export interface ShortWeather {
   feelslike: number;
 }
 export interface TodayHighlights {
-  isDay: number;
+  is_day: number;
   pressure: number;
-  windDir: number;
-  windSpeed: number;
+  wind_dir: number;
+  wind_speed: number;
   uv: number;
   visibility: number;
 }

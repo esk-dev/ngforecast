@@ -15,10 +15,7 @@ import { Forecast } from '../../shared/models/models';
   styleUrls: ['./forecast.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ForecastComponent implements OnChanges {
+export class ForecastComponent {
   constructor() {}
   @Input() forecast: Forecast;
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
 }

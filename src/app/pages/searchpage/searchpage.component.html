@@ -16,19 +16,26 @@
     <div class="weather-forecast">
       <ng-container *ngIf="shortWeather$ | async">
         <app-weathercard
-          class="weathercard"
+          class="weather-card"
           [shortWeather]="shortWeather$ | async"
         ></app-weathercard>
       </ng-container>
+      <mat-card-subtitle>Forecast</mat-card-subtitle>
       <div class="forecast">
         <ng-container *ngFor="let forecast of forecast$ | async">
-          <app-forecast [forecast]="forecast"></app-forecast>
+          <app-forecast
+            class="forecast-item"
+            [forecast]="forecast"
+          ></app-forecast>
         </ng-container>
       </div>
-      <!-- <ng-container *ngIf="todayHighlights$ | async">
-        <app-today-highlights [todayHighlights$]="todayHighlights$">
+      <ng-container *ngIf="todayHighlights$ | async">
+        <app-today-highlights
+          class="todayhighlights"
+          [todayHighlights$]="todayHighlights$"
+        >
         </app-today-highlights>
-      </ng-container> -->
+      </ng-container>
     </div>
     <!-- <div class="weather-sidebar">
       <div class="sidebar">

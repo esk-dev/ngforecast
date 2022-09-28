@@ -1,9 +1,9 @@
 <div class="today-highlights">
-  <mat-card
-    class="today-card"
-    *ngFor="let prop of todayHighlights$ | async | keyvalue"
-  >
-    <mat-card-subtitle>{{ prop.key }}</mat-card-subtitle>
-    <mat-card-subtitle> {{ prop.value }}</mat-card-subtitle>
+  <mat-card class="today-card">
+    <mat-card-header>Today</mat-card-header>
+    <mat-card-content *ngFor="let prop of todayHighlights$ | async | keyvalue">
+      <mat-card-subtitle>{{ prop.key | titlecase }}</mat-card-subtitle
+      ><mat-card-title> {{ prop.value }}</mat-card-title></mat-card-content
+    >
   </mat-card>
 </div>

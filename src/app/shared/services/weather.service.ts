@@ -25,10 +25,10 @@ export class WeatherService {
   getTodayHighlights(city: string): Observable<TodayHighlights> {
     return this._api.getTodayHighlightsWeather(city).pipe(
       map((response: any) => ({
-        isDay: response.current.is_day,
+        is_day: response.current.is_day,
         pressure: response.current.pressure_mb,
-        windDir: response.current.wind_dir,
-        windSpeed: response.current.wind_kph,
+        wind_dir: response.current.wind_dir,
+        wind_speed: response.current.wind_kph,
         uv: response.current.uv,
         visibility: response.current.vis_km,
       }))

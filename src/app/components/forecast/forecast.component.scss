@@ -1,5 +1,16 @@
 .day-card {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 100%;
+}
+mat-card {
+  box-shadow: none;
+  border-style: none;
+}
+
+mat-card-subtitle {
+  margin: 0;
 }

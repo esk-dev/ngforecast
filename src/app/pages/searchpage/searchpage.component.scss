@@ -2,19 +2,32 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .weather-forecast {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  gap: 5px;
+}
+.weather-card {
+  grid-column: 2/4;
+  grid-row: 1/2;
 }
 
 .forecast {
   grid-column: 1/-1;
-  grid-row: 1/1;
+  grid-row: 2/3;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 5px;
+}
+
+.todayhighlights {
+  grid-column: 1/5;
+  grid-row: 3/5;
 }
 // .weather-sidebar {
 //   display: flex;
@@ -31,7 +44,13 @@
 
 @media screen and (max-width: 768px) {
   .weather-forecast {
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .weather-card {
+  }
+
+  .forecast {
   }
 }

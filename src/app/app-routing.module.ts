@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'search/:Moscow', pathMatch: 'full' },
-  { path: 'search/:city', component: SearchpageComponent },
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: 'search', component: SearchpageComponent, title: 'Search' },
 ];
 
 @NgModule({
