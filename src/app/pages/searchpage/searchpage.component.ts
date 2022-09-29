@@ -14,7 +14,7 @@ import {
   TodayHighlights,
   ShortWeather,
 } from '../../shared/models/models';
-import { StoreService } from 'src/app/shared/services/store.service';
+import { StoreService } from '../../shared/services/store.service';
 @Component({
   selector: 'app-searchpage',
   templateUrl: './searchpage.component.html',

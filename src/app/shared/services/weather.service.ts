@@ -8,7 +8,7 @@ import { Forecast, TodayHighlights, ShortWeather } from '../models/models';
 export class WeatherService {
   constructor(private _api: ApiService, private params: LocationService) {}
 
-  getShortWeather(city: string): Observable<ShortWeather> {
+  public getShortWeather(city: string): Observable<ShortWeather> {
     return this._api.getWeather(city).pipe(
       map((response: any) => ({
         location: response.location.name,
@@ -22,7 +22,7 @@ export class WeatherService {
     );
   }
 
-  getTodayHighlights(city: string): Observable<TodayHighlights> {
+  public getTodayHighlights(city: string): Observable<TodayHighlights> {
     return this._api.getTodayHighlightsWeather(city).pipe(
       map((response: any) => ({
         is_day: response.current.is_day,
@@ -35,7 +35,7 @@ export class WeatherService {
     );
   }
 
-  getForecast(city: string): Observable<Array<Forecast>> {
+  public getForecast(city: string): Observable<Array<Forecast>> {
     return this.params.getParams(city).pipe(
       switchMap((params: any) => {
         return this._api.getForecast(params.lon, params.lat).pipe(
