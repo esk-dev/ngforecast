@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="home-box">
+    <ng-container *ngFor="let weather of favoriteCitiesWeather$">
+      <app-weathercard [shortWeather]="weather | async"></app-weathercard>
+    </ng-container>
+  </div>
+</div>

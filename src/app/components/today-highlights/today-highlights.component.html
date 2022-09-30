@@ -1,8 +1,9 @@
-
-  <mat-card class="today-card">
-    <mat-card-content class='today-card-content'*ngFor="let prop of todayHighlights$ | async | keyvalue | slice:1:6 ">
-      <mat-card-subtitle>{{ prop.key | titlecase }}</mat-card-subtitle
-      ><mat-card-title> {{ prop.value }}</mat-card-title></mat-card-content
-    >
-  </mat-card>
-
+<mat-card class="today-card">
+  <mat-card-content
+    class="today-card-content"
+    *ngFor="let prop of todayHighlights$ | async | keyvalue | slice: 1:6"
+  >
+    <mat-card-subtitle>{{ prop.key | titlecase }}</mat-card-subtitle
+    ><mat-card-subtitle> {{ prop.value }}</mat-card-subtitle></mat-card-content
+  >
+</mat-card>

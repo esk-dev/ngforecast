@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -15,7 +16,10 @@ import { AutoComplete } from './autocomplete.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  constructor(public _catchInputVal: AutoComplete) {}
+  constructor(
+    public _catchInputVal: AutoComplete,
+    public ActivatedRouter: Router
+  ) {}
 
   @Output() newSearchEvent = new EventEmitter<string>();
 
@@ -39,6 +43,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   setFindCity(input: string): void {
     if (this.form.valid) {
       this.newSearchEvent.emit(input);
+      this.ActivatedRouter.navigate(['/search', input]);
     }
   }
 

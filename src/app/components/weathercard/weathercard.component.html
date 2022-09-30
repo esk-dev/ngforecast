@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card primary>
   <mat-card-header>
     <mat-card-title>{{ shortWeather?.location }}</mat-card-title>
   </mat-card-header>
@@ -17,5 +17,6 @@
       <mat-card-subtitle>{{ shortWeather?.wind }} km/h</mat-card-subtitle>
     </div>
   </mat-card-content>
+  <ng-content></ng-content>
 </mat-card>
 <!-- <ng-template [ngIf]="obs.value">Value: {{ obs.value }}</ng-template> -->
