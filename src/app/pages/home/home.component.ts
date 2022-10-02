@@ -9,7 +9,7 @@ import { WeatherService } from 'src/app/shared/services/weather.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  favoriteCitiesWeather$: any;
+  favoriteCitiesWeather: any;
   constructor(
     public StoreService: StoreService,
     public WeatherService: WeatherService
@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.StoreService.favoriteCity$
       .pipe(takeUntil(this.destroy$))
       .subscribe((response: string[]) => {
-        this.favoriteCitiesWeather$ = response.map((city: string) => {
+        this.favoriteCitiesWeather = response.map((city: string) => {
           return this.WeatherService.getShortWeather(city);
         });
       });

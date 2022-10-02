@@ -10,5 +10,14 @@ export class StoreService {
 
   public favoriteCity$: BehaviorSubject<string[]> = new BehaviorSubject<
     string[]
-  >(['Moscow', 'london']);
+  >([
+    'Moscow',
+    'london',
+    'new york',
+    'krasnoyarsk',
+    'Moscow',
+    'london',
+    'new york',
+    'krasnoyarsk',
+  ]);
 }

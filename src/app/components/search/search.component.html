@@ -11,6 +11,14 @@
           this.setFindCity(this.form.controls.inputFormControl.value)
         "
       />
+      <button
+        matSuffix
+        mat-icon-button
+        color="accent"
+        (click)="this.setFindCity(this.form.controls.inputFormControl.value)"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
       <mat-error *ngIf="form.invalid">Type city to search weather </mat-error>
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option
@@ -21,15 +29,5 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <button
-      type="button"
-      matSuffix
-      mat-icon-button
-      color="accent"
-      class="search-btn"
-      (click)="this.setFindCity(this.form.controls.inputFormControl.value)"
-    >
-      <mat-icon>search</mat-icon>
-    </button>
   </form>
 </section>

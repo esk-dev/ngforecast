@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorIntercept } from './error.interceptor';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { WeathercardComponent } from './components/weathercard/weathercard.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,6 +19,7 @@ import { AppComponent } from './app.component';
 import { ForecastComponent } from './components/forecast/forecast.component';
 import { TodayHighlightsComponent } from './components/today-highlights/today-highlights.component';
 import { ButtonComponent } from './components/button/button.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -27,6 +29,7 @@ import { ButtonComponent } from './components/button/button.component';
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
+    LayoutModule,
   ],
   declarations: [
     AppComponent,
@@ -39,6 +42,7 @@ import { ButtonComponent } from './components/button/button.component';
     TodayHighlightsComponent,
     HomeComponent,
     ButtonComponent,
+    NavBarComponent,
   ],
   bootstrap: [AppComponent],
   providers: [

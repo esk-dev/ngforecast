@@ -8,7 +8,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatMenuModule } from '@angular/material/menu';
 const MaterialComponents = [
   MatFormFieldModule,
   MatToolbarModule,
@@ -18,6 +18,7 @@ const MaterialComponents = [
   MatButtonModule,
   MatSnackBarModule,
   MatCardModule,
+  MatMenuModule,
 ];
 
 @NgModule({
