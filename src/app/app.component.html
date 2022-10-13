@@ -1,11 +1,7 @@
 <div class="wrapper">
   <header>
     <app-header>
-      <app-search
-        class="searchbar"
-        searchbar
-        (newSearchEvent)="this.onSearch($event)"
-      ></app-search>
+      <app-search class="searchbar" searchbar (newSearchEvent)="this.onSearch($event)"></app-search>
       <app-nav-bar class="navbar" navbar></app-nav-bar>
     </app-header>
   </header>
