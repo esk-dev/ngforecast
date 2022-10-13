@@ -15,22 +15,24 @@
 }
 
 .weather-card {
-  grid-column: 2/4;
-  grid-row: 1/2;
+  grid-column: 2/3;
+  grid-row: 1/1;
 }
 
 .forecast {
-  grid-column: 1/-1;
-  grid-row: 3/3;
+  grid-column: 2/4;
+  grid-row: 2/4;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 5px;
 }
-
+.forecast-item {
+  width: 20%;
+}
 .todayhighlights {
-  grid-column: 2/4;
-  grid-row: 2/2;
+  grid-column: 3/4;
+  grid-row: 1/1;
 }
 
 @media screen and (max-width: 768px) {
