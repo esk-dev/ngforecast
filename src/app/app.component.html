@@ -1,14 +1,10 @@
 <div class="wrapper">
-  <header>
-    <app-header>
-      <app-search class="searchbar" searchbar (newSearchEvent)="this.onSearch($event)"></app-search>
-      <app-nav-bar class="navbar" navbar></app-nav-bar>
-    </app-header>
-  </header>
-  <main class="page">
-    <router-outlet></router-outlet>
-  </main>
-  <footer>
-    <app-footer></app-footer>
-  </footer>
+    <section class='navigation-view'>
+      <app-header>
+        <app-nav-bar navbar></app-nav-bar>
+      </app-header>
+    </section>
+    <section class="content-view">
+      <router-outlet></router-outlet>
+    </section>
 </div>

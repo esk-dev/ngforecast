@@ -1,12 +1,7 @@
 mat-toolbar {
   height: max-content;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: flex-start;
   background: none;
-}
-
-.nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
 }

@@ -1,12 +1,14 @@
 .nav-bar {
   display: inline-flex;
   align-items: center;
-
   ul {
     display: inline-flex;
+    flex-direction: column;
     margin: 0;
+    padding: 0;
     li {
        list-style: none;
+       margin-bottom: 10px;
     }
   }
 }

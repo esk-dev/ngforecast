@@ -1,16 +1,16 @@
 <nav class="nav-bar">
-  <ng-container *ngIf="breakpoint; else toggleMenu">
+  <ng-container>
     <ul>
       <li>
-        <a mat-button routerLink="/search/:city">Search</a>
+        <button mat-stroked-button color="accent" routerLink="/search/:city">Search</button>
       </li>
       <li>
-        <a mat-button routerLink="/home"> Home </a>
+        <button mat-stroked-button color="accent" routerLink="/home"> Home </button>
       </li>
     </ul>
   </ng-container>
 </nav>
-
+<!-- 
 <ng-template #toggleMenu>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
@@ -23,4 +23,4 @@
       <span routerLink="/home"> Home </span>
     </button>
   </mat-menu>
-</ng-template>
+</ng-template> -->

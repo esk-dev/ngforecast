@@ -12,7 +12,29 @@
   <div class="container details-wrapper">Loading...</div>
 </ng-template> -->
 <section class="container">
-  <div class="container__box">
+  <div class="container__main-box">
+    <div class="container__box__block">
+      header
+    </div>
+    <div class="container__box__block">
+      content
+    </div>
+    <div class="container__box__block">
+      footer
+    </div>
+  </div>
+  <div class="container__side-box">
+    <div class="container__box__block">
+      header
+    </div>
+    <div class="container__box__block">
+      content
+    </div>
+    <div class="container__box__block">
+      footer
+    </div>    
+  </div>
+  <!-- <div class="container__box">
     <div class="weather-forecast">
       <ng-container *ngIf="shortWeather$ | async">
         <app-weathercard
@@ -35,5 +57,4 @@
 
       </div>
     </div> -->
-  </div>
 </section>
