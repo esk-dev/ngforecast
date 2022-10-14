@@ -27,17 +27,17 @@ body {
 .container__main-box {
   display: flex;
   flex-direction: column;
-  width: 100%
+  width: 100%;
   flex: 1 1 auto; 
 }
 .container__side-box {
   display: flex;
   flex-direction: column;
-  width: 100%
+  width: 100%;
   flex: 2 2 auto;
 }
 .container__box__block {
-  flex:1 1 auto; 
+  flex:1 1 100%; 
 }
 mat-toolbar {
   justify-content: space-between;

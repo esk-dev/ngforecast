@@ -1,13 +1,9 @@
-.home-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.container {
   flex-wrap: wrap;
-  gap: 15px;
-}
-
-a {
-  cursor: pointer;
-  text-decoration: none;
-  color: #121212;
+  justify-content: space-between;
+  align-content: flex-start;
+  row-gap: 15px;
+  app-weathercard {
+    height: min-content;
+  }
 }

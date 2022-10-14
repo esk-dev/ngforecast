@@ -1,5 +1,4 @@
 <div class="container">
-  <div class="home-box">
     <ng-template ngFor let-weathers$ let-i="index" [ngForOf]="favoriteCitiesWeather">
       <app-weathercard [shortWeather]="weathers$ | async">
         <!-- <ng-container *ngIf="weathers$ | async as data">
@@ -10,5 +9,4 @@
         </ng-container> -->
       </app-weathercard>
     </ng-template>
-  </div>
 </div>

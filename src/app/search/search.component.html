@@ -25,10 +25,17 @@
   </div>
   <div class="container__side-box">
     <div class="container__box__block">
-      header
+      <ng-container *ngIf="shortWeather$ | async">
+        <app-weathercard
+          class="weather-card"
+          [shortWeather]="shortWeather$ | async"
+        ></app-weathercard>
+      </ng-container>
     </div>
-    <div class="container__box__block">
-      content
+    <div class="container__box__block forecast">
+        <ng-container *ngFor="let forecast of forecast$ | async | slice:0:4">
+          <app-forecast class="forecast-item" [forecast]="forecast"></app-forecast>
+        </ng-container>
     </div>
     <div class="container__box__block">
       footer
