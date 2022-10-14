@@ -11,5 +11,6 @@ export class AppComponent {
 
   onSearch(city: string) {
     this.StoreService.currentCity$.next(city);
+    console.log(city);
   }
 }

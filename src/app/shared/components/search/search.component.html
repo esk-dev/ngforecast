@@ -19,9 +19,9 @@
       </button>
       <mat-error *ngIf="form.invalid">Type city to search weather </mat-error>
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let city of autoCompleteNames$ | async" [value]="city">
+        <!-- <mat-option *ngFor="let city of autoCompleteNames$ | async" [value]="city">
           {{ city }}
-        </mat-option>
+        </mat-option> -->
       </mat-autocomplete>
     </mat-form-field>
   </form>

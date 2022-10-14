@@ -2,7 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { debounceTime, distinctUntilChanged, Observable, Subject, takeUntil } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  Observable,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { AutoComplete } from './autocomplete.service';
 @Component({
   selector: 'app-search',
@@ -10,7 +16,10 @@ import { AutoComplete } from './autocomplete.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  constructor(public _catchInputVal: AutoComplete, public ActivatedRouter: Router) {}
+  constructor(
+    public _catchInputVal: AutoComplete,
+    public ActivatedRouter: Router
+  ) {}
 
   @Output() newSearchEvent = new EventEmitter<string>();
 
@@ -26,7 +35,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.form.controls.inputFormControl.valueChanges
       .pipe(distinctUntilChanged(), debounceTime(500), takeUntil(this.destroy$))
       .subscribe((value: string) => {
-        this.autoCompleteNames$ = this._catchInputVal.getAutoCompleteArray(value);
+        this.autoCompleteNames$ =
+          this._catchInputVal.getAutoCompleteArray(value);
       });
   }
 

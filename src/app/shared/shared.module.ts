@@ -13,7 +13,13 @@ import {
 } from './components';
 import { MaterialModule } from '../material.module';
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MaterialModule,
+    HttpClientModule,
+  ],
   declarations: [
     ButtonComponent,
     WeathercardComponent,
