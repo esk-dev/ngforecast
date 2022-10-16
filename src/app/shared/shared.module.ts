@@ -6,40 +6,34 @@ import { RouterModule } from '@angular/router';
 import {
   ButtonComponent,
   WeathercardComponent,
-  SearchComponent,
+  InputComponent,
   NavBarComponent,
   ForecastComponent,
-  TodayHighlightsComponent,
+  OverviewCardComponent,
 } from './components';
 import { MaterialModule } from '../material.module';
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MaterialModule,
-    HttpClientModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule, HttpClientModule],
   declarations: [
     ButtonComponent,
     WeathercardComponent,
-    TodayHighlightsComponent,
     ForecastComponent,
-    SearchComponent,
     NavBarComponent,
+    InputComponent,
+    OverviewCardComponent,
   ],
   exports: [
     CommonModule,
     ButtonComponent,
     WeathercardComponent,
-    TodayHighlightsComponent,
     ForecastComponent,
-    SearchComponent,
     NavBarComponent,
+    OverviewCardComponent,
     MaterialModule,
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+    InputComponent,
   ],
   providers: [],
 })

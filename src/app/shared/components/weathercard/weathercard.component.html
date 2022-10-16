@@ -1,22 +1,17 @@
-<mat-card color="accent">
-  <mat-card-header>
-    <mat-card-title>{{ shortWeather?.location }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="mat-card-left-box">
-      <img src="{{ shortWeather?.icon }}" />
-      <mat-card-title>{{ shortWeather?.temperature }}°C</mat-card-title>
-      <mat-card-subtitle>{{ shortWeather?.condition }}</mat-card-subtitle>
-    </div>
-    <div class="mat-card-rigth-box">
-      <mat-card-subtitle>Feels like</mat-card-subtitle>
-      <mat-card-subtitle>{{ shortWeather?.feelslike }}°C</mat-card-subtitle>
-      <mat-card-subtitle>Humidity</mat-card-subtitle>
-      <mat-card-subtitle>{{ shortWeather?.humidity }}%</mat-card-subtitle>
-      <mat-card-subtitle>Wind</mat-card-subtitle>
-      <mat-card-subtitle>{{ shortWeather?.wind }} km/h</mat-card-subtitle>
-    </div>
-  </mat-card-content>
-  <ng-content></ng-content>
-</mat-card>
+<mat-card-header>
+  <mat-card-title>{{ shortWeather?.location }}</mat-card-title>
+</mat-card-header>
+<mat-card-content>
+  <div class="mat-card-box">
+    <img src="{{ shortWeather?.icon }}" />
+    <mat-card-title>{{ shortWeather?.temperature }}°C</mat-card-title>
+    <mat-card-title>{{ shortWeather?.condition }}</mat-card-title>
+  </div>
+  <div class="mat-card-box">
+    <mat-card-title>Feels like {{ shortWeather?.feelslike }}°C</mat-card-title>
+    <mat-card-title>Humidity {{ shortWeather?.humidity }}%</mat-card-title>
+    <mat-card-title>Wind {{ shortWeather?.wind }} km/h</mat-card-title>
+  </div>
+</mat-card-content>
+
 <!-- <ng-template [ngIf]="obs.value">Value: {{ obs.value }}</ng-template> -->

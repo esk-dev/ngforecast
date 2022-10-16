@@ -4,11 +4,12 @@ import { BehaviorSubject } from 'rxjs';
 export class StoreService {
   constructor() {}
 
-  public currentCity$: BehaviorSubject<string> = new BehaviorSubject<string>(
-    'Moscow'
-  );
+  public currentCity$: BehaviorSubject<string> = new BehaviorSubject<string>('Moscow');
 
-  public favoriteCity$: BehaviorSubject<string[]> = new BehaviorSubject<
-    string[]
-  >(['Moscow', 'london', 'new york', 'krasnoyarsk']);
+  public favoriteCity$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([
+    'Moscow',
+    'london',
+    'new york',
+    'krasnoyarsk',
+  ]);
 }

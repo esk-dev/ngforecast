@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex: 1 1 auto; 
+  flex: 1 1 auto;
 }
 .container__side-box {
   display: flex;
@@ -37,11 +37,12 @@ body {
   flex: 2 2 auto;
 }
 .container__box__block {
-  flex:1 1 100%; 
+  flex:1 1 100%;
+  padding: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 mat-toolbar {
   justify-content: space-between;
-}
-mat-card {
-  
 }

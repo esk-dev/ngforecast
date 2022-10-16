@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, map, switchMap, tap } from 'rxjs';
 import { ApiService } from './api.service';
-import { StoreService } from './store.service';
 import { LocationService } from './location.service';
-import { Forecast, TodayHighlights, ShortWeather } from '../models/models';
+import { Forecast, Overview, ShortWeather } from '../models';
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
   constructor(private _api: ApiService, private params: LocationService) {}
@@ -22,20 +21,38 @@ export class WeatherService {
     );
   }
 
-  public getTodayHighlights(city: string): Observable<TodayHighlights> {
-    return this._api.getTodayHighlightsWeather(city).pipe(
-      map((response: any) => ({
-        is_day: response.current.is_day,
-        pressure: response.current.pressure_mb,
-        wind_dir: response.current.wind_dir,
-        wind_speed: response.current.wind_kph,
-        uv: response.current.uv,
-        visibility: response.current.vis_km,
-      })),
+  public getOverview(city: string): Observable<Overview> {
+    return this._api.getWeather(city).pipe(
+      map((response: any) => {
+        const { pressure_mb, wind_kph, wind_dir, uv, vis_km } = response.current;
+        return {
+          wind: {
+            icon: 'assets/icons/weather/wi-wind-beaufort-0.svg',
+            values: wind_kph,
+            name: 'wind',
+            properties: wind_dir,
+          },
+          pressure: {
+            icon: 'assets/icons/weather/wi-barometer.svg',
+            name: 'pressure',
+            values: pressure_mb,
+          },
+          uv: {
+            icon: 'assets/icons/weather/wi-raindrop.svg',
+            name: 'uv',
+            values: uv,
+          },
+          visibility: {
+            icon: 'assets/icons/weather/wi-refresh-alt.svg',
+            name: 'visibility',
+            values: vis_km,
+          },
+        };
+      }),
     );
   }
 
-  public getForecast(city: string): Observable<Array<Forecast>> {
+  public getForecast(city: string): Observable<Forecast[]> {
     return this.params.getParams(city).pipe(
       switchMap((params: any) => {
         return this._api.getForecast(params.lon, params.lat).pipe(
