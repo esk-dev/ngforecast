@@ -1,0 +1,18 @@
+<!-- <ng-container *ngIf="overview$ | async as data">
+  <app-overview-card>
+    <div icon>{{ data.pressure }}</div>
+    <div values>{{ data.pressure }}</div>
+    <div properties>{{ data.pressure }}</div>
+  </app-overview-card>
+</ng-container> -->
+<ng-container *ngIf="overview$ | async as data">
+  <app-overview-card *ngFor="let properties of data | keyvalue" [icon]="properties?.value?.icon">
+    <mat-card-title values>
+      {{ properties?.key | titlecase }} <br />
+      {{ properties?.value?.values }}
+    </mat-card-title>
+    <mat-card-title properties>
+      {{ properties?.value?.properties }}
+    </mat-card-title>
+  </app-overview-card>
+</ng-container>

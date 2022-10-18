@@ -1,0 +1,23 @@
+<section class="container">
+  <div class="container__main-box">
+    <div class="container__box__block"></div>
+    <div class="container__box__block"><app-overview [overview$]="overview$"></app-overview></div>
+    <div class="container__box__block">footer</div>
+  </div>
+  <div class="container__side-box">
+    <div class="container__box__block">
+      <ng-container *ngIf="shortWeather$ | async">
+        <app-weathercard
+          class="weather-card"
+          [shortWeather]="shortWeather$ | async"
+        ></app-weathercard>
+      </ng-container>
+    </div>
+    <div class="container__box__block forecast">
+      <ng-container *ngFor="let forecast of forecast$ | async | slice: 0:4">
+        <app-forecast class="forecast-item" [forecast]="forecast"></app-forecast>
+      </ng-container>
+    </div>
+    <div class="container__box__block">footer</div>
+  </div>
+</section>
