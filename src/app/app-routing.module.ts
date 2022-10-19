@@ -4,11 +4,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'search/:city',
-    loadChildren: () => import('./page-search/search.module').then((m) => m.SearchModule),
+    loadChildren: () =>
+      import('./page-search/search.module').then((m) => m.SearchModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./page-home/home.module').then((m) => m.HomeModule),
+    loadChildren: () =>
+      import('./page-home/home.module').then((m) => m.HomeModule),
   },
 ];
 

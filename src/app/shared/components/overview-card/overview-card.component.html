@@ -1,7 +1,5 @@
-<img [attr.src]="icon" class="icon" />
-<div class="values">
+<img [attr.src]='[icon]' alt='icon' class="icon" mat-card-sm-image />
+<div>
   <ng-content select="[values]"></ng-content>
 </div>
-<div class="properties">
-  <ng-content select="[properties]"></ng-content>
-</div>
+

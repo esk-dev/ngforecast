@@ -3,19 +3,17 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 20px;
+  border-radius: 5px;
   border-style: solid;
   border-color: #1a73b7;
   border-width: 2px;
   width: 45%;
   height: 35%;
-  margin: 0 auto;
 }
 div {
   flex: 1 1 100%;
 }
 .icon {
   width: 64px;
-  height: auto;
   color: #1a73b7;
 }

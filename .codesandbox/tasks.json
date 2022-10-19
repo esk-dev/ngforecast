@@ -41,12 +41,8 @@
     },
     "lint": {
       "name": "lint",
-      "command": "npm run lint",
+      "command": "npm run lint --fix",
       "runAtStart": false
-    },
-    "npm run serv --watch": {
-      "name": "npm run serv --watch",
-      "command": "npm run serv --watch"
     }
   }
 }

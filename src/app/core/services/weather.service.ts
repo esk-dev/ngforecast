@@ -17,14 +17,15 @@ export class WeatherService {
         wind: response.current.wind_kph,
         humidity: response.current.humidity,
         feelslike: response.current.feelslike_c,
-      })),
+      }))
     );
   }
 
   public getOverview(city: string): Observable<Overview> {
     return this._api.getWeather(city).pipe(
       map((response: any) => {
-        const { pressure_mb, wind_kph, wind_dir, uv, vis_km } = response.current;
+        const { pressure_mb, wind_kph, wind_dir, uv, vis_km } =
+          response.current;
         return {
           wind: {
             icon: 'assets/icons/weather/wi-wind-beaufort-0.svg',
@@ -48,7 +49,7 @@ export class WeatherService {
             values: vis_km,
           },
         };
-      }),
+      })
     );
   }
 
@@ -61,10 +62,10 @@ export class WeatherService {
               date: new Date(el.dt * 1000),
               icon: el.weather[0].main.toLowerCase(),
               temperature: el.temp.eve,
-            })),
-          ),
+            }))
+          )
         );
-      }),
+      })
     );
   }
 }

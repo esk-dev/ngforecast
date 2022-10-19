@@ -10,7 +10,10 @@ import { WeatherService } from '../core/services';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   favoriteCitiesWeather: any;
-  constructor(public StoreService: StoreService, public WeatherService: WeatherService) {}
+  constructor(
+    public StoreService: StoreService,
+    public WeatherService: WeatherService
+  ) {}
 
   destroy$: Subject<boolean> = new Subject();
   ngOnInit(): void {

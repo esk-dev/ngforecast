@@ -7,13 +7,15 @@ mat-card-content {
   flex-direction: row;
   justify-content: space-between;
 }
-.mat-card-box {
+.box {
   display: flex;
   flex-direction: column;
   gap: 1vh;
   justify-content: flex-end;
-  font-size: 18px;
 }
 img {
   width: 64px;
+}
+.right {
+  flex-direction: row;
 }
