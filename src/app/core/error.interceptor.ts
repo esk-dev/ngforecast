@@ -13,10 +13,7 @@ import { NotificationService } from './services/notification.service';
 export class ErrorIntercept implements HttpInterceptor {
   constructor(public notification: NotificationService) {}
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       retry(1),
       catchError((error: HttpErrorResponse) => {
@@ -36,7 +33,7 @@ export class ErrorIntercept implements HttpInterceptor {
         }
         this.notification.showError(errorMessage);
         return throwError(() => new Error(error.message));
-      })
+      }),
     );
   }
 }

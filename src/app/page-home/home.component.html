@@ -1,10 +1,5 @@
 <div class="container">
-  <ng-template
-    ngFor
-    let-weathers$
-    let-i="index"
-    [ngForOf]="favoriteCitiesWeather"
-  >
+  <ng-template ngFor let-weathers$ let-i="index" [ngForOf]="favoriteCitiesWeather">
     <app-weathercard [shortWeather]="weathers$ | async">
       <!-- <ng-container *ngIf="weathers$ | async as data">
           <a

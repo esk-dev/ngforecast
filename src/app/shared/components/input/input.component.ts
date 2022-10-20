@@ -2,13 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  Observable,
-  Subject,
-  takeUntil,
-} from 'rxjs';
+import { debounceTime, distinctUntilChanged, Observable, Subject, takeUntil } from 'rxjs';
 import { AutoComplete } from './autocomplete.service';
 @Component({
   selector: 'app-input',
@@ -16,10 +10,7 @@ import { AutoComplete } from './autocomplete.service';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit, OnDestroy {
-  constructor(
-    private AutoComplete: AutoComplete,
-    public ActivatedRouter: Router
-  ) {}
+  constructor(private AutoComplete: AutoComplete, public ActivatedRouter: Router) {}
 
   @Output() newSearchEvent = new EventEmitter<string>();
   autoCompleteNames$!: Observable<string[]>;

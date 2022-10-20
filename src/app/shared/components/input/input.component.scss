@@ -1,12 +1,16 @@
-mat-form-field {
-  font-size: 14px;
-}
-
-section {
+:host {
   form {
-    .search-btn{
-      font-size: 24px;
-      align-items: center;
-    }
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  mat-form-field {
+    display: block;
+  }
+  button {
+   margin-bottom: 20px;
+    margin-left: 20px;
+    height: 52px;
   }
 }

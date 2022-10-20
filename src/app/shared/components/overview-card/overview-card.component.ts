@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-overview-card',
@@ -11,7 +6,10 @@ import {
   styleUrls: ['./overview-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverviewCardComponent {
+export class OverviewCardComponent implements OnInit {
   @Input() icon: string;
   constructor() {}
+  ngOnInit(): void {
+    console.log(this.icon);
+  }
 }

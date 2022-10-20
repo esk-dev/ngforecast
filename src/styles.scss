@@ -43,6 +43,7 @@ body {
   display: flex;
   justify-content: center;
 }
-mat-toolbar {
-  justify-content: space-between;
+
+.container__box__block.header {
+  align-items: flex-end;
 }

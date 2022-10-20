@@ -13,16 +13,14 @@ export class SearchComponent implements OnDestroy {
   constructor(
     public ActivatedRoute: ActivatedRoute,
     public WeatherService: WeatherService,
-    public StoreService: StoreService
+    public StoreService: StoreService,
   ) {
-    this.StoreService.currentCity$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((city: string) => {
-        this.forecast$ = this.WeatherService.getForecast(city);
-        this.shortWeather$ = this.WeatherService.getShortWeather(city);
-        this.overview$ = this.WeatherService.getOverview(city);
-        console.log(this.overview$);
-      });
+    this.StoreService.currentCity$.pipe(takeUntil(this.destroy$)).subscribe((city: string) => {
+      this.forecast$ = this.WeatherService.getForecast(city);
+      this.shortWeather$ = this.WeatherService.getShortWeather(city);
+      this.overview$ = this.WeatherService.getOverview(city);
+      console.log(this.overview$);
+    });
   }
   destroy$: Subject<boolean> = new Subject();
 

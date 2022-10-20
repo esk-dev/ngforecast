@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @Injectable({ providedIn: 'root' })
 export class IconService {
-  constructor() {}
+  constructor(public iconRegistry: MatIconRegistry, public sanitizer: DomSanitizer) {}
 
-  public loadIcon(name: string): string {
-    switch (name) {
-    }
+  public registerIcon(path: string, name: string): string {
+    this.iconRegistry.addSvgIcon(name, this.sanitizer.bypassSecurityTrustResourceUrl(path));
+    return name;
   }
 }
