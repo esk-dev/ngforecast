@@ -2,15 +2,22 @@
   <mat-card-title>{{ shortWeather?.location }}</mat-card-title>
 </mat-card-header>
 <mat-card-content>
-  <div class="mat-card-box">
-    <img src="{{ shortWeather?.icon }}" />
+  <div class="box">
+    <img [src]="[shortWeather?.icon]"/>
     <mat-card-title>{{ shortWeather?.temperature }}°C</mat-card-title>
-    <mat-card-title>{{ shortWeather?.condition }}</mat-card-title>
+    <mat-card-subtitle>{{ shortWeather?.condition }}</mat-card-subtitle>
   </div>
-  <div class="mat-card-box">
-    <mat-card-title>Feels like {{ shortWeather?.feelslike }}°C</mat-card-title>
-    <mat-card-title>Humidity {{ shortWeather?.humidity }}%</mat-card-title>
-    <mat-card-title>Wind {{ shortWeather?.wind }} km/h</mat-card-title>
+  <div class="box right">
+    <div class="box">
+      <mat-card-subtitle>Feels like</mat-card-subtitle>
+      <mat-card-subtitle>Humidity</mat-card-subtitle>
+      <mat-card-subtitle>Wind</mat-card-subtitle>
+    </div>
+    <div class="box">
+      <mat-card-title>{{ shortWeather?.feelslike }}°C</mat-card-title>
+      <mat-card-title>{{ shortWeather?.humidity }}%</mat-card-title>
+      <mat-card-title>{{ shortWeather?.wind }} km/h</mat-card-title>
+    </div>
   </div>
 </mat-card-content>
 

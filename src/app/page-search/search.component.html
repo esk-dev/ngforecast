@@ -1,7 +1,9 @@
 <section class="container">
   <div class="container__main-box">
     <div class="container__box__block"></div>
-    <div class="container__box__block"><app-overview [overview$]="overview$"></app-overview></div>
+    <div class="container__box__block">
+      <app-overview [overview$]="overview$"></app-overview>
+    </div>
     <div class="container__box__block">footer</div>
   </div>
   <div class="container__side-box">
@@ -14,9 +16,17 @@
       </ng-container>
     </div>
     <div class="container__box__block forecast">
-      <ng-container *ngFor="let forecast of forecast$ | async | slice: 0:4">
-        <app-forecast class="forecast-item" [forecast]="forecast"></app-forecast>
-      </ng-container>
+      <div class="forecast__module">
+     <mat-card-title class="title">Forecast</mat-card-title>
+     <div class="forecast__component">
+        <ng-container *ngFor="let forecast of forecast$ | async | slice: 0:4">
+        <app-forecast
+          class="forecast-item"
+          [forecast]="forecast"
+        ></app-forecast>
+        </ng-container>
+     </div>
+     </div>
     </div>
     <div class="container__box__block">footer</div>
   </div>

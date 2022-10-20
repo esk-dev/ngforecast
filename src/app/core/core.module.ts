@@ -6,7 +6,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from '../material.module';
 @NgModule({
   imports: [CommonModule, MaterialModule],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorIntercept, multi: true },
+  ],
   declarations: [HeaderComponent, FooterComponent],
   exports: [HeaderComponent, FooterComponent],
 })

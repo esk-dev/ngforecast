@@ -7,7 +7,9 @@
         formControlName="inputFormControl"
         [matAutocomplete]="auto"
         placeholder="Type city.."
-        (keyup.enter)="this.setFindCity(this.form.controls.inputFormControl.value)"
+        (keyup.enter)="
+          this.setFindCity(this.form.controls.inputFormControl.value)
+        "
       />
       <button
         matSuffix

@@ -5,14 +5,30 @@
     <div properties>{{ data.pressure }}</div>
   </app-overview-card>
 </ng-container> -->
-<ng-container *ngIf="overview$ | async as data">
-  <app-overview-card *ngFor="let properties of data | keyvalue" [icon]="properties?.value?.icon">
-    <mat-card-title values>
-      {{ properties?.key | titlecase }} <br />
-      {{ properties?.value?.values }}
-    </mat-card-title>
-    <mat-card-title properties>
+<mat-card-content class="title">
+  <mat-card-title>Overview</mat-card-title>
+    <a>More details</a>
+</mat-card-content>
+<div class="content">
+  <ng-container *ngIf="overview$ | async as data">
+  <app-overview-card
+    *ngFor="let properties of data | keyvalue"
+    [icon]="properties?.value?.icon"
+  >
+    <ng-container class="values" values>
+      <mat-card-subtitle>
+        {{ properties?.key | titlecase }}
+      </mat-card-subtitle>
+      <br />
+      <mat-card-title>
+        {{ properties?.value?.values }}
+      </mat-card-title>
+       <mat-card-title properties>
       {{ properties?.value?.properties }}
     </mat-card-title>
+    </ng-container>
+   
   </app-overview-card>
 </ng-container>
+
+</div>

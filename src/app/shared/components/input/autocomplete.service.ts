@@ -19,7 +19,7 @@ export class AutoComplete {
           arr.push(element.name);
         });
         return arr;
-      }),
+      })
     );
   }
 }

@@ -7,7 +7,13 @@ import { SearchRoutingModule } from './search-routing.module';
 import { OverviewModule } from '../overview/overview.module';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, CoreModule, SearchRoutingModule, OverviewModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    CoreModule,
+    SearchRoutingModule,
+    OverviewModule,
+  ],
   declarations: [SearchComponent],
 })
 export class SearchModule {}
