@@ -6,7 +6,6 @@ export class IconService {
 
   public loadIcon(name: string): string {
     switch (name) {
-
     }
   }
 }
