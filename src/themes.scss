@@ -1,34 +1,38 @@
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzMzN2VjYyIsIj9lcjwjYzJkOGYwIiwiO2VyPCMyMDYxYjl$LCIlPmBePCM5ZGQyZTkiLCI~ZXI8I2UyZjJmOCIsIjtlcjwjODFjMWRmfiwid2Fybj5gXjwjZWY3MTcxIiwiP2VyPCNmYWQ0ZDQiLCI7ZXI8I2U4NTQ1NH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00IiwiZmFtaWx5PEF6ZXJldCBNb25vfixgQDwoLTMiLCJmYW1pbHk8QXplcmV0IE1vbm9$LGBAPCgtMiIsImZhbWlseTxBemVyZXQgTW9ub34sYEA8KC0xIiwiZmFtaWx5PEF6ZXJldCBNb25vfixgQDxoZWFkbGluZSIsImZhbWlseTxBemVyZXQgTW9ub34sYEA8dGl0bGUiLCJmYW1pbHk8QXplcmV0IE1vbm9$LGBAPHN1YiktMiIsImZhbWlseTxBemVyZXQgTW9ub34sYEA8c3ViKS0xIiwiZmFtaWx5PEF6ZXJldCBNb25vfixgQDxib2R5LTIiLCJmYW1pbHk8QXplcmV0IE1vbm9$LGBAPGJvZHktMSIsImZhbWlseTxBemVyZXQgTW9ub34sYEA8YnV0dG9uIiwiZmFtaWx5PEF6ZXJldCBNb25vfixgQDxjYXB0aW9uIiwiZmFtaWx5PEF6ZXJldCBNb25vfixgQDxpbnB1dCIsImZhbWlseTxBemVyZXQgTW9ubyIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz50cnVlLCJ2ZXJzaW9uPjEzfQ==
+*/
+
 @use '@angular/material' as mat;
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cuprum:wght@400;600&family=News+Cycle:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@300;400;500&display=swap');
 
 $fontConfig: (
-  display-4: mat.define-typography-level(112px, 112px, 300, 'Cuprum', -0.0134em),
-  display-3: mat.define-typography-level(56px, 56px, 400, 'Cuprum', -0.0089em),
-  display-2: mat.define-typography-level(45px, 48px, 400, 'Cuprum', 0.0000em),
-  display-1: mat.define-typography-level(34px, 40px, 400, 'Cuprum', 0.0074em),
-  headline: mat.define-typography-level(24px, 32px, 400, 'Cuprum', 0.0000em),
-  title: mat.define-typography-level(20px, 32px, 500, 'Cuprum', 0.0075em),
-  subheading-2: mat.define-typography-level(16px, 28px, 500, 'Cuprum', 0.0094em),
-  subheading-1: mat.define-typography-level(15px, 24px, 500, 'Cuprum', 0.0067em),
-  body-2: mat.define-typography-level(14px, 24px, 500, 'Cuprum', 0.0179em),
-  body-1: mat.define-typography-level(14px, 20px, 400, 'Cuprum', 0.0179em),
-  button: mat.define-typography-level(14px, 14px, 500, 'Cuprum', 0.0893em),
-  caption: mat.define-typography-level(12px, 20px, 400, 'Cuprum', 0.0333em),
-  input: mat.define-typography-level(inherit, 1.125, 500, 'Cuprum', 1.5px)
+  display-4: mat.define-typography-level(112px, 112px, 300, 'Azeret Mono', -0.0134em),
+  display-3: mat.define-typography-level(56px, 56px, 400, 'Azeret Mono', -0.0089em),
+  display-2: mat.define-typography-level(45px, 48px, 400, 'Azeret Mono', 0.0000em),
+  display-1: mat.define-typography-level(34px, 40px, 400, 'Azeret Mono', 0.0074em),
+  headline: mat.define-typography-level(24px, 32px, 400, 'Azeret Mono', 0.0000em),
+  title: mat.define-typography-level(20px, 32px, 500, 'Azeret Mono', 0.0075em),
+  subheading-2: mat.define-typography-level(16px, 28px, 400, 'Azeret Mono', 0.0094em),
+  subheading-1: mat.define-typography-level(15px, 24px, 500, 'Azeret Mono', 0.0067em),
+  body-2: mat.define-typography-level(14px, 24px, 500, 'Azeret Mono', 0.0179em),
+  body-1: mat.define-typography-level(14px, 20px, 400, 'Azeret Mono', 0.0179em),
+  button: mat.define-typography-level(14px, 14px, 500, 'Azeret Mono', 0.0893em),
+  caption: mat.define-typography-level(12px, 20px, 400, 'Azeret Mono', 0.0333em),
+  input: mat.define-typography-level(inherit, 1.125, 400, 'Azeret Mono', 1.5px)
 );
 
 // Foreground Elements
 
 // Light Theme Text
-$dark-text: #121212;
+$dark-text: #000000;
 $dark-primary-text: rgba($dark-text, 0.87);
 $dark-accent-text: rgba($dark-primary-text, 0.54);
 $dark-disabled-text: rgba($dark-primary-text, 0.38);
@@ -83,7 +87,7 @@ $mat-dark-theme-foreground: (
 
 // Background config
 // Light bg
-$light-background:    #fbfcff;
+$light-background:    #fafafa;
 $light-bg-darker-5:   darken($light-background, 5%);
 $light-bg-darker-10:  darken($light-background, 10%);
 $light-bg-darker-20:  darken($light-background, 20%);
@@ -117,8 +121,8 @@ $dark-bg-lighter-5:   lighten($dark-background, 5%);
 $dark-bg-lighter-10:  lighten($dark-background, 10%);
 $dark-bg-lighter-20:  lighten($dark-background, 20%);
 $dark-bg-lighter-30:  lighten($dark-background, 30%);
-$light-bg-alpha-4:    rgba(#fbfcff, 0.04);
-$light-bg-alpha-12:   rgba(#fbfcff, 0.12);
+$light-bg-alpha-4:    rgba(#fafafa, 0.04);
+$light-bg-alpha-12:   rgba(#fafafa, 0.12);
 
 // Background palette for dark themes.
 $mat-dark-theme-background: (
@@ -145,18 +149,18 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #17255a;
-  --primary-lighter-color: #b9bece;
-  --primary-darker-color: #0d163f;
+  --primary-color: #337ecc;
+  --primary-lighter-color: #c2d8f0;
+  --primary-darker-color: #2061b9;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 $mat-primary: (
-  main: #17255a,
-  lighter: #b9bece,
-  darker: #0d163f,
-  200: #17255a, // For slide toggle,
+  main: #337ecc,
+  lighter: #c2d8f0,
+  darker: #2061b9,
+  200: #337ecc, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
@@ -167,44 +171,44 @@ $theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
 
 
 body {
-  --accent-color: #2b90ca;
-  --accent-lighter-color: #bfdeef;
-  --accent-darker-color: #1a73b7;
-  --text-accent-color: #{$light-primary-text};
+  --accent-color: #9dd2e9;
+  --accent-lighter-color: #e2f2f8;
+  --accent-darker-color: #81c1df;
+  --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
-  --text-accent-darker-color: #{$light-primary-text};
+  --text-accent-darker-color: #{$dark-primary-text};
 }
 $mat-accent: (
-  main: #2b90ca,
-  lighter: #bfdeef,
-  darker: #1a73b7,
-  200: #2b90ca, // For slide toggle,
+  main: #9dd2e9,
+  lighter: #e2f2f8,
+  darker: #81c1df,
+  200: #9dd2e9, // For slide toggle,
   contrast : (
-    main: $light-primary-text,
+    main: $dark-primary-text,
     lighter: $dark-primary-text,
-    darker: $light-primary-text,
+    darker: $dark-primary-text,
   )
 );
 $theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
 
 
 body {
-  --warn-color: #f5413e;
-  --warn-lighter-color: #fcc6c5;
-  --warn-darker-color: #f02a28;
-  --text-warn-color: #{$light-primary-text};
+  --warn-color: #ef7171;
+  --warn-lighter-color: #fad4d4;
+  --warn-darker-color: #e85454;
+  --text-warn-color: #{$dark-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
-  --text-warn-darker-color: #{$light-primary-text};
+  --text-warn-darker-color: #{$dark-primary-text};
 }
 $mat-warn: (
-  main: #f5413e,
-  lighter: #fcc6c5,
-  darker: #f02a28,
-  200: #f5413e, // For slide toggle,
+  main: #ef7171,
+  lighter: #fad4d4,
+  darker: #e85454,
+  200: #ef7171, // For slide toggle,
   contrast : (
-    main: $light-primary-text,
+    main: $dark-primary-text,
     lighter: $dark-primary-text,
-    darker: $light-primary-text,
+    darker: $dark-primary-text,
   )
 );
 $theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
@@ -253,6 +257,6 @@ $altTheme: (
   font-size: 24px;
   font-family: 'Material Icons', 'Material Icons';
   .mat-badge-content {
-    font-family: 'Roboto';
+    font-family: 'Azeret Mono';
   }
 }

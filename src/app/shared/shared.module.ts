@@ -10,8 +10,11 @@ import {
   NavBarComponent,
   ForecastCardComponent,
   OverviewCardComponent,
+  DateComponent,
+  NavItemComponent,
 } from './components';
 import { MaterialModule } from '../material.module';
+
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule, HttpClientModule],
   declarations: [
@@ -21,6 +24,8 @@ import { MaterialModule } from '../material.module';
     NavBarComponent,
     InputComponent,
     OverviewCardComponent,
+    DateComponent,
+    NavItemComponent,
   ],
   exports: [
     CommonModule,
@@ -34,6 +39,7 @@ import { MaterialModule } from '../material.module';
     RouterModule,
     HttpClientModule,
     InputComponent,
+    DateComponent,
   ],
   providers: [],
 })

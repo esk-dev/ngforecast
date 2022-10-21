@@ -45,5 +45,11 @@ body {
 }
 
 .container__box__block.header {
-  align-items: flex-end;
+  flex: 2 2 auto;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
 }

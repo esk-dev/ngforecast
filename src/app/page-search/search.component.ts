@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { WeatherService } from '../core/services';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable, takeUntil, Subject } from 'rxjs';
 import { Forecast, Overview, ShortWeather } from '../core/models';
 import { StoreService } from '../core/services';
@@ -11,7 +11,7 @@ import { StoreService } from '../core/services';
 })
 export class SearchComponent implements OnDestroy {
   constructor(
-    public ActivatedRoute: ActivatedRoute,
+    public Router: Router,
     public WeatherService: WeatherService,
     public StoreService: StoreService,
   ) {
@@ -19,7 +19,6 @@ export class SearchComponent implements OnDestroy {
       this.forecast$ = this.WeatherService.getForecast(city);
       this.shortWeather$ = this.WeatherService.getShortWeather(city);
       this.overview$ = this.WeatherService.getOverview(city);
-      console.log(this.overview$);
     });
   }
   destroy$: Subject<boolean> = new Subject();
@@ -31,5 +30,10 @@ export class SearchComponent implements OnDestroy {
   ngOnDestroy() {
     this.destroy$.next(true);
     this.destroy$.complete();
+  }
+
+  searchEvent(city: string) {
+    this.StoreService.currentCity$.next(city);
+    this.Router.navigate(['/search', city]);
   }
 }

@@ -1,12 +1,12 @@
 <section class="container">
   <div class="container__main-box">
     <div class="container__box__block header">
-      <app-input></app-input>
+      <app-date></app-date>
+      <app-input (newSearchEvent)="searchEvent($event)"></app-input>
     </div>
-    <div class="container__box__block">
+    <div class="container__box__block main">
       <app-overview [overview$]="overview$"></app-overview>
     </div>
-    <div class="container__box__block">footer</div>
   </div>
   <div class="container__side-box">
     <div class="container__box__block header">
@@ -20,6 +20,6 @@
     <div class="container__box__block forecast">
       <app-forecast [forecast$]="forecast$"></app-forecast>
     </div>
-    <div class="container__box__block">footer</div>
+    <div class="container__box__block"></div>
   </div>
 </section>

@@ -1,16 +1,10 @@
 <nav class="nav-bar">
   <ng-container>
-    <ul>
-      <li>
-        <button mat-stroked-button color="accent" routerLink="/search/:city">Search</button>
-      </li>
-      <li>
-        <button mat-stroked-button color="accent" routerLink="/home">Home</button>
-      </li>
-    </ul>
+    <app-nav-item [link]="'/search/:city'" [title]="'Search'"></app-nav-item>
+    <app-nav-item [link]="'/home'" [title]="'Home'"></app-nav-item>
   </ng-container>
 </nav>
-<!-- 
+<!--
 <ng-template #toggleMenu>
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>

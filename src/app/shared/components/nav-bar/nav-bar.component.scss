@@ -1,17 +1,11 @@
-.nav-bar {
-  display: inline-flex;
-  align-items: center;
-  ul {
-    display: inline-flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    li {
-       list-style: none;
-       margin-bottom: 10px;
-    }
-  }
+:host {
+  width: 100%;
 }
-mat-icon {
-  font-size: 32px;
+.nav-bar {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 10px;
+  margin: 0 auto;
+  transition: all 1s ease-in;
 }
