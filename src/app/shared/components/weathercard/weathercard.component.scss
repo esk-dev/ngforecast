@@ -1,0 +1,21 @@
+:host {
+  width: 100%;
+  text-align: left;
+}
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  justify-content: flex-end;
+}
+img {
+  width: 64px;
+}
+.right {
+  flex-direction: row;
+}

@@ -1,18 +1,26 @@
 <div class="wrapper">
-  <header>
+  <section class="navigation-view">
     <app-header>
-      <app-search
-        class="searchbar"
-        searchbar
-        (newSearchEvent)="this.onSearch($event)"
-      ></app-search>
-      <app-nav-bar class="navbar" navbar></app-nav-bar>
+      <app-nav-bar navbar></app-nav-bar>
     </app-header>
-  </header>
-  <main class="page">
+  </section>
+  <section class="content-view">
     <router-outlet></router-outlet>
-  </main>
-  <footer>
-    <app-footer></app-footer>
-  </footer>
+  </section>
 </div>
+<!-- <app-wrapper>
+  <app-header sidenav>
+    <app-nav-bar navbar></app-nav-bar>
+  </app-header>
+  <router-outlet content></router-outlet>
+</app-wrapper> -->
+<!-- <mat-sidenav-container class="wrapper">
+  <mat-sidenav opened="opened" mode="side">
+    <app-header class="navigation-view">
+      <app-nav-bar navbar></app-nav-bar>
+    </app-header>
+  </mat-sidenav>
+  <mat-sidenav-content class="content-view">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->

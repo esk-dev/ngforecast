@@ -1,5 +1,5 @@
-import { Component, VERSION } from '@angular/core';
-import { StoreService } from './shared/services/store.service';
+import { Component } from '@angular/core';
+import { StoreService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +11,6 @@ export class AppComponent {
 
   onSearch(city: string) {
     this.StoreService.currentCity$.next(city);
+    console.log(city);
   }
 }

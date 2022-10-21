@@ -1,0 +1,16 @@
+:host {
+  form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  mat-form-field {
+    display: block;
+  }
+  button {
+   margin-bottom: 20px;
+    margin-left: 20px;
+    height: 52px;
+  }
+}

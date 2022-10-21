@@ -1,0 +1,26 @@
+<form [formGroup]="form">
+  <mat-form-field color="accent" appearance="outline">
+    <input
+      type="search"
+      matInput
+      formControlName="inputFormControl"
+      [matAutocomplete]="auto"
+      placeholder="Type city.."
+      (keyup.enter)="this.setFindCity(this.form.controls.inputFormControl.value)"
+    />
+    <mat-error *ngIf="form.invalid">Type city to search weather </mat-error>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let city of autoCompleteNames$ | async" [value]="city">
+        {{ city }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button
+    mat-flat-button
+    color="accent"
+    (click)="this.setFindCity(this.form.controls.inputFormControl.value)"
+  >
+    <mat-icon>search</mat-icon>
+    Search
+  </button>
+</form>

@@ -1,0 +1,17 @@
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    align-content: center;
+}
+:host {
+   width: 100%;
+   height: 100%;
+}
+
+.title {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
