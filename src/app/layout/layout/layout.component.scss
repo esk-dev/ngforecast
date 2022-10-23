@@ -1,0 +1,27 @@
+
+.wrapper .web {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+}
+.sidenav .web {
+  grid-column: 1/3;
+  grid-row: 1/-1;
+}
+
+.content .web {
+  grid-column: 3/-1;
+  grid-row: 1/-1;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper .tablet {
+  display; flex;
+  flex-direction: column;
+}
+
+.header .tablet {
+  
+}

@@ -1,1 +1,5 @@
-<p>layout works!</p>
+<ng-container [ngSwitch]='layoutType$ | async'>
+  <ng-container *ngSwitchCase="breakpoints.Web">
+    <app-header><app-header>
+  <ng-container>
+</ng-container>
