@@ -5,3 +5,5 @@ export * from './location.service';
 export * from './store.service';
 export * from './weather.service';
 export * from './layout.service';
+export * from './jwt.service';
+export * from './user-storage.service';

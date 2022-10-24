@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,19 +9,22 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  authMode: string = 'login';
+  currentAuthMode$: BehaviorSubject<string> = new BehaviorSubject<string>('login');
   switchAuthMode() {
-    this.authMode == 'login' ? (this.authMode = 'signin') : this.authMode == 'login';
+    // TODO: Переключател названия компонента
   }
   onSubmit() {
-    switch (this.authMode) {
-      case 'login':
-        console.log('login method', this.authForm.value);
-        break;
-      default:
-        console.log('signin method', this.authForm.value);
-        break;
-    }
+    // TODO: Вызов метода в зависимости от названия компонента
+    // switch (this.authMode) {
+    //   case 'login':
+    //     console.log(this.authMode, this.authForm.value);
+    //     break;
+    //   case 'signin':
+    //     console.log(this.authMode, this.authForm.value);
+    //     break;
+    //   default:
+    //     break;
+    // }
   }
   authForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),

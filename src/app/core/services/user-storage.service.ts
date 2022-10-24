@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, tap } from 'rxjs';
-import { AuthService } from '../auth/services/auth.service';
 import { User } from '../models';
 import { JwtService } from './jwt.service';
 @Injectable({
   providedIn: 'root',
 })
 export class UserStorageService {
-  constructor(private authService: AuthService, private jwtService: JwtService) {}
+  constructor(private jwtService: JwtService) {}
 
   private currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
   // TODO: CRUD

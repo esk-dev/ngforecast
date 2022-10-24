@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map, tap, catchError, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { JwtService } from '../../services/jwt.service';
+import { JwtService, UserStorageService, ErrorService } from '../../core/services';
 import { AuthResponse } from '../models/authresponse.model';
-import { UserStorageService } from '../../services/user-storage.service';
-import { ErrorService } from '../../services';
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class AuthService {
   constructor(
     private http: HttpClient,
@@ -15,7 +15,7 @@ export class AuthService {
     private errorService: ErrorService,
   ) {}
 
-  private isAuthenticatedSubject$ = new ReplaySubject<boolean>(1);
+  private isAuthenticatedSubject$ = new ReplaySubject<boolean>(0);
   public isAuthenticated$ = this.isAuthenticatedSubject$.asObservable();
 
   public login(email: string, password: string): Observable<AuthResponse> {

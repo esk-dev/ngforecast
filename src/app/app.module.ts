@@ -7,9 +7,17 @@ import { MaterialModule } from './material.module';
 // Custom Modules
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { AuthModule } from './auth/auth.module';
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserAnimationsModule, BrowserModule, AppRoutingModule, CoreModule, SharedModule],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    AppRoutingModule,
+    CoreModule,
+    SharedModule,
+    AuthModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
