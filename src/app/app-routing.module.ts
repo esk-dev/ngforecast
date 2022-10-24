@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
+import { AuthGuard } from './auth-guard.service';
 const routes: Routes = [
   {
     path: 'search/:city',
@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./page-home/home.module').then((m) => m.HomeModule),
+    canActivate: [AuthGuard],
   },
 ];
 
