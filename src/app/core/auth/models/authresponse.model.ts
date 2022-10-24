@@ -1,8 +1,4 @@
-export interface User {
-  email: string;
-  isActivated: boolean;
-  id: string;
-}
+import { User } from './../../models/user.model';
 export interface AuthResponse {
   accessToken: string;
   refresfToken: string;
