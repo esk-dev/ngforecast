@@ -8,12 +8,6 @@ import { MaterialModule } from './../../material.module';
 
 @NgModule({
   declarations: [LoginComponent, SigninComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AuthRoutingModule,
-  ],
+  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule, AuthRoutingModule],
 })
 export class AuthModule {}

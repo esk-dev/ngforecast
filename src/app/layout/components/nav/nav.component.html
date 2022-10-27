@@ -1,1 +1,18 @@
-<p>nav works!</p>
+<app-nav-link
+  [layoutType$]="layoutType$"
+  [icon]="'search'"
+  [link]="'/search/:city'"
+  [title]="'SEARCH'"
+></app-nav-link>
+<app-nav-link
+  [icon]="'home'"
+  [layoutType$]="layoutType$"
+  [link]="'/home'"
+  [title]="'HOME'"
+></app-nav-link>
+<app-nav-link
+  [layoutType$]="layoutType$"
+  [icon]="'map'"
+  [link]="'/404'"
+  [title]="'SEARCH'"
+></app-nav-link>

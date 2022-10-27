@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 // @import "animate.css/animate.css";
+
+@use "src/styles/mixins.scss" as app-mixins;
 html,
 body {
   height: 100%;
@@ -22,34 +24,8 @@ body {
   width: 100%;
   margin: 0 auto;
   will-change: contents;
-}
 
-.container__main-box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex: 1 1 auto;
-}
-.container__side-box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  flex: 2 2 auto;
-}
-.container__box__block {
-  flex:1 1 100%;
-  padding: 20px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-.container__box__block.header {
-  flex: 2 2 auto;
-  justify-content: space-between;
-}
-@media screen and (max-width: 1024px) {
-  .container {
+  @include app-mixins.media-handset() {
     flex-direction: column;
   }
 }

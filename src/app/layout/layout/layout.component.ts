@@ -6,10 +6,8 @@ import { LayoutService } from '../../core/services/layout.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
   readonly breakpoints = Breakpoints;
   layoutType$: any = this.layoutService.layoutType$;
   constructor(private layoutService: LayoutService) {}
-
-  ngOnInit(): void {}
 }

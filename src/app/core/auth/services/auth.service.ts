@@ -18,17 +18,11 @@ export class AuthService {
     });
   }
 
-  public registration(
-    email: string,
-    password: string
-  ): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(
-      `${environment.backendApi}/registration`,
-      {
-        email,
-        password,
-      }
-    );
+  public registration(email: string, password: string): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${environment.backendApi}/registration`, {
+      email,
+      password,
+    });
   }
 
   public logout(): Observable<unknown> {

@@ -1,29 +1,29 @@
-<ng-container [ngSwitch]='layoutType$ | async'>
-  <ng-container  *ngSwitchDefault>
+<ng-container [ngSwitch]="layoutType$ | async">
+  <ng-container *ngSwitchDefault>
     <app-header>
       <!-- <app-logo logo></app-logo> -->
-      <app-nav [breackpoint]="layoutType$ | async" navbar></app-nav>
+      <app-nav [layoutType$]="layoutType$" navbar></app-nav>
     </app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
   </ng-container>
   <ng-container *ngSwitchCase="breakpoints.Tablet">
-      <app-sidenav>
-        <!-- <app-logo logo></app-logo> -->
-        <app-nav [breackpoint]="layoutType$ | async" navbar></app-nav>
-      </app-sidenav>
-      <main>
-        <router-outlet></router-outlet>
-      </main>
-  </ng-container>  
+    <app-sidenav>
+      <!-- <app-logo logo></app-logo> -->
+      <app-nav [layoutType$]="layoutType$" navbar></app-nav>
+    </app-sidenav>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </ng-container>
   <ng-container *ngSwitchCase="breakpoints.Handset">
     <app-header>
       <!-- <app-logo logo></app-logo> -->
-      <app-nav [breackpoint]="layoutType$ | async" navbar></app-nav>
+      <app-nav [layoutType$]="layoutType$" navbar></app-nav>
     </app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
-  </ng-container>  
+  </ng-container>
 </ng-container>

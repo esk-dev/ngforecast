@@ -1,0 +1,25 @@
+<ng-container [ngSwitch]="layoutType$ | async">
+  <ng-container *ngSwitchCase="breakpoints.Web">
+    <ng-container *ngTemplateOutlet="webtemplate"></ng-container>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <ng-container *ngTemplateOutlet="icontemplate"></ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #icontemplate>
+  <ng-container>
+    <a [routerLink]="[link]" routerLinkActive="active">
+      <mat-icon>{{ icon }}</mat-icon>
+    </a>
+  </ng-container>
+</ng-template>
+
+<ng-template #webtemplate>
+  <ng-container>
+    <a [routerLink]="[link]" routerLinkActive="active">
+      <mat-icon>arrow_forward_ios</mat-icon>
+      <h4>{{ title }}</h4>
+    </a>
+  </ng-container>
+</ng-template>
