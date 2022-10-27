@@ -1,7 +1,7 @@
 mat-toolbar {
-  height: max-content;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   background: none;
+  backdrop-filter: blur(5px);
+}
+.spacer {
+  flex: 1 1 auto;
 }

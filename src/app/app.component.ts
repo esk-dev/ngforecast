@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { StoreService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +6,5 @@ import { StoreService } from './core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public StoreService: StoreService) {}
-
-  onSearch(city: string) {
-    this.StoreService.currentCity$.next(city);
-    console.log(city);
-  }
+  constructor() {}
 }

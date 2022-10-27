@@ -1,5 +1,29 @@
 <ng-container [ngSwitch]='layoutType$ | async'>
-  <ng-container *ngSwitchCase="breakpoints.Web">
-    <app-header><app-header>
-  <ng-container>
+  <ng-container  *ngSwitchDefault>
+    <app-header>
+      <!-- <app-logo logo></app-logo> -->
+      <app-nav [breackpoint]="layoutType$ | async" navbar></app-nav>
+    </app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </ng-container>
+  <ng-container *ngSwitchCase="breakpoints.Tablet">
+      <app-sidenav>
+        <!-- <app-logo logo></app-logo> -->
+        <app-nav [breackpoint]="layoutType$ | async" navbar></app-nav>
+      </app-sidenav>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+  </ng-container>  
+  <ng-container *ngSwitchCase="breakpoints.Handset">
+    <app-header>
+      <!-- <app-logo logo></app-logo> -->
+      <app-nav [breackpoint]="layoutType$ | async" navbar></app-nav>
+    </app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </ng-container>  
 </ng-container>
