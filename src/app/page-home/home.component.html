@@ -1,12 +1,14 @@
 <div class="container">
   <ng-template ngFor let-weathers$ let-i="index" [ngForOf]="favoriteCitiesWeather">
-    <app-weathercard [shortWeather]="weathers$ | async">
-      <!-- <ng-container *ngIf="weathers$ | async as data">
+    <div class="container__box__block">
+      <app-weathercard [shortWeather]="weathers$ | async">
+        <!-- <ng-container *ngIf="weathers$ | async as data">
           <a
             [routerLink]="['/search', (data | async)?.location]"
             routerLinkActive="router-link-active"
           ></a>
         </ng-container> -->
-    </app-weathercard>
+      </app-weathercard>
+    </div>
   </ng-template>
 </div>

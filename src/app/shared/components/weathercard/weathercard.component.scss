@@ -6,6 +6,7 @@ mat-card-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  column-gap: 5vw;
 }
 .box {
   display: flex;
@@ -16,6 +17,13 @@ mat-card-content {
 img {
   width: 64px;
 }
-.right {
-  flex-direction: row;
+.text-line {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: 5vw;
+}
+h2 {
+  margin: 0;
+  line-height: 20px;
 }

@@ -1,3 +1,5 @@
+@use "src/styles/mixins.scss" as app-mixins;
+
 :host {
   display: flex;
   flex-wrap: nowrap;
@@ -9,6 +11,10 @@
   border-width: 2px;
   padding: 20px;
   width: 45%;
+  height: 80px;
+  @include app-mixins.media-handset() {
+    width: 100%;
+  }
 }
 .icon {
   color: #1a73b7;
