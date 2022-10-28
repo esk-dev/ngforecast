@@ -1,0 +1,10 @@
+<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <label for="first-name">Email: </label>
+    <input matInput placeholder="Email" formControlName="email" />
+    <label for="first-name">Password: </label>
+    <input matInput placeholder="Password" formControlName="password" />
+  </mat-form-field>
+  <button mat-raised-button type="submit">{{ authMode | titlecase }}</button>
+</form>
+<button (click)="switchAuthMode()" mat-button>Sign In or Login</button>
