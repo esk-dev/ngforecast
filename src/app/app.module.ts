@@ -16,11 +16,8 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-<<<<<<< HEAD
     LayoutModule,
-=======
     AuthModule,
->>>>>>> auth
   ],
   providers: [],
   bootstrap: [AppComponent],
