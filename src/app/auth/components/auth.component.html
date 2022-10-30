@@ -1,12 +1,24 @@
 <div class="container">
   <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+    <h2>{{ authMode$ | async | titlecase }}</h2>
     <mat-form-field>
       <input matInput placeholder="Email" formControlName="email" />
+      <mat-error *ngIf="authForm.get('email').errors?.['required']">Email required</mat-error>
+      <mat-error *ngIf="authForm.get('email').errors?.['email']">Email invalid</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Password" formControlName="password" />
+       <mat-error *ngIf="authForm.get('password').errors?.['required']">Password required</mat-error>
+      <mat-error *ngIf="authForm.get('password').errors?.['minlength']">Min password length - 8</mat-error>
     </mat-form-field>
-    <button mat-raised-button type="submit">Login</button>
-    <button (click)="switchAuthMode()" mat-button type="button">Sign In or Login</button>
+    <ng-container *ngTemplateOutlet='LogInTemplate; context: { $implicit: (authMode$ | async) }'>
+    </ng-container>
   </form>
 </div>
+
+<ng-template #LogInTemplate let-authMode>
+  <ng-container> 
+    <button mat-raised-button color='accent' [disabled]="authForm.invalid" type="submit">{{ authMode | titlecase }}</button>
+    <button (click)="switchAuthMode()" mat-button type='button'>To {{ authMode == 'log in' ? 'Sign Up' : 'Log in'}}</button>
+  </ng-container>
+</ng-template>

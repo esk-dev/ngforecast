@@ -7,19 +7,28 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    title: 'ngForecast',
     children: [
       {
         path: 'search/:city',
-        loadChildren: () => import('./page-search/search.module').then((m) => m.SearchModule),
+        title: 'Search',
+        loadChildren: () =>
+          import('./page-search/search.module').then((m) => m.SearchModule),
       },
       {
         path: 'home',
-        loadChildren: () => import('./page-home/home.module').then((m) => m.HomeModule),
+        title: 'HomePage',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('./page-home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+        title: 'Authentication',
+        loadChildren: () =>
+          import('./auth/auth.module').then((m) => m.AuthModule),
       },
+      { path: '', redirectTo: '/auth', pathMatch: 'full' },
     ],
   },
 ];
