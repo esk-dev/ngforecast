@@ -5,8 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { AuthModeService } from './auth-mode.service';
 
 @Component({
   selector: 'app-auth',
@@ -14,35 +15,25 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent {
-  private currentAuthModeSubject$: BehaviorSubject<string> =
-    new BehaviorSubject<string>('log in');
-  public authMode$ = this.currentAuthModeSubject$.asObservable();
-
+  constructor(
+    private fb: FormBuilder,
+    private authModeService: AuthModeService
+  ) {}
+  public readonly authMode$: Observable<string> = this.authModeService.authMode$;
+  public hide: boolean = true;
   public switchAuthMode() {
-    if (this.currentAuthModeSubject$.getValue() == 'log in') {
-      this.currentAuthModeSubject$.next('sign up');
-    } else {
-      this.currentAuthModeSubject$.next('log in');
-    }
+    this.authModeService.switchAuthMode();
   }
-  onSubmit() {
+  public onSubmit() {
     const { email, password } = this.authForm.value;
     console.log(email, password);
-    switch (this.currentAuthModeSubject$.getValue()) {
-      case 'log in':
-        this.authService.login(email, password).subscribe();
-        break;
-      case 'sign in':
-        this.authService.registration(email, password);
-        break;
-    }
+    this.authModeService.formSubmit(email, password);
   }
-  authForm: FormGroup = new FormGroup({
+  public authForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),
   });
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
 }

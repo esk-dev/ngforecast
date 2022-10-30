@@ -75,7 +75,7 @@ export class AuthService {
         password,
       })
       .pipe(
-        catchError((err) => err),
+        catchError(this.handleError),
         map((res: AuthResponse) => {
           this.jwtService.saveToken(res.accessToken);
           this.userStorageService.initUserData(res.user);
