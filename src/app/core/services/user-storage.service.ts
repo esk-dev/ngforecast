@@ -12,8 +12,10 @@ export class UserStorageService {
   private isAuth$: ReplaySubject<boolean> = new ReplaySubject<boolean>(0);
 
   // TODO: CRUD
-  initUserData(user: User) {
+  public initUserData(user: User) {
     // Запрос к API
+    console.log(user);
+    this.currentUser$.next(user);
   }
 
   // setUser(user: User) {

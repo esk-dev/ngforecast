@@ -19,7 +19,7 @@ import { AuthModule } from './auth/auth.module';
     LayoutModule,
     AuthModule,
   ],
-  providers: [],
+  providers: [AuthModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

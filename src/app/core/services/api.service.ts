@@ -41,7 +41,7 @@ export class ApiService {
   }
   getForecast(lon: number, lat: number): Observable<any> {
     return this._http.get(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,current,minutely&units=metric&appid=f92efd7aedf0c556c1b9edf282678ae6`,
+      `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,current,minutely&units=metric&appid=f92efd7aedf0c556c1b9edf282678ae6`,
     );
   }
 }

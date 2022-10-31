@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { JwtService, UserStorageService } from 'src/app/core';
+import { AuthResponse } from '../models/authresponse.model';
 import { AuthService } from '../services/auth.service';
 import { AuthModeService } from './auth-mode.service';
 
@@ -17,7 +14,7 @@ import { AuthModeService } from './auth-mode.service';
 export class AuthComponent {
   constructor(
     private fb: FormBuilder,
-    private authModeService: AuthModeService
+    private authModeService: AuthModeService, // private jwtService: JwtService, // private userStorageService: UserStorageService,
   ) {}
   public readonly authMode$: Observable<string> = this.authModeService.authMode$;
   public hide: boolean = true;
@@ -30,10 +27,7 @@ export class AuthComponent {
     this.authModeService.formSubmit(email, password);
   }
   public authForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(8),
-    ]),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    password: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
   });
 }

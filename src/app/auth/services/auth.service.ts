@@ -1,21 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  Observable,
-  map,
-  tap,
-  catchError,
-  ReplaySubject,
-  throwError,
-} from 'rxjs';
+import { Observable, map, tap, catchError, ReplaySubject, throwError, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpErrorResponse } from '@angular/common/http';
-import {
-  JwtService,
-  UserStorageService,
-  ErrorService,
-} from '../../core/services';
+import { JwtService, UserStorageService, ErrorService } from '../../core/services';
 import { AuthResponse } from '../models/authresponse.model';
 @Injectable({
   providedIn: 'root',
@@ -25,7 +14,7 @@ export class AuthService {
     private http: HttpClient,
     private jwtService: JwtService,
     private userStorageService: UserStorageService,
-    private router: Router
+    private router: Router,
   ) {}
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -34,18 +23,18 @@ export class AuthService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
+      console.error(`Backend returned code ${error.status}, body was: `, error.error);
     }
     // Return an observable with a user-facing error message.
-    return throwError(
-      () => new Error('Something bad happened; please try again later.')
-    );
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
-  private isAuthenticatedSubject$ = new ReplaySubject<boolean>(0);
-  public isAuthenticated$ = this.isAuthenticatedSubject$.asObservable();
+  private isAuthenticatedSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isAuthenticated$: Observable<boolean> = this.jwtService.tokenState$;
+
+  public setAuthData(response: AuthResponse) {
+    this.jwtService.saveToken(response.accessToken);
+    this.userStorageService.initUserData(response.user);
+  }
 
   public login(email: string, password: string): Observable<AuthResponse> {
     return this.http
@@ -53,37 +42,16 @@ export class AuthService {
         email,
         password,
       })
-      .pipe(
-        catchError(this.handleError),
-        map((res: AuthResponse) => {
-          this.jwtService.saveToken(res.accessToken);
-          this.userStorageService.initUserData(res.user);
-          this.isAuthenticatedSubject$.next(true);
-          this.router.navigate(['/search', 'London']);
-          return res;
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
-  public registration(
-    email: string,
-    password: string
-  ): Observable<AuthResponse> {
+  public registration(email: string, password: string): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${environment.backendApi}/registration`, {
         email,
         password,
       })
-      .pipe(
-        catchError(this.handleError),
-        map((res: AuthResponse) => {
-          this.jwtService.saveToken(res.accessToken);
-          this.userStorageService.initUserData(res.user);
-          this.isAuthenticatedSubject$.next(true);
-          this.router.navigate(['/search', 'London']);
-          return res;
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
   public logout(): Observable<unknown> {
@@ -91,10 +59,9 @@ export class AuthService {
       catchError((err) => err),
       map((res: AuthResponse) => {
         this.jwtService.deleteToken;
-        this.isAuthenticatedSubject$.next(false);
         this.router.navigate(['/auth']);
         return res;
-      })
+      }),
     );
   }
 
