@@ -1,20 +1,11 @@
 mat-icon {
-  color: #1a73b7;
   margin: auto;
 }
-a {
-  display: inline-flex;
+button {
   align-items: center;
   font-size: 16px;
-  text-decoration: none;
-  padding: 5px;
-  border-radius: 5px;
-  color: #1a73b7;
 }
-
-a:hover {
-    background-color: #bfdeef;
-  }
 .active {
   background-color: #bfdeef;
+  color: #1a73b7;
 }

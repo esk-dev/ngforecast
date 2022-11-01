@@ -9,17 +9,17 @@
 
 <ng-template #icontemplate>
   <ng-container>
-    <a [routerLink]="[link]" routerLinkActive="active">
+    <button mat-button color='primary' [routerLink]="[link]" routerLinkActive="active">
       <mat-icon>{{ icon }}</mat-icon>
-    </a>
+    </button>
   </ng-container>
 </ng-template>
 
 <ng-template #webtemplate>
   <ng-container>
-    <a [routerLink]="[link]" routerLinkActive="active">
+    <button mat-button color='primary' [routerLink]="[link]" routerLinkActive="active">
       <mat-icon>arrow_forward_ios</mat-icon>
-      <mat-card-subtitle>{{ title | titlecase }}</mat-card-subtitle>
-    </a>
+      <span>{{ title | titlecase }}</span>
+    </button>
   </ng-container>
 </ng-template>
