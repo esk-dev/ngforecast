@@ -8,6 +8,6 @@ import { Forecast } from 'src/app/core';
   styleUrls: ['./forecast.component.scss'],
 })
 export class ForecastComponent {
-  constructor() {}
   @Input() forecast$: Observable<Forecast[]>;
+  constructor() {}
 }

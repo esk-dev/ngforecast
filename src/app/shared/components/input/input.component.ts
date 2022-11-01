@@ -10,15 +10,15 @@ import { AutoComplete } from './autocomplete.service';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit, OnDestroy {
-  constructor(private AutoComplete: AutoComplete, public ActivatedRouter: Router) {}
-
   @Output() newSearchEvent = new EventEmitter<string>();
-  autoCompleteNames$!: Observable<string[]>;
-  destroy$: Subject<boolean> = new Subject();
-  form = new FormGroup({
+  public autoCompleteNames$!: Observable<string[]>;
+  public destroy$: Subject<boolean> = new Subject();
+  public form = new FormGroup({
     inputFormControl: new FormControl<string>('', Validators.required),
   });
-
+  
+  constructor(private AutoComplete: AutoComplete, public ActivatedRouter: Router) {}
+  
   ngOnInit(): void {
     this.form.controls.inputFormControl.valueChanges
       .pipe(distinctUntilChanged(), debounceTime(500), takeUntil(this.destroy$))

@@ -4,8 +4,8 @@ import { OverviewComponent } from './overview/overview.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [OverviewComponent],
   imports: [CommonModule, SharedModule],
+  declarations: [OverviewComponent],
   exports: [OverviewComponent],
 })
 export class OverviewModule {}

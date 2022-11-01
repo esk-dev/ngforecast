@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { StoreService } from '../core/services';
-import { WeatherService } from '../core/services';
+import { StoreService } from '../_services';
+import { WeatherService } from '../_services';
 
 @Component({
   selector: 'app-home',

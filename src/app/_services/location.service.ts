@@ -1,7 +1,7 @@
 import { T } from '@angular/cdk/keycodes';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { Params } from '../models';
+import { Params } from '../core/models';
 import { ApiService } from './api.service';
 import { StoreService } from './store.service';
 @Injectable({

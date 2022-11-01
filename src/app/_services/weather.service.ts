@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, map, switchMap, tap } from 'rxjs';
 import { ApiService } from './api.service';
 import { LocationService } from './location.service';
-import { Forecast, Overview, ShortWeather } from '../models';
+import { Forecast, Overview, ShortWeather } from '../core/models';
 import { IconService } from './icon.service';
 @Injectable({ providedIn: 'root' })
 export class WeatherService {

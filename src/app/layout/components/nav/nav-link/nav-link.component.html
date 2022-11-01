@@ -19,7 +19,7 @@
   <ng-container>
     <a [routerLink]="[link]" routerLinkActive="active">
       <mat-icon>arrow_forward_ios</mat-icon>
-      <h4>{{ title }}</h4>
+      <mat-card-subtitle>{{ title | titlecase }}</mat-card-subtitle>
     </a>
   </ng-container>
 </ng-template>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, tap } from 'rxjs';
-import { User } from '../models';
+import { User } from '../core/models';
 import { JwtService } from './jwt.service';
 @Injectable({
   providedIn: 'root',

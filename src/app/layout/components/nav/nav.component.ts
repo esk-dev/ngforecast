@@ -5,11 +5,7 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss'],
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
   @Input() layoutType$: any;
   constructor() {}
-
-  ngOnInit(): void {
-    console.log('nav work');
-  }
 }

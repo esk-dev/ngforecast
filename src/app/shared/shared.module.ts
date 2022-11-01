@@ -7,32 +7,35 @@ import {
   ButtonComponent,
   WeathercardComponent,
   InputComponent,
-  NavBarComponent,
   ForecastCardComponent,
   OverviewCardComponent,
   DateComponent,
-  NavItemComponent,
 } from './components';
+import { AuthenticatedDirective } from './directives/authenticated.directive';
 import { MaterialModule } from '../material.module';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    MaterialModule,
+    HttpClientModule,
+  ],
   declarations: [
     ButtonComponent,
     WeathercardComponent,
     ForecastCardComponent,
-    NavBarComponent,
     InputComponent,
     OverviewCardComponent,
     DateComponent,
-    NavItemComponent,
+    AuthenticatedDirective,
   ],
   exports: [
     CommonModule,
     ButtonComponent,
     WeathercardComponent,
     ForecastCardComponent,
-    NavBarComponent,
     OverviewCardComponent,
     MaterialModule,
     ReactiveFormsModule,
@@ -40,6 +43,7 @@ import { MaterialModule } from '../material.module';
     HttpClientModule,
     InputComponent,
     DateComponent,
+    AuthenticatedDirective,
   ],
   providers: [],
 })

@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NavComponent, SidenavComponent, HeaderComponent, NavLinkComponent } from './components';
+import { SharedModule } from '../shared/shared.module';
+import {
+  NavComponent,
+  SidenavComponent,
+  HeaderComponent,
+  NavLinkComponent,
+} from './components';
 import { LayoutComponent } from './layout/layout.component';
 import { MaterialModule } from './../material.module';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule, SharedModule],
   declarations: [
     NavComponent,
     SidenavComponent,

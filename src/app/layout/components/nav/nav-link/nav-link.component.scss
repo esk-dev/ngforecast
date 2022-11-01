@@ -5,11 +5,16 @@ mat-icon {
 a {
   display: inline-flex;
   align-items: center;
+  font-size: 16px;
   text-decoration: none;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   color: #1a73b7;
 }
+
+a:hover {
+    background-color: #bfdeef;
+  }
 .active {
   background-color: #bfdeef;
 }

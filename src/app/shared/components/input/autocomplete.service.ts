@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { distinctUntilChanged, filter, Observable, of } from 'rxjs';
 import { switchMap, map } from 'rxjs';
-import { ApiService } from '../../../core';
+import { ApiService } from '../../../_services';
 @Injectable({
   providedIn: 'any',
 })
@@ -19,7 +19,7 @@ export class AutoComplete {
           arr.push(element.name);
         });
         return arr;
-      }),
+      })
     );
   }
 }

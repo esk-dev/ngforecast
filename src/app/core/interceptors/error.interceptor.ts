@@ -8,12 +8,15 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { NotificationService } from './services/notification.service';
+import { NotificationService } from '../../_services/notification.service';
 @Injectable()
 export class ErrorIntercept implements HttpInterceptor {
   constructor(public notification: NotificationService) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       retry(1),
       catchError((error: HttpErrorResponse) => {
@@ -33,7 +36,7 @@ export class ErrorIntercept implements HttpInterceptor {
         }
         this.notification.showError(errorMessage);
         return throwError(() => new Error(error.message));
-      }),
+      })
     );
   }
 }

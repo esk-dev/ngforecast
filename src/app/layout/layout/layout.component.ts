@@ -1,6 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from '../../core/services/layout.service';
+import { LayoutService } from '../../_services';
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',

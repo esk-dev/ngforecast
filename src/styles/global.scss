@@ -17,6 +17,7 @@ body {
   text-rendering: optimizeSpeed;
 }
 .container {
+  max-width: 1440px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

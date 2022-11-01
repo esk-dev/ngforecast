@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-import { AuthService } from './services/auth.service';
-import { JwtService } from '../core';
+import {
+  HttpEvent,
+  HttpInterceptor,
+  HttpHandler,
+  HttpRequest,
+} from '@angular/common/http';
+import { AuthService } from '../../auth/services/auth.service';
+import { JwtService } from '../../_services';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private auth: AuthService, private jwtService: JwtService) {}
 
