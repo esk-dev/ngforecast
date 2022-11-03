@@ -30,4 +30,10 @@ body {
   @include app-mixins.media-handset() {
     flex-direction: column;
   }
+
+}
+
+::ng-deep button.active {
+  background-color: #bfdeef;
+  color: #1a73b7;
 }

@@ -5,7 +5,7 @@
   margin: 0 auto;
   transition: all 1s ease-in;
   gap: 5px;
-  
+
   @include app-mixins.media-web() {
     flex-direction: row;
   }

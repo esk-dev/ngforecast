@@ -16,9 +16,9 @@ export class InputComponent implements OnInit, OnDestroy {
   public form = new FormGroup({
     inputFormControl: new FormControl<string>('', Validators.required),
   });
-  
+
   constructor(private AutoComplete: AutoComplete, public ActivatedRouter: Router) {}
-  
+
   ngOnInit(): void {
     this.form.controls.inputFormControl.valueChanges
       .pipe(distinctUntilChanged(), debounceTime(500), takeUntil(this.destroy$))

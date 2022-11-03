@@ -1,5 +1,5 @@
 <form [formGroup]="form">
-  <mat-form-field color="accent" appearance="outline">
+  <mat-form-field color="primary" appearance="outline">
     <input
       type="search"
       matInput
@@ -11,7 +11,7 @@
     <button
       mat-mini-fab
       matSuffix
-      color="accent"
+      color="primary"
       (click)="this.setFindCity(this.form.controls.inputFormControl.value)"
     >
       <mat-icon>search</mat-icon>

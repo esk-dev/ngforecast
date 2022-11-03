@@ -5,10 +5,9 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 5px;
+  border-radius: 10px;
   border-style: solid;
-  border-color: #1a73b7;
-  border-width: 2px;
+  border-color: var(--primary-color);
   padding: 20px;
   width: 45%;
   height: 80px;
@@ -17,7 +16,7 @@
   }
 }
 .icon {
-  color: #1a73b7;
+  color: var(--primary-color);
   width: 64px;
   height: auto;
   font-size: 64px;

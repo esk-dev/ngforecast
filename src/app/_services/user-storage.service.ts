@@ -17,7 +17,9 @@ export class UserStorageService {
     console.log(user);
     this.currentUser$.next(user);
   }
-
+  public clearUserData() {
+    this.currentUser$.next({} as User);
+  }
   // setUser(user: User) {
   //   this.user = user;
   // }

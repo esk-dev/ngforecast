@@ -13,10 +13,7 @@ import { NotificationService } from '../../_services/notification.service';
 export class ErrorIntercept implements HttpInterceptor {
   constructor(public notification: NotificationService) {}
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       retry(1),
       catchError((error: HttpErrorResponse) => {
@@ -24,7 +21,7 @@ export class ErrorIntercept implements HttpInterceptor {
         if (error.error instanceof ErrorEvent) {
           // client-side error
           console.error(error);
-          errorMessage = `Error: ${error.error.message}`;
+          errorMessage = `Error: ${error}`;
         }
         if (error.status == 401) {
           // refresh token
@@ -32,11 +29,11 @@ export class ErrorIntercept implements HttpInterceptor {
         } else {
           // server-side error
           console.error(error);
-          errorMessage = `Error Status: ${error.status}\nMessage: ${error.error.error.message}`;
+          errorMessage = `Error Status: ${error.status}\nMessage: ${error.message}`;
         }
         this.notification.showError(errorMessage);
-        return throwError(() => new Error(error.message));
-      })
+        return throwError(() => new Error(errorMessage));
+      }),
     );
   }
 }

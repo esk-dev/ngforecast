@@ -1,14 +1,10 @@
 .container {
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: flex-start;
-  row-gap: 15px;
-  app-weathercard {
-    height: min-content;
-  }
+  justify-content: flex-start;
 }
 
 .container__box__block {
+  flex: 1;
   padding: 20px;
   align-items: center;
   display: flex;

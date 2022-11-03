@@ -7,6 +7,7 @@ import {
   SidenavComponent,
   HeaderComponent,
   NavLinkComponent,
+  NavAuthComponent,
 } from './components';
 import { LayoutComponent } from './layout/layout.component';
 import { MaterialModule } from './../material.module';
@@ -19,6 +20,7 @@ import { MaterialModule } from './../material.module';
     HeaderComponent,
     LayoutComponent,
     NavLinkComponent,
+    NavAuthComponent
   ],
   exports: [LayoutComponent],
 })

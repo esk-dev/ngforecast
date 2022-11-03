@@ -9,10 +9,8 @@ import { AuthService } from './../services/auth.service';
 export class AuthModeService {
   constructor(private authService: AuthService, private router: Router) {}
 
-  private currentAuthModeSubject$: BehaviorSubject<string> =
-    new BehaviorSubject<string>('log in');
-  public authMode$: Observable<string> =
-    this.currentAuthModeSubject$.asObservable();
+  private currentAuthModeSubject$: BehaviorSubject<string> = new BehaviorSubject<string>('log in');
+  public authMode$: Observable<string> = this.currentAuthModeSubject$.asObservable();
 
   public switchAuthMode() {
     if (this.currentAuthModeSubject$.getValue() == 'log in') {
@@ -30,7 +28,7 @@ export class AuthModeService {
         } else {
           return this.authService.registration(email, password);
         }
-      })
+      }),
     );
   }
 }

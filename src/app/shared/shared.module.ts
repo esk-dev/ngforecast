@@ -12,16 +12,11 @@ import {
   DateComponent,
 } from './components';
 import { AuthenticatedDirective } from './directives/authenticated.directive';
+import { NotAuthDirective } from './directives/not-auth.directive';
 import { MaterialModule } from '../material.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MaterialModule,
-    HttpClientModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule, HttpClientModule],
   declarations: [
     ButtonComponent,
     WeathercardComponent,
@@ -30,6 +25,7 @@ import { MaterialModule } from '../material.module';
     OverviewCardComponent,
     DateComponent,
     AuthenticatedDirective,
+    NotAuthDirective,
   ],
   exports: [
     CommonModule,
@@ -44,6 +40,7 @@ import { MaterialModule } from '../material.module';
     InputComponent,
     DateComponent,
     AuthenticatedDirective,
+    NotAuthDirective,
   ],
   providers: [],
 })
