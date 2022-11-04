@@ -14,25 +14,30 @@
     flex-direction: column;
   }
 }
-
+mat-sidenav-container {
+  background-color: #ffffff;
+}
+mat-sidenav {
+  width: 100vw;
+}
 main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 25px;
   width: 100%;
-
+  padding: 5px;
   & > * {
     width: 100%;
   }
 
-  @include app-mixins.media-handset() {
-    height: calc(100vh - 8rem);
-    overflow-y: auto;
-  }
+  // @include app-mixins.media-handset() {
+  //   height: 100vh;
+  //   overflow-y: auto;
+  // }
 
-  @include app-mixins.media-tablet() {
-    height: 100vh;
-    overflow-y: auto;
-  }
+  // @include app-mixins.media-tablet() {
+  //   height: 100vh;
+  //   overflow-y: auto;
+  // }
 }

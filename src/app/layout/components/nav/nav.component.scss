@@ -15,6 +15,6 @@
   }
 
   @include app-mixins.media-handset() {
-
+    flex-direction: column;
   }
 }
