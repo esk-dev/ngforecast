@@ -19,11 +19,39 @@
   </ng-container>
   <ng-container *ngSwitchCase="breakpoints.Handset">
     <app-header>
-      <!-- <app-logo logo></app-logo> -->
+      <ng-container navbar>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">
+            menu
+        </mat-icon>
+        <mat-icon *ngIf="sidenav.opened">
+            close
+        </mat-icon>
+      </button>
+      </ng-container>
+    </app-header>
+    <mat-sidenav-container>
+      <mat-sidenav #sidenav mode="over" hasBackdrop="true">
+        <app-sidenav>
+          <app-nav [layoutType$]="layoutType$" navbar></app-nav>
+        </app-sidenav>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <ng-container *ngTemplateOutlet="main"></ng-container>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <!-- <app-header>
       <app-nav [layoutType$]="layoutType$" navbar></app-nav>
     </app-header>
     <main>
       <router-outlet></router-outlet>
-    </main>
+    </main> -->
   </ng-container>
 </ng-container>
+
+<ng-template #main>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</ng-template>

@@ -1,7 +1,5 @@
-mat-icon {
-  margin: auto;
-}
-button {
-  align-items: center;
-  font-size: 16px;
+:host {
+  display: inline-flex;
+  align-items: stretch;
+  flex-direction: column;
 }

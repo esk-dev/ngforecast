@@ -1,8 +1,8 @@
 <ng-container [ngSwitch]="layoutType$ | async">
-  <ng-container *ngSwitchCase="breakpoints.Web">
+  <ng-container *ngSwitchDefault>
     <ng-container *ngTemplateOutlet="webtemplate"></ng-container>
   </ng-container>
-  <ng-container *ngSwitchDefault>
+  <ng-container *ngSwitchCase="breakpoints.Tablet">
     <ng-container *ngTemplateOutlet="icontemplate"></ng-container>
   </ng-container>
 </ng-container>

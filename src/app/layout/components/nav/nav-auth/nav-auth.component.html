@@ -1,6 +1,8 @@
 <button mat-button color="primary" *notAuth [routerLink]="['/auth']" routerLinkActive="active">
   <mat-icon>login</mat-icon>
+  Log In
 </button>
 <button mat-button color="primary" *isAuth (click)="logOut()">
   <mat-icon>logout</mat-icon>
+  Log Out
 </button>
