@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const router = require('./jwtserver/router/index');
 const PORT = process.env.PORT || 5000;
 const app = express();
-const errorMiddleware = require('./jwtserver/middlewares/error-middlewaremiddleware');
+const errorMiddleware = require('./jwtserver/middlewares/error-middleware');
 app.use(express.static(__dirname + '/dist/ngforecast'));
 
 app.use(express.json());
