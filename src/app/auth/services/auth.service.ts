@@ -27,7 +27,7 @@ export class AuthService {
 
   public login(email: string, password: string): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${environment.backendApi}/login`, {
+      .post<AuthResponse>(`${environment.API_URL}/login`, {
         email,
         password,
       })
@@ -36,7 +36,7 @@ export class AuthService {
 
   public registration(email: string, password: string): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${environment.backendApi}/registration`, {
+      .post<AuthResponse>(`${environment.API_URL}/registration`, {
         email,
         password,
       })
@@ -47,7 +47,7 @@ export class AuthService {
     this.jwtService.deleteToken();
     this.userStorageService.clearUserData();
     this.router.navigate(['/search', 'london']);
-    return this.http.post(`${environment.backendApi}/logout`, {}).pipe(
+    return this.http.post(`${environment.API_URL}/logout`, {}).pipe(
       catchError(this.errorService.handleError),
       tap(() => {
         this.jwtService.deleteToken();
@@ -58,6 +58,6 @@ export class AuthService {
   }
 
   public refreshToken(): Observable<AuthResponse> {
-    return this.http.get<AuthResponse>(`${environment.backendApi}/refresh`);
+    return this.http.get<AuthResponse>(`${environment.API_URL}/refresh`);
   }
 }

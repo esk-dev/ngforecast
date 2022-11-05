@@ -24,9 +24,7 @@ export class ApiService {
 
   getForecast(city: string): Observable<any> {
     return this._http
-      .get(
-        `${environment.FORECAST_API}${environment.API_KEY}&q=${city}&days=10&aqi=no&alerts=no`
-      )
+      .get(`${environment.FORECAST_API}${environment.API_KEY}&q=${city}&days=10&aqi=no&alerts=no`)
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 }

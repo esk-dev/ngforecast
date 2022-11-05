@@ -20,7 +20,7 @@ import { MaterialModule } from './../material.module';
     HeaderComponent,
     LayoutComponent,
     NavLinkComponent,
-    NavAuthComponent
+    NavAuthComponent,
   ],
   exports: [LayoutComponent],
 })

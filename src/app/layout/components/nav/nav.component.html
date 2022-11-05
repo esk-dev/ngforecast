@@ -13,20 +13,19 @@
   (click)="eventEmit()"
   *isAuth
 ></app-nav-link>
-<app-nav-link  
-  [icon]="'login'" 
+<app-nav-link
+  [icon]="'login'"
   [layoutType$]="layoutType$"
   [link]="'/auth'"
-  [title]="'log in'" 
-  (click)="eventEmit()" 
-  *notAuth 
+  [title]="'log in'"
+  (click)="eventEmit()"
+  *notAuth
 ></app-nav-link>
-<app-nav-link 
- [icon]="'logout'" 
- [layoutType$]="layoutType$" 
- [title]="'log out'" 
- (click)="logOut()"
- (click)="eventEmit()" 
- *isAuth  
+<app-nav-link
+  [icon]="'logout'"
+  [layoutType$]="layoutType$"
+  [title]="'log out'"
+  (click)="logOut()"
+  (click)="eventEmit()"
+  *isAuth
 ></app-nav-link>
-

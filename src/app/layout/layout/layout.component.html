@@ -20,14 +20,10 @@
   <ng-container *ngSwitchCase="breakpoints.Handset">
     <app-header>
       <ng-container navbar>
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon *ngIf="!sidenav.opened">
-            menu
-        </mat-icon>
-        <mat-icon *ngIf="sidenav.opened">
-            close
-        </mat-icon>
-      </button>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+          <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+        </button>
       </ng-container>
     </app-header>
     <mat-sidenav-container>

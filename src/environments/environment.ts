@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendApi: 'http://localhost:7000/api',
+  API_URL: 'http://localhost:7000/api',
   WEATHER_API: 'https://api.weatherapi.com/v1/current.json?key=',
   SEARCH_API: 'https://api.weatherapi.com/v1/search.json?key=',
   FORECAST_API: 'https://api.weatherapi.com/v1/forecast.json?key=',
