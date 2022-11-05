@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start": "node server/jwtserver/index.js",
+    "start": "node ./server/jwtserver/index.js",
     "serv": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
