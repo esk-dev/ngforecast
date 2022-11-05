@@ -10,12 +10,12 @@ import { StoreService } from './store.service';
 export class LocationService {
   constructor(private _store: StoreService, private _api: ApiService) {}
 
-  getParams(city: string): Observable<Params> {
-    return this._api.getLocationParams(city).pipe(
-      map((response: any) => ({
-        lat: response[0].lat,
-        lon: response[0].lon,
-      })),
-    );
-  }
+  // getParams(city: string): Observable<Params> {
+  //   return this._api.getLocationParams(city).pipe(
+  //     map((response: any) => ({
+  //       lat: response[0].lat,
+  //       lon: response[0].lon,
+  //     })),
+  //   );
+  // }
 }

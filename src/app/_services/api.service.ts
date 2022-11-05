@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
+import { Observable, shareReplay, windowTime } from 'rxjs';
 import { ErrorService } from './error.service';
-import { tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,37 +11,22 @@ export class ApiService {
   constructor(private _http: HttpClient, private error: ErrorService) {}
 
   getAutoComplete(input: string): Observable<any> {
-    return this._http.get(
-      `https://api.weatherapi.com/v1/search.json?key=df9ea22d929543f6927163438222504&q=` +
-        `${input}`,
-    );
-  }
-
-  getLocationParams(input: string): Observable<any> {
-    return this._http.get(
-      `https://api.weatherapi.com/v1/search.json?key=df9ea22d929543f6927163438222504&q=` +
-        `${input}`,
-    );
+    return this._http
+      .get(`${environment.SEARCH_API}${environment.API_KEY}&q=${input}`)
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 
   getWeather(city: string): Observable<any> {
-    return this._http.get(
-      `https://api.weatherapi.com/v1/current.json?key=df9ea22d929543f6927163438222504&q=` +
-        `${city}` +
-        `&aqi=yes`,
-    );
+    return this._http
+      .get(`${environment.WEATHER_API}${environment.API_KEY}&q=${city}&aqi=yes`)
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 
-  getTodayHighlightsWeather(city: string): Observable<any> {
-    return this._http.get(
-      `https://api.weatherapi.com/v1/current.json?key=df9ea22d929543f6927163438222504&q=` +
-        `${city}` +
-        `&aqi=yes`,
-    );
-  }
-  getForecast(lon: number, lat: number): Observable<any> {
-    return this._http.get(
-      `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=hourly,current,minutely&units=metric&appid=f92efd7aedf0c556c1b9edf282678ae6`,
-    );
+  getForecast(city: string): Observable<any> {
+    return this._http
+      .get(
+        `${environment.FORECAST_API}${environment.API_KEY}&q=${city}&days=10&aqi=no&alerts=no`
+      )
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 }

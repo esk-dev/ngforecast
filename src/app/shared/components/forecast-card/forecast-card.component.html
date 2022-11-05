@@ -1,3 +1,6 @@
 <mat-card-subtitle>{{ forecast.date | date: 'EE d' }}</mat-card-subtitle>
-<img src="assets/{{ forecast.icon }}.svg" />
+<img [src]="forecast.icon" />
 <mat-card-subtitle>{{ forecast.temperature }}°C</mat-card-subtitle>
+<span class='condition'>
+  <mat-card-subtitle>{{forecast.condition}}</mat-card-subtitle>
+</span>
