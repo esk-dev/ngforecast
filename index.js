@@ -1,36 +1,16 @@
-require('dotenv').config()
+//Install express server
 const express = require('express');
-const cors = require('cors');
-const cookieParser = require('cookie-parser');
-const mongoose = require('mongoose');
-const router = require('./jwtserver/router/index');
-const PORT = process.env.PORT || 5000;
+const path = require('path');
+
 const app = express();
-const errorMiddleware = require('./jwtserver/middlewares/error-middleware');
+
+// Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/ngforecast'));
 
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors({
-  credentials: true,
-  origin: process.env.CLIENT_URL,
-}));
-app.use('/api', router);
 app.get('/*', function(req,res) {
-  res.sendFile(path.join(__dirname+'/dist/ngforecast/index.html'));
+
+res.sendFile(path.join(__dirname+'/dist/ngforecast/index.html'));
 });
-app.use(errorMiddleware);
 
-const start = async () => {
-  try {
-    await mongoose.connect(process.env.DB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    })
-    app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`))
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-start()
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);
