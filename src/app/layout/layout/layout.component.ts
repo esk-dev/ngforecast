@@ -5,6 +5,7 @@ import { LayoutService } from '../../_services';
   selector: 'app-layout',
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
+  changeDetection:
 })
 export class LayoutComponent {
   readonly breakpoints = Breakpoints;

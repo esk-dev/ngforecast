@@ -12,19 +12,25 @@ export class ApiService {
 
   getAutoComplete(input: string): Observable<any> {
     return this._http
-      .get(`${environment.SEARCH_API}${environment.API_KEY}&q=${input}`)
+      .post(`${environment.API_URL}/search`, {
+        input,
+      })
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 
   getWeather(city: string): Observable<any> {
     return this._http
-      .get(`${environment.WEATHER_API}${environment.API_KEY}&q=${city}&aqi=yes`)
+      .post(`${environment.API_URL}/weather`, {
+        city,
+      })
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 
   getForecast(city: string): Observable<any> {
     return this._http
-      .get(`${environment.FORECAST_API}${environment.API_KEY}&q=${city}&days=10&aqi=no&alerts=no`)
+      .post(`${environment.API_URL}/forecast`, {
+        city,
+      })
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 }

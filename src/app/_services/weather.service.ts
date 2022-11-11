@@ -75,11 +75,6 @@ export class WeatherService {
           condition: el.day.condition.text,
           temperature: el.day.avgtemp_c,
         }));
-        // return forecast_day.map((el: any) => ({
-        //   date: new Date(el.date_epoch * 1000),
-        //   icon: el.condition.icon.toLowerCase(),
-        //   temperature: el.day.avgtemp_c,
-        // }));
       }),
     );
   }
