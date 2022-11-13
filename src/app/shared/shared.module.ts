@@ -10,6 +10,7 @@ import {
   ForecastCardComponent,
   OverviewCardComponent,
   DateComponent,
+  FavoriteButtonComponent,
 } from './components';
 import { AuthenticatedDirective } from './directives/authenticated.directive';
 import { NotAuthDirective } from './directives/not-auth.directive';
@@ -26,6 +27,7 @@ import { MaterialModule } from '../material.module';
     DateComponent,
     AuthenticatedDirective,
     NotAuthDirective,
+    FavoriteButtonComponent,
   ],
   exports: [
     CommonModule,
@@ -33,6 +35,7 @@ import { MaterialModule } from '../material.module';
     WeathercardComponent,
     ForecastCardComponent,
     OverviewCardComponent,
+    FavoriteButtonComponent,
     MaterialModule,
     ReactiveFormsModule,
     RouterModule,

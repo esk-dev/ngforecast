@@ -1,7 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, map, tap, catchError, ReplaySubject, throwError, BehaviorSubject } from 'rxjs';
+import {
+  Observable,
+  map,
+  tap,
+  catchError,
+  ReplaySubject,
+  throwError,
+  BehaviorSubject,
+  Subject,
+  take,
+  switchMap,
+} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JwtService, UserStorageService, ErrorService } from '../../_services';
@@ -17,12 +28,17 @@ export class AuthService {
     private errorService: ErrorService,
     private router: Router,
   ) {}
-  // private isAuthenticatedSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public isAuthenticated$: Observable<boolean> = this.jwtService.tokenState$;
+  private isAuthenticatedSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject$.asObservable();
 
   public setAuthData(response: AuthResponse) {
-    this.jwtService.saveToken(response.accessToken);
+    this.jwtService.saveToken(response.accessToken, response.refreshToken);
     this.userStorageService.initUserData(response.user);
+    this.isAuthenticatedSubject$.next(true);
+  }
+
+  public checkAuth(): Observable<AuthResponse> {
+    return this.http.get<AuthResponse>(`${environment.API_URL}/refresh`).pipe();
   }
 
   public login(email: string, password: string): Observable<AuthResponse> {
@@ -31,7 +47,7 @@ export class AuthService {
         email,
         password,
       })
-      .pipe(catchError(this.errorService.handleError));
+      .pipe();
   }
 
   public registration(email: string, password: string): Observable<AuthResponse> {
@@ -44,15 +60,12 @@ export class AuthService {
   }
 
   public logout(): Observable<any> {
-    this.jwtService.deleteToken();
-    this.userStorageService.clearUserData();
-    this.router.navigate(['/search', 'london']);
     return this.http.post(`${environment.API_URL}/logout`, {}).pipe(
       catchError(this.errorService.handleError),
       tap(() => {
         this.jwtService.deleteToken();
         this.userStorageService.clearUserData();
-        this.router.navigate(['/search', 'london']);
+        this.isAuthenticatedSubject$.next(false);
       }),
     );
   }

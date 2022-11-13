@@ -64,9 +64,6 @@ export class WeatherService {
 
   public getForecast(city: string): Observable<Forecast[]> {
     return this._api.getForecast(city).pipe(
-      tap((res) => {
-        console.log(res.forecast.forecastday);
-      }),
       map((response: any) => {
         const { forecastday } = response.forecast;
         return forecastday.map((el: any) => ({

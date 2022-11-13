@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
-import { StoreService } from '../_services';
+import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { ShortWeather } from '../core';
+import { StoreService, UserStorageService } from '../_services';
 import { WeatherService } from '../_services';
 
 @Component({
@@ -9,17 +10,25 @@ import { WeatherService } from '../_services';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  favoriteCitiesWeather: any;
-  constructor(public StoreService: StoreService, public WeatherService: WeatherService) {}
+  public favoriteCitiesWeather$: Array<Observable<ShortWeather>>;
+  public emptyAlert$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  constructor(
+    private UserStorageService: UserStorageService,
+    private WeatherService: WeatherService,
+  ) {}
 
   destroy$: Subject<boolean> = new Subject();
   ngOnInit(): void {
-    this.StoreService.favoriteCity$
+    this.UserStorageService.favoriteCities$
       .pipe(takeUntil(this.destroy$))
-      .subscribe((response: string[]) => {
-        this.favoriteCitiesWeather = response.map((city: string) => {
-          return this.WeatherService.getShortWeather(city);
-        });
+      .subscribe((cities: Array<string | null>) => {
+        if (cities) {
+          this.favoriteCitiesWeather$ = cities.map((city: string) => {
+            return this.WeatherService.getShortWeather(city);
+          });
+        } else {
+          this.emptyAlert$.next('Empty favorite cities store');
+        }
       });
   }
 

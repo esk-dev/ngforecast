@@ -1,5 +1,8 @@
 <div class="container">
-  <ng-template ngFor let-weathers$ let-i="index" [ngForOf]="favoriteCitiesWeather">
+  <ng-container *ngIf="emptyAlert$">
+    <mat-card-title>{{ emptyAlert$ | async }}</mat-card-title>
+  </ng-container>
+  <ng-template ngFor let-weathers$ let-i="index" [ngForOf]="favoriteCitiesWeather$">
     <div class="container__box__block">
       <app-weathercard [shortWeather]="weathers$ | async">
         <!-- <ng-container *ngIf="weathers$ | async as data">

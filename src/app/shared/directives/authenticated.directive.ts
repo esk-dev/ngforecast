@@ -1,5 +1,5 @@
 import { Directive, TemplateRef, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeLast, takeUntil } from 'rxjs';
 import { AuthService } from '../../auth/services/auth.service';
 @Directive({
   selector: '[isAuth]',

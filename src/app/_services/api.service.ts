@@ -33,4 +33,16 @@ export class ApiService {
       })
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
+
+  read(): Observable<any> {
+    return this._http.get(`${environment.API_URL}/read`);
+  }
+
+  update(city: string): Observable<any> {
+    return this._http.put(`${environment.API_URL}/update`, { city });
+  }
+
+  delete(city: string): Observable<any> {
+    return this._http.put(`${environment.API_URL}/delete`, { city });
+  }
 }
