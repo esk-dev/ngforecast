@@ -9,7 +9,7 @@ export class JwtService {
   public tokenState$: Observable<boolean> = this.isTokenExistSubject$.asObservable();
 
   constructor() {
-    this.tokenStateChange();
+    this.isTokenExistSubject$.next(!!this.getToken());
   }
 
   tokenStateChange() {

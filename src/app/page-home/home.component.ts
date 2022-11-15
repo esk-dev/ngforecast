@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, switchMap, take, takeUntil } from 'rxjs';
 import { ShortWeather } from '../core';
 import { StoreService, UserStorageService } from '../_services';
 import { WeatherService } from '../_services';
@@ -12,12 +12,13 @@ import { WeatherService } from '../_services';
 export class HomeComponent implements OnInit, OnDestroy {
   public favoriteCitiesWeather$: Array<Observable<ShortWeather>>;
   public emptyAlert$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public destroy$: Subject<boolean> = new Subject();
+  public isCityAdded$: Observable<boolean>;
   constructor(
     private UserStorageService: UserStorageService,
     private WeatherService: WeatherService,
   ) {}
 
-  destroy$: Subject<boolean> = new Subject();
   ngOnInit(): void {
     this.UserStorageService.favoriteCities$
       .pipe(takeUntil(this.destroy$))
@@ -30,6 +31,35 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.emptyAlert$.next('Empty favorite cities store');
         }
       });
+  }
+
+  public isCityAdded(city: string): boolean {
+    let isAdded: boolean;
+    this.UserStorageService.isCityAdded(city.toLowerCase())
+      .pipe(take(1))
+      .subscribe((val: boolean) => (isAdded = val));
+    return isAdded;
+  }
+  toFavorite(city: string) {
+    // TODO вынести в сервис
+    // if (this.isCityAdded(city)) {
+    //   return this.UserStorageService.deleteUserData(city);
+    // } else {
+    //   return this.UserStorageService.updateUserData(city);
+    // }
+    this.UserStorageService.isCityAdded(city)
+      .pipe(
+        take(1),
+        takeUntil(this.destroy$),
+        switchMap((acc: boolean) => {
+          if (acc === true) {
+            return this.UserStorageService.deleteUserData(city);
+          } else {
+            return this.UserStorageService.updateUserData(city);
+          }
+        }),
+      )
+      .subscribe();
   }
 
   ngOnDestroy(): void {

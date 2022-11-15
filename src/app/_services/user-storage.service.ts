@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, ReplaySubject, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, ReplaySubject, take, tap } from 'rxjs';
 import { User } from '../core/models';
 import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
@@ -7,7 +7,16 @@ import { JwtService } from './jwt.service';
   providedIn: 'root',
 })
 export class UserStorageService {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    this.apiService
+      .read()
+      .pipe(take(1))
+      .subscribe((user: User) => {
+        if (user) {
+          this.currentUser$.next(user);
+        }
+      });
+  }
 
   private currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
   public userData$: Observable<User> = this.currentUser$.asObservable();
@@ -18,28 +27,28 @@ export class UserStorageService {
 
   public initUserData(user: User) {
     this.currentUser$.next(user);
+    localStorage.setItem('userId', user.id);
   }
-  getUserId(): string | null {
-    if (!!this.currentUser$.getValue()) {
-      return this.userId.id;
-    } else {
-      return null;
-    }
+
+  public getIdUser(): string {
+    return this.currentUser$.getValue().id;
   }
   public clearUserData() {
     this.currentUser$.next({} as User);
   }
+
   public isCityAdded(city: string): Observable<boolean> {
     return this.favoriteCities$.pipe(
       map((acc: Array<string | null>) => {
-        if (acc) {
-          return acc.includes(city);
+        if (acc.length !== 0) {
+          return acc.includes(city.toLowerCase());
         } else {
           return false;
         }
       }),
     );
   }
+
   public readUserData(): Observable<any> {
     return this.apiService.read().pipe(
       map((acc: User) => {
@@ -49,7 +58,7 @@ export class UserStorageService {
   }
 
   public updateUserData(city: string): Observable<any> {
-    return this.apiService.update(city).pipe(
+    return this.apiService.update(city.toLowerCase()).pipe(
       map((acc: User) => {
         this.currentUser$.next(acc);
       }),
@@ -57,7 +66,7 @@ export class UserStorageService {
   }
 
   public deleteUserData(city: string): Observable<any> {
-    return this.apiService.delete(city).pipe(
+    return this.apiService.delete(city.toLowerCase()).pipe(
       map((acc: User) => {
         this.currentUser$.next(acc);
       }),
