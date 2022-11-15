@@ -2,6 +2,14 @@
   width: 100%;
   text-align: left;
 }
+mat-card-header {
+  display: flex;
+  justify-content: flex-start;
+
+  mat-card-actions {
+    margin-left: auto;
+  }
+}
 mat-card-content {
   display: flex;
   flex-direction: row;

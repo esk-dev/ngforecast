@@ -4,7 +4,6 @@ import { Breakpoints } from '@angular/cdk/layout';
   selector: 'app-nav-link',
   templateUrl: './nav-link.component.html',
   styleUrls: ['./nav-link.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavLinkComponent {
   @Input() title: string;

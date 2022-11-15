@@ -13,7 +13,6 @@ export class NoAuthGuard implements CanActivate {
     state: RouterStateSnapshot,
   ): Observable<boolean> | Promise<boolean> | boolean {
     return this.authService.isAuthenticated$.pipe(
-      take(1),
       map((isAuth) => !isAuth), //Если залогинен - не показывать, иначе показывать - страницы аутентификации
     );
   }

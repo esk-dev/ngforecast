@@ -28,6 +28,7 @@ export class AuthComponent {
     const { email, password } = this.authForm.value;
     this.authModeService.formSubmit(email, password).subscribe((response: AuthResponse) => {
       this.authService.setAuthData(response);
+      this.router.navigate(['home']);
     });
   }
   public authForm: FormGroup = new FormGroup({

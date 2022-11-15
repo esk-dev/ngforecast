@@ -2,7 +2,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ErrorIntercept } from './interceptors/error.interceptor';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientXsrfModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   imports: [CommonModule],

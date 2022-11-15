@@ -3,29 +3,30 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NoAuthGuard } from './_helpers/no-auth-guard.service';
 import { AuthGuard } from './_helpers/auth-guard.service';
 import { LayoutComponent } from './layout/layout/layout.component';
+const mainTitle = 'ngForecast';
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    title: 'ngForecast',
+    title: mainTitle,
     children: [
       {
         path: 'search/:city',
-        title: 'Search',
+        title: `${mainTitle} - search`,
         loadChildren: () => import('./page-search/search.module').then((m) => m.SearchModule),
       },
       {
         path: 'home',
-        title: 'HomePage',
+        title: `${mainTitle} - home`,
         canActivate: [AuthGuard],
         loadChildren: () => import('./page-home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'auth',
+        path: 'login',
         title: 'Authentication',
         loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
       },
-      { path: '', redirectTo: '/auth', pathMatch: 'full' },
+      { path: '**', redirectTo: '/login', pathMatch: 'full' },
     ],
   },
 ];

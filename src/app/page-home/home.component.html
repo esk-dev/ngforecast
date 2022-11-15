@@ -1,17 +1,25 @@
 <div class="container">
   <ng-container *ngIf="emptyAlert$">
-    <mat-card-title>{{ emptyAlert$ | async }}</mat-card-title>
+    <!-- <mat-card-title>{{ emptyAlert$ | async }}</mat-card-title> -->
   </ng-container>
   <ng-template ngFor let-weathers$ let-i="index" [ngForOf]="favoriteCitiesWeather$">
-    <div class="container__box__block">
-      <app-weathercard [shortWeather]="weathers$ | async">
-        <!-- <ng-container *ngIf="weathers$ | async as data">
-          <a
-            [routerLink]="['/search', (data | async)?.location]"
-            routerLinkActive="router-link-active"
-          ></a>
-        </ng-container> -->
-      </app-weathercard>
-    </div>
+    <ng-container *ngIf="weathers$ | async as city">
+      <!-- <a class="container__box__block" [routerLink]="['/search', city?.location]">
+        <app-weathercard [shortWeather]="weathers$ | async">
+          <app-favorite-button
+            (clickEvent)="toFavorite(city?.location)"
+            [added]="isCityAdded(city?.location)"
+          ></app-favorite-button>
+        </app-weathercard>
+      </a> -->
+      <div class="container__box__block">
+        <app-weathercard [shortWeather]="weathers$ | async">
+          <app-favorite-button
+            (clickEvent)="toFavorite(city?.location)"
+            [added]="isCityAdded(city?.location)"
+          ></app-favorite-button>
+        </app-weathercard>
+      </div>
+    </ng-container>
   </ng-template>
 </div>

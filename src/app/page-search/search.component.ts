@@ -1,7 +1,7 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserStorageService, WeatherService } from '../_services/';
-import { Router } from '@angular/router';
-import { Observable, takeUntil, Subject, switchMap } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, takeUntil, Subject, switchMap, take, map } from 'rxjs';
 import { Forecast, Overview, ShortWeather } from '../core/models';
 import { StoreService } from '../_services/';
 @Component({
@@ -9,19 +9,22 @@ import { StoreService } from '../_services/';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnDestroy {
+export class SearchComponent implements OnInit, OnDestroy {
   destroy$: Subject<boolean> = new Subject();
   forecast$: Observable<Forecast[]>;
   shortWeather$: Observable<ShortWeather>;
   overview$: Observable<Overview>;
   isCityAdded$: Observable<boolean>;
   constructor(
+    public ActivatedRoute: ActivatedRoute,
     public Router: Router,
     public WeatherService: WeatherService,
     public StoreService: StoreService,
     public UserStorageService: UserStorageService,
-  ) {
-    this.StoreService.currentCity$.pipe(takeUntil(this.destroy$)).subscribe((city: string) => {
+  ) {}
+
+  ngOnInit(): void {
+    this.ActivatedRoute.paramMap.pipe(map((params) => params.get('city'))).subscribe((city) => {
       this.forecast$ = this.WeatherService.getForecast(city);
       this.shortWeather$ = this.WeatherService.getShortWeather(city);
       this.overview$ = this.WeatherService.getOverview(city);
@@ -29,22 +32,18 @@ export class SearchComponent implements OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    this.destroy$.next(true);
-    this.destroy$.complete();
-  }
-
   searchEvent(city: string) {
-    this.StoreService.currentCity$.next(city);
     this.Router.navigate(['/search', city]);
   }
 
   toFavorite(city: string) {
+    // TODO вынести в сервис
     this.isCityAdded$
       .pipe(
+        take(1),
         takeUntil(this.destroy$),
         switchMap((acc: boolean) => {
-          if (acc) {
+          if (acc === true) {
             return this.UserStorageService.deleteUserData(city);
           } else {
             return this.UserStorageService.updateUserData(city);
@@ -52,5 +51,10 @@ export class SearchComponent implements OnDestroy {
         }),
       )
       .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }
