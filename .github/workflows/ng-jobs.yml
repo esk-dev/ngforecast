@@ -1,6 +1,6 @@
 name: Angular Test
 on: 
-  push:
+  commit:
     branches: develop
     paths: 
     - 'ui/**'
