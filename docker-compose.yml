@@ -1,0 +1,10 @@
+version: "3.8"
+
+services: 
+  express: 
+    build: 
+      context: .
+      dockerfile: dockerfile
+    container_name: ngforecast
+    ports: 
+      - "7000:7000"
