@@ -1,12 +1,11 @@
 name: Build
 on:
-  pull_request:
-    branches: master
+  push:
+    branches: develop
     paths: 
       - 'ui/**'
 
 jobs:
-
   main:
     runs-on: ubuntu-latest
 
