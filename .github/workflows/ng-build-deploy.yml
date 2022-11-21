@@ -5,11 +5,11 @@ on:
     paths: 
       - 'ui/**'
 
-  jobs:
+jobs:
 
   main:
     runs-on: ubuntu-latest
-  
+
     steps:
       - 
         name: Checkout
