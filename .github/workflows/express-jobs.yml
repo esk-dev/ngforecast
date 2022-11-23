@@ -2,12 +2,7 @@ name: Expressjs Build
 
 on:
   push:
-    branches: develop
-    paths:
-      - "server/**"
-
-  pull_request:
-    branches: develop
+    branches: [develop]
     paths:
       - "server/**"
 
