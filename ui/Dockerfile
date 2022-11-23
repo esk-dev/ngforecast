@@ -2,14 +2,14 @@ FROM node:19.1-alpine3.15 as builder
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json package-lock.json ./
 
-RUN npm install
+RUN npm ci
 
-COPY . /app/
+COPY . /app
 
-RUN npm run build 
+RUN npm run build
 
 EXPOSE 4200
 
-CMD ["node", "dist/ngforecast/main.js"]
+CMD ["npm", "start"]

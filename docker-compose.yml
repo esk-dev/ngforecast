@@ -1,10 +1,14 @@
 version: "3.8"
 
-services: 
-  express: 
-    build: 
-      context: .
-      dockerfile: dockerfile
-    container_name: ngforecast
-    ports: 
+services:
+  ng-server:
+    image: eskdev/ng-server:latest
+    container_name: ng-server
+    ports:
       - "7000:7000"
+
+  ng-ui:
+    image: eskdev/ng-ui:latest
+    container_name: ng-ui
+    ports:
+      - "7000:4200"
