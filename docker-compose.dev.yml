@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  express:
+    build:  
+      context: ./server 
+      dockerfile: dev.dockerfile
+    container_name: express
+    restart: always
+    ports:
+      - "7000:7000"
+    env_file:
+      - .env
+    # networks: 
+      # - nginx-conf
+
+  angular:
+    build:
+      context: ./ui 
+      dockerfile: dev.dockerfile
+    container_name: angular
+    restart: always
+    ports:
+      - "4200:4200"
+    # networks:
+      # - nginx-conf
+
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    restart: always
+    ports: 
+      - "80:80"
+    links:
+      - express
+      - angular
+    #    networks:
+      # - nginx-conf
+
+#  networks:
+#  nginx-conf:
+# external: true
+#     driver: bridge

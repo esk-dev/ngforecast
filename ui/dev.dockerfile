@@ -8,8 +8,8 @@ RUN npm ci
 
 COPY . /app
 
-RUN npm run build
+#RUN npm run build
 
 EXPOSE 4200
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "serv"]
