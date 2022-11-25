@@ -17,17 +17,12 @@ jobs:
         uses: actions/setup-node@v3.5.1
         with:
           node-version: 16.x
-
-      - run: npm i
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Build
-        run: npm run build
-
-      - name: Test
-        run: npm run test
+      - name: Node runs
+        run: |
+          npm i
+          npm run lint
+          npm run test
+        working-directory: ./ui
 
   cd:
     needs: ci
