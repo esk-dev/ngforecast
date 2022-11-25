@@ -2,11 +2,11 @@ name: Docker Compose Build
 
 on: 
   workflow_run:
-    workflows: ["Angular CI/CD", "Express CI/CD"]
+    workflows: [Angular CI/CD, Express CI/CD, Nginx CD]
     types: ["completed"]
 
 jobs: 
-  build:
+  Build:
     runs-on: ubuntu-latest
     environment: ngforecast 
     steps:
