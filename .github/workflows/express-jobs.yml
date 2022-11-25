@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: server/.
-          file: server/Dockerfile
+          file: server/dev.dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ng-server:latest
           # secrets: |
