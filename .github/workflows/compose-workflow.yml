@@ -5,7 +5,6 @@ on:
     workflows: [ "Angular CI/CD" ]
     types:
       - completed
-  workflow_dispatch:
 
 jobs: 
   Build:
