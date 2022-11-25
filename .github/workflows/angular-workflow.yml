@@ -11,10 +11,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v2.5.0
+        
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3.5.1
         with:
           node-version: 16.x
 
@@ -55,7 +55,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ui/.
-          file: ui/Dockerfile
+          file: ui/dev.dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ng-ui:latest
       - name: Image digest
