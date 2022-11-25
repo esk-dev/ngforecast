@@ -14,7 +14,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Run Docker Compose
         run: |
-          docker compose -d docker-compose.dev.yml
+          docker compose -f docker-compose.dev.yml build
+          docker compose -f docker-compose.dev.yml up
           docker compose ps
           docker ls
           docker compose stop	 
