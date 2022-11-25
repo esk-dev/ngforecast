@@ -1,4 +1,4 @@
-name: Expressjs Build
+name: Express CI/CD
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - "server/**"
 
 jobs:
-  main:
+  CD:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

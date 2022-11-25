@@ -6,7 +6,7 @@ on:
       - "ui/**"
 
 jobs:
-  ci:
+  CI:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +21,11 @@ jobs:
       - name: Node runs
         run: |
           npm i
-          #npm run lint
-          #npm run test
+        # npm run lint
+        # npm run test
         working-directory: ./ui
 
-  cd:
+  CD:
     needs: ci
 
     runs-on: ubuntu-latest
