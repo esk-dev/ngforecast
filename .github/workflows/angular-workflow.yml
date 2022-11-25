@@ -2,8 +2,8 @@ name: Angular CI/CD
 on:
   push:
     branches: [develop]
-    paths:
-      - "ui/**"
+#    paths:
+#      - "ui/**"
 
 jobs:
   CI:
