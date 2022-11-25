@@ -13,7 +13,7 @@ jobs:
       - name: Chekout Repository
         uses: actions/checkout@v3
       - name: Run Docker Compose
-      - run: |
+        run: |
           docker compose -d docker-compose.dev.yml
           docker compose ps
           docker ls
