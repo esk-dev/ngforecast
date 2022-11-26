@@ -3,8 +3,8 @@ name: Express CI/CD
 on:
   push:
     branches: [develop]
-    paths:
-      - "server/**"
+#    paths:
+#      - "server/**"
 
 jobs:
   CD:
