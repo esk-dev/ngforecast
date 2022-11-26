@@ -1,11 +1,11 @@
 ### STAGE 1: BUILD UI ###
-FROM node:16-alpine as ui-build
+FROM node:19-alpine as angular-build
 
-COPY ui/package*.json ./
+WORKDIR /ui
 
-RUN npm ci && mkdir /app && mv ./node_modules ./app
+COPY ui/package.json ui/package-lock.json ./
 
-WORKDIR /app
+RUN npm ci 
 
 COPY /ui .
 
@@ -15,16 +15,18 @@ RUN npm run build
 
 ### STAGE 2: Setup api server ###
 
-FROM node:16-alpine 
+FROM node:19-alpine 
 
 WORKDIR /app
 
-COPY /server/ /app/
+COPY server/package.json server/package-lock.json ./
 
 RUN npm ci
 
-COPY --from=ui-build /app/dist /app/public
+COPY /server/ /app/
 
-EXPOSE 7000
+COPY --from=angular-build /ui/dist /app/dist
 
-CMD ["node", "server.js"]
+EXPOSE 80:7000
+
+CMD ["node", "index.js"]

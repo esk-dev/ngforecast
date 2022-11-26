@@ -1,10 +1,10 @@
-FROM node:19.1-alpine3.15 as builder
+FROM node:19-alpine as builder
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY . /app
 

@@ -1,4 +1,4 @@
-FROM node:18.9.0-alpine3.16
+FROM node:19-alpine
 
 # Copy dependency definitions
 COPY package.json package-lock.json ./
