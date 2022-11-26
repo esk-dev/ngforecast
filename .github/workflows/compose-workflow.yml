@@ -1,14 +1,14 @@
 name: Docker Compose Build 
 
-on: 
+on:
   workflow_run:
-    workflows: [ "Angular CI/CD" ]
-    types:
-      - completed
+    workflows: [Angular CI/CD, Nginx CD, Express CI/CD]
+    types: [completed]
 
 jobs: 
   Build:
     runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     environment: ngforecast 
     steps:
       - name: Chekout Repository
