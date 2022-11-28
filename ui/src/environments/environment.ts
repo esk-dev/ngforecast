@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: '/api',
+  API_URL: "https://ng-wht-bck.onrender.com/api",
 };
 
 /*

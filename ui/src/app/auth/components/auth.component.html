@@ -36,7 +36,7 @@
 
 <ng-template #LogInTemplate let-authMode>
   <ng-container>
-    <button mat-raised-button color="accent" [disabled]="authForm.invalid" type="submit">
+    <button mat-button color="primary" [disabled]="authForm.invalid" type="submit">
       {{ authMode | titlecase }}
     </button>
     <button (click)="switchAuthMode()" mat-button type="button">

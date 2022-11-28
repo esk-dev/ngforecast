@@ -1,9 +1,16 @@
-:host {
-  display: inline-flex;
-  align-items: stretch;
-  flex-direction: column;
+@use "src/styles/_mixins.scss" as app-mixins;
+a {
+  color: var(--text-accent-darker-color);
+  span {
+    margin-left: 10px;
+  }
+  @include app-mixins.media-handset() {
+    text-align: left;
+    width: 100%;
+  }
 }
 .active {
-  background-color: #bfdeef;
-  color: #1a73b7;
+  background: var(--primary-color);
+  color: var(--text-primary-color);
 }
+
