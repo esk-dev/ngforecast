@@ -3,6 +3,7 @@
 
 :host {
   display: flex;
+  flex: 1 1 45%;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: flex-start;
@@ -17,16 +18,9 @@
     0px 0.2px 3.1px rgba(0, 0, 0, 0.035),
     0px 0.4px 5.8px rgba(0, 0, 0, 0.028),
     0px 1px 14px rgba(0, 0, 0, 0.02)
-;
-
-;
+  ;
   border-color: var(--accent-lighter-color);
-  padding: 20px;
-  width: 45%;
-  height: 80px;
-  @include app-mixins.media-handset() {
-    width: 100%;
-  }
+  padding: 10px;
 }
 .icon {
   color: var(--primary-color);

@@ -15,7 +15,7 @@ app.use(cors({
   credentials: true,
 }));
 app.use(express.static(__dirname + '/dist/ngforecast'));
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname + '/dist/ngforecast/index.html'))
 });
 app.use('/api', router);
