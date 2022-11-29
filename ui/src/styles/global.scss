@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 // @import "animate.css/animate.css";
-
+@use "src/styles/_variables.scss";
 @use "src/styles/mixins.scss" as app-mixins;
 html,
 body {
   height: 100%;
-  // background: rgb(255,255,255);
+  background: rgb(255,255,255);
   // background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(194,216,240,1) 35%, rgba(170,232,255,1) 100%);
 }
 * {
@@ -18,6 +18,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
 }
+
 .container {
   max-width: 1440px;
   display: flex;
@@ -34,9 +35,4 @@ body {
     align-items: center;
   }
 
-}
-
-::ng-deep button.active {
-  background-color: #bfdeef;
-  color: #1a73b7;
 }

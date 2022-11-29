@@ -1,15 +1,15 @@
 <section class="container">
-  <div class="container__main-box">
-    <div class="container__box__block header">
+  <div class="box main">
+    <div class="block first">
       <app-date></app-date>
       <app-input (newSearchEvent)="searchEvent($event)"></app-input>
     </div>
-    <div class="container__box__block main">
+    <div class="block second">
       <app-overview [overview$]="overview$"></app-overview>
     </div>
   </div>
-  <div class="container__side-box">
-    <div class="container__box__block header">
+  <div class="box side">
+    <div class="block first">
       <ng-container *ngIf="shortWeather$ | async as weather">
         <app-weathercard class="weather-card" [shortWeather]="shortWeather$ | async">
           <app-favorite-button
@@ -19,9 +19,9 @@
         </app-weathercard>
       </ng-container>
     </div>
-    <div class="container__box__block forecast">
+    <div class="block forecast">
       <app-forecast [forecast$]="forecast$"></app-forecast>
     </div>
-    <div class="container__box__block"></div>
+    <div class="block"></div>
   </div>
 </section>

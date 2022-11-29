@@ -34,6 +34,7 @@ export class UserStorageService {
     return this.currentUser$.getValue().id;
   }
   public clearUserData() {
+    localStorage.clear();
     this.currentUser$.next({} as User);
   }
 

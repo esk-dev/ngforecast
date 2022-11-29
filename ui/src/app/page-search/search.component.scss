@@ -1,23 +1,20 @@
 @use "src/styles/_mixins.scss" as app-mixins;
-.container__main-box {
+@use "src/styles/_variables.scss" as var;
+.box {
   display: flex;
   flex-direction: column;
   width: 100%;
   flex: 1 1 auto;
   margin: 5px;
-  border-radius: 15px;
+  border-radius: 4px;
+  box-shadow: var.$box-shadow;
   // background: var(--accent-lighter-color);
 }
-.container__side-box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+.side {
   flex: 2 2 auto;
-  margin: 5px;
-  border-radius: 15px;
   // background: var(--accent-lighter-color);
 }
-.container__box__block {
+.block {
   flex:1 1 100%;
   padding: 20px;
   align-items: center;
@@ -26,7 +23,7 @@
   margin: 5px;
 }
 
-.container__box__block.header {
+.first {
   flex: 2 2 auto;
   justify-content: space-between;
 
