@@ -2,8 +2,9 @@
 @use "src/styles/_variables.scss" as var;
 
 :host {
-  flex: 1 1 auto;
+  flex: 1 1 max-content;
   flex-wrap: nowrap;
+  min-width: min-content;
   border-radius: 4px;
   border-style: solid;
   border-width: 1px;
@@ -17,6 +18,10 @@
   ;
   border-color: var(--accent-lighter-color);
   padding: 5px;
+
+  @include app-mixins.media-handset() {
+    flex: 1 1 45%;
+  }
 }
 .icon {
   display: block;
