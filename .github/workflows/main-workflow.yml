@@ -1,7 +1,8 @@
-name: Build & deploy to docker hub
+name: Build & Deploy to docker hub
 on:
   push:
     branches:
+      - master
       - develop
 
 jobs:
