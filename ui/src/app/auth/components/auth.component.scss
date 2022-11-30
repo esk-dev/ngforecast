@@ -1,0 +1,16 @@
+@use "src/styles/_variables.scss" as var;
+:host {
+  margin: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  min-width: 250px;
+  max-width: 600px;
+  row-gap: 1vh;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: var.$box-shadow;
+}

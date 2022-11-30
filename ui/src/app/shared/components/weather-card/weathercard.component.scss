@@ -1,0 +1,42 @@
+:host {
+  width: 100%;
+  text-align: left;
+}
+mat-card-header {
+  display: flex;
+  justify-content: flex-start;
+
+  mat-card-actions {
+    margin-left: auto;
+  }
+}
+mat-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+}
+.right {
+  // flex: 1 0 auto;
+}
+img {
+  width: 64px;
+}
+
+.text-line {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: baseline;
+  // column-gap: 5vw;
+}
+h2 {
+  margin: 0;
+  line-height: 20px;
+}

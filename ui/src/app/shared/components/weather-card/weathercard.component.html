@@ -1,0 +1,33 @@
+<mat-card-header>
+  <div>
+    <mat-card-title>{{ shortWeather?.location }}</mat-card-title>
+    <br />
+    <mat-card-subtitle>{{ shortWeather?.country }}</mat-card-subtitle>
+  </div>
+  <mat-card-actions>
+    <ng-content #action></ng-content>
+  </mat-card-actions>
+</mat-card-header>
+<mat-card-content>
+  <div class="box">
+    <img [src]="[shortWeather?.icon]" />
+    <h2>{{ shortWeather?.temperature }}°C</h2>
+    <mat-card-subtitle>{{ shortWeather?.condition }}</mat-card-subtitle>
+  </div>
+  <div class="box right">
+    <div class="text-line">
+      <mat-card-subtitle>Feels like</mat-card-subtitle>
+      <h2>{{ shortWeather?.feelslike }}°C</h2>
+    </div>
+    <div class="text-line">
+      <mat-card-subtitle>Humidity</mat-card-subtitle>
+      <h2>{{ shortWeather?.humidity }}%</h2>
+    </div>
+    <div class="text-line">
+      <mat-card-subtitle>Wind</mat-card-subtitle>
+      <h2>{{ shortWeather?.wind }}km/h</h2>
+    </div>
+  </div>
+</mat-card-content>
+
+<!-- <ng-template [ngIf]="obs.value">Value: {{ obs.value }}</ng-template> -->

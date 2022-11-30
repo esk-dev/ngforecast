@@ -1,0 +1,27 @@
+<section class="container">
+  <div class="box main">
+    <div class="block first">
+      <app-date></app-date>
+      <app-input (newSearchEvent)="searchEvent($event)"></app-input>
+    </div>
+    <div class="block second">
+      <app-overview [overview$]="overview$"></app-overview>
+    </div>
+  </div>
+  <div class="box side">
+    <div class="block first">
+      <ng-container *ngIf="shortWeather$ | async as weather">
+        <app-weathercard class="weather-card" [shortWeather]="shortWeather$ | async">
+          <app-favorite-button
+            (clickEvent)="toFavorite(weather?.location)"
+            [added]="isCityAdded$ | async"
+          ></app-favorite-button>
+        </app-weathercard>
+      </ng-container>
+    </div>
+    <div class="block forecast">
+      <app-forecast [forecast$]="forecast$"></app-forecast>
+    </div>
+    <div class="block"></div>
+  </div>
+</section>

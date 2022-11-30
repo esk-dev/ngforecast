@@ -1,0 +1,58 @@
+name: Angular CI/CD
+on:
+  push:
+    branches: [develop]
+#    paths:
+#      - "ui/**"
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+        
+      - name: Setup node
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 16.x
+
+      - name: Node runs
+        run: |
+          npm i
+        # npm run lint
+        # npm run test
+        working-directory: ./ui
+
+  CD:
+    needs: ci
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v3
+        with:
+          context: ui/.
+          file: ui/dev.dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/angular:latest
+      - name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}

@@ -1,0 +1,21 @@
+@use "src/styles/_mixins.scss" as app-mixins;
+
+:host {
+  display: flex;
+  margin: 0 auto;
+  transition: all 1s ease-in;
+  gap: 5px;
+  
+  @include app-mixins.media-web() {
+    flex-direction: row;
+  }
+
+  @include app-mixins.media-tablet() {
+    flex-direction: column;
+  }
+
+  @include app-mixins.media-handset() {
+    flex-direction: column;
+    width: 100%;
+  }
+}

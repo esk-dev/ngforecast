@@ -1,0 +1,22 @@
+name: Docker Compose Build 
+
+on:
+  workflow_run:
+    workflows: [Angular CI/CD, Nginx CD, Express CI/CD]
+    types: [completed]
+
+jobs: 
+  Build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    environment: ngforecast 
+    steps:
+      - name: Chekout Repository
+        uses: actions/checkout@v3
+      - name: Run Docker Compose
+        run: |
+          docker compose -f docker-compose.dev.yml build
+          docker compose -f docker-compose.dev.yml up
+          docker compose ps
+          docker ls
+          docker compose stop	 
