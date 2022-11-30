@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap, tap } from 'rxjs';
+import { Observable, map, switchMap, tap, Subject } from 'rxjs';
 import { ApiService } from './api.service';
 import { LocationService } from './location.service';
 import { Forecast, Overview, ShortWeather } from '../core/models';
@@ -7,7 +7,6 @@ import { IconService } from './icon.service';
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
   constructor(private _api: ApiService, private iconService: IconService) {}
-
   public getShortWeather(city: string): Observable<ShortWeather> {
     return this._api.getWeather(city).pipe(
       map((response: any) => ({
@@ -25,7 +24,7 @@ export class WeatherService {
   public getOverview(city: string): Observable<Overview> {
     return this._api.getWeather(city).pipe(
       map((response: any) => {
-        const { pressure_mb, wind_kph, wind_dir, uv, vis_km } = response.current;
+        const { pressure_mb, wind_kph, wind_dir, uv, vis_km, precip_mm, cloud } = response.current;
         return {
           wind: {
             icon: this.iconService.registerIcon(
@@ -57,6 +56,19 @@ export class WeatherService {
             name: 'visibility',
             values: vis_km,
           },
+          precip: {
+            icon: this.iconService.registerIcon(
+              '/assets/icons/weather/wi-umbrella.svg',
+              'precipIcon',
+            ),
+            name: 'precipation',
+            values: precip_mm,
+          },
+          cloud: {
+            icon: this.iconService.registerIcon('/assets/icons/weather/wi-cloud.svg', 'cloudIcon'),
+            name: 'cloud',
+            values: cloud,
+          },
         };
       }),
     );
@@ -65,6 +77,7 @@ export class WeatherService {
   public getForecast(city: string): Observable<Forecast[]> {
     return this._api.getForecast(city).pipe(
       map((response: any) => {
+        console.log(response);
         const { forecastday } = response.forecast;
         return forecastday.map((el: any) => ({
           date: new Date(el['date_epoch'] * 1000),

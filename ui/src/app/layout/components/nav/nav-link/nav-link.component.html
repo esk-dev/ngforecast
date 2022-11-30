@@ -1,13 +1,8 @@
-<ng-container 
-  *ngTemplateOutlet="linkTemplate; context: { $implicit: (layoutType$ | async) }"
->
+<ng-container *ngTemplateOutlet="linkTemplate; context: { $implicit: (layoutType$ | async) }">
 </ng-container>
-<ng-template 
-  #linkTemplate 
-  let-layoutType
-  >
+<ng-template #linkTemplate let-layoutType>
   <ng-container>
-    <a mat-button  [routerLink]="[link]" routerLinkActive="active">
+    <a mat-button [routerLink]="[link]" routerLinkActive="active">
       <mat-icon>{{ icon }}</mat-icon>
       <span *ngIf="layoutType !== breakpoints.Tablet">{{ title | titlecase }}</span>
     </a>

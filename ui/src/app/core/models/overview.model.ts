@@ -9,4 +9,6 @@ export interface Overview {
   pressure: ItemOverview;
   uv: ItemOverview;
   visibility: ItemOverview;
+  precip: ItemOverview;
+  cloud: ItemOverview;
 }
