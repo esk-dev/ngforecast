@@ -7,6 +7,16 @@ import { JwtService } from './jwt.service';
   providedIn: 'root',
 })
 export class UserStorageService {
+  private currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+
+  public userData$: Observable<User> = this.currentUser$.asObservable();
+
+  public userId: User = this.currentUser$.getValue();
+
+  public favoriteCities$: Observable<Array<string | null>> = this.userData$.pipe(
+    map((acc: User) => acc.favoriteCities),
+    );
+
   constructor(private apiService: ApiService) {
     this.apiService
       .read()
@@ -17,14 +27,7 @@ export class UserStorageService {
         }
       });
   }
-
-  private currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
-  public userData$: Observable<User> = this.currentUser$.asObservable();
-  public userId: User = this.currentUser$.getValue();
-  public favoriteCities$: Observable<Array<string | null>> = this.userData$.pipe(
-    map((acc: User) => acc.favoriteCities),
-  );
-
+    
   public initUserData(user: User) {
     this.currentUser$.next(user);
     localStorage.setItem('userId', user.id);

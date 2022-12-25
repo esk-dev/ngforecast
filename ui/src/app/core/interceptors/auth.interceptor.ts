@@ -24,6 +24,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+  // TODO Разделить логику на разные сервисы
   private isRefreshing$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private jwtService: JwtService, private http: HttpClient) {}
   intercept(request: HttpRequest<any>, next: HttpHandler) {
@@ -42,6 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
   private authReq(request: HttpRequest<any>) {
+    // TODO Убрать id из хедеров 
     const accesstoken = this.jwtService.getToken();
     const id = localStorage.getItem('userId');
     return request.clone({

@@ -77,7 +77,6 @@ export class WeatherService {
   public getForecast(city: string): Observable<Forecast[]> {
     return this._api.getForecast(city).pipe(
       map((response: any) => {
-        console.log(response);
         const { forecastday } = response.forecast;
         return forecastday.map((el: any) => ({
           date: new Date(el['date_epoch'] * 1000),

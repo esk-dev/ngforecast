@@ -1,26 +1,21 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { ReplaySubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JwtService {
-  private isTokenExistSubject$: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  public tokenState$: Observable<boolean> = this.isTokenExistSubject$.asObservable();
-
+  private isTokenExistSubject$: ReplaySubject<boolean> = new ReplaySubject(false);
+  public isTokenExist$: Observable<boolean> = this.isTokenExistSubject$.asObservable();
+  
   constructor() {
+    this.initToken();
+  }
+
+  initToken() {
     this.isTokenExistSubject$.next(!!this.getToken());
   }
 
-  tokenStateChange() {
-    if (this.getToken()) {
-      this.isTokenExistSubject$.next(true);
-      console.log('stateChangeWork t');
-    } else {
-      this.isTokenExistSubject$.next(false);
-      console.log('stateChangeWork f');
-    }
-  }
   getToken(): string {
     return window.localStorage.getItem('jwtToken');
   }
