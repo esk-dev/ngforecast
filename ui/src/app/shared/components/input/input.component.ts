@@ -2,7 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { debounceTime, distinctUntilChanged, Observable, Subject, takeUntil } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  Observable,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { AutoComplete } from './autocomplete.service';
 @Component({
   selector: 'app-input',
@@ -18,7 +24,10 @@ export class InputComponent implements OnInit, OnDestroy {
     inputFormControl: new FormControl<string>('', Validators.required),
   });
 
-  constructor(private AutoComplete: AutoComplete, public ActivatedRouter: Router) {}
+  constructor(
+    private AutoComplete: AutoComplete,
+    public ActivatedRouter: Router
+  ) {}
 
   ngOnInit(): void {
     this.form.controls.inputFormControl.valueChanges

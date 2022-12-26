@@ -13,3 +13,4 @@ COPY . /app
 EXPOSE 4200
 
 CMD ["npm", "run", "serv"]
+

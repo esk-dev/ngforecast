@@ -1,5 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject, switchMap, take, takeUntil } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  switchMap,
+  take,
+  takeUntil,
+} from 'rxjs';
 import { ShortWeather } from '../core';
 import { StoreService, UserStorageService } from '../_services';
 import { WeatherService } from '../_services';
@@ -16,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public isCityAdded$: Observable<boolean>;
   constructor(
     private UserStorageService: UserStorageService,
-    private WeatherService: WeatherService,
+    private WeatherService: WeatherService
   ) {}
 
   ngOnInit(): void {
@@ -57,7 +64,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           } else {
             return this.UserStorageService.updateUserData(city);
           }
-        }),
+        })
       )
       .subscribe();
   }

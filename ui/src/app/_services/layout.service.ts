@@ -14,12 +14,18 @@ export const LAYOUT_SHORT_TYPES_MAP = {
   [Breakpoints.WebLandscape]: Breakpoints.Web,
 };
 
-export const LAYOUT_TYPES = [Breakpoints.Handset, Breakpoints.Tablet, Breakpoints.Web];
+export const LAYOUT_TYPES = [
+  Breakpoints.Handset,
+  Breakpoints.Tablet,
+  Breakpoints.Web,
+];
 @Injectable({
   providedIn: 'root',
 })
 export class LayoutService {
-  private readonly layoutSubject$ = new BehaviorSubject<string>(Breakpoints.Handset);
+  private readonly layoutSubject$ = new BehaviorSubject<string>(
+    Breakpoints.Handset
+  );
 
   get layoutType$(): Observable<string> {
     return this.layoutSubject$.asObservable();
@@ -41,7 +47,7 @@ export class LayoutService {
           }
 
           this.layoutSubject$.next(type ?? Breakpoints.Handset);
-        }),
+        })
       )
       .subscribe();
   }

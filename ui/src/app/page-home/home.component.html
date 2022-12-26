@@ -2,7 +2,12 @@
   <ng-container *ngIf="emptyAlert$">
     <!-- <mat-card-title>{{ emptyAlert$ | async }}</mat-card-title> -->
   </ng-container>
-  <ng-template ngFor let-weathers$ let-i="index" [ngForOf]="favoriteCitiesWeather$">
+  <ng-template
+    ngFor
+    let-weathers$
+    let-i="index"
+    [ngForOf]="favoriteCitiesWeather$"
+  >
     <ng-container *ngIf="weathers$ | async as city">
       <!-- <a class="container__box__block" [routerLink]="['/search', city?.location]">
         <app-weathercard [shortWeather]="weathers$ | async">

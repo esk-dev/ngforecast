@@ -20,16 +20,18 @@ export class SearchComponent implements OnInit, OnDestroy {
     public Router: Router,
     public WeatherService: WeatherService,
     public StoreService: StoreService,
-    public UserStorageService: UserStorageService,
+    public UserStorageService: UserStorageService
   ) {}
 
   ngOnInit(): void {
-    this.ActivatedRoute.paramMap.pipe(map((params) => params.get('city'))).subscribe((city) => {
-      this.forecast$ = this.WeatherService.getForecast(city);
-      this.shortWeather$ = this.WeatherService.getShortWeather(city);
-      this.overview$ = this.WeatherService.getOverview(city);
-      this.isCityAdded$ = this.UserStorageService.isCityAdded(city);
-    });
+    this.ActivatedRoute.paramMap
+      .pipe(map((params) => params.get('city'),takeUntil(this.destroy$)))
+      .subscribe((city) => {
+        this.forecast$ = this.WeatherService.getForecast(city);
+        this.shortWeather$ = this.WeatherService.getShortWeather(city);
+        this.overview$ = this.WeatherService.getOverview(city);
+        this.isCityAdded$ = this.UserStorageService.isCityAdded(city);
+      });
   }
 
   searchEvent(city: string) {
@@ -37,20 +39,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   toFavorite(city: string) {
-    // TODO вынести в сервис
-    this.isCityAdded$
-      .pipe(
-        take(1),
-        takeUntil(this.destroy$),
-        switchMap((acc: boolean) => {
-          if (acc === true) {
-            return this.UserStorageService.deleteUserData(city);
-          } else {
-            return this.UserStorageService.updateUserData(city);
-          }
-        }),
-      )
-      .subscribe();
+    this.UserStorageService.updateFavoriteCityArray(city).pipe(
+      take(1),
+      takeUntil(this.destroy$)
+    ).subscribe()
   }
 
   ngOnDestroy() {

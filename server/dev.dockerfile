@@ -21,4 +21,5 @@ EXPOSE 7000
 USER node
 
 # Serve the app
-CMD ["npm", "start"]
+# CMD ["npm", "start"] 
+CMD [ "sh", "-c", "node ./index.js" ]

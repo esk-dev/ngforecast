@@ -9,6 +9,9 @@
 <mat-card-title class="title">Forecast</mat-card-title>
 <div class="forecast__container">
   <ng-container *ngFor="let forecast of forecast$ | async | slice: 0:4">
-    <app-forecast-card class="forecast-item" [forecast]="forecast"></app-forecast-card>
+    <app-forecast-card
+      class="forecast-item"
+      [forecast]="forecast"
+    ></app-forecast-card>
   </ng-container>
 </div>

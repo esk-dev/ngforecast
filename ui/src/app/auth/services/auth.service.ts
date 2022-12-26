@@ -23,15 +23,16 @@ import { AuthResponse } from '../models/authresponse.model';
 export class AuthService {
   constructor(
     private http: HttpClient,
-    // private jwtService: JwtService,
-    // private userStorageService: UserStorageService,
+    private errorService: ErrorService // private jwtService: JwtService, // private userStorageService: UserStorageService,
   ) {}
 
-  private isAuthenticatedSubject$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
+  private isAuthenticatedSubject$: ReplaySubject<boolean> =
+    new ReplaySubject<boolean>();
 
-  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject$.asObservable();
+  public isAuthenticated$: Observable<boolean> =
+    this.isAuthenticatedSubject$.asObservable();
 
-  public setAuthenticateState(state: boolean) {
+  private setAuthenticateState(state: boolean) {
     this.isAuthenticatedSubject$.next(state);
   }
 
@@ -41,41 +42,44 @@ export class AuthService {
         email,
         password,
       }).pipe(
-        // catchError(),
         tap(
-          (value: AuthResponse) => console.log(value);
+          (response: AuthResponse) => {
+            this.setAuthenticateState(true);
+          }
         )
       )
   }
 
-  public registration(email: string, password: string): Observable<AuthResponse> {
+  public registration(
+    email: string,
+    password: string
+  ): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${environment.API_URL}/registration`, {
         email,
         password,
       }).pipe(
         tap(
-          (value: AuthResponse) => console.log(value); // side effect 
-        ),
-        // catchError(),
-      );
+          (response: AuthResponse) => {
+            this.setAuthenticateState(true);
+          }
+        )
+      )
   }
 
   public logout(): Observable<any> {
-    return this.http.post(`${environment.API_URL}/logout`, {}).pipe(
-      // catchError(),
-      tap(
-        (value: AuthResponse) => console.log(value);
+    return this.http
+      .post(`${environment.API_URL}/logout`, {}).pipe(
+        tap(
+          (response: AuthResponse) => {
+            this.setAuthenticateState(false);
+          }
+        )
       )
-    );
   }
 
   public refreshToken(): Observable<AuthResponse> {
-    return this.http.get<AuthResponse>(`${environment.API_URL}/refresh`).pipe(
-      // catchError(),
-      tap(
-        (value: AuthResponse) => console.log(value);
-      )
-    );
+    return this.http
+      .get<AuthResponse>(`${environment.API_URL}/refresh`);
   }
 }

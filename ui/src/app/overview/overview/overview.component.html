@@ -10,7 +10,10 @@
 </mat-card-content>
 <div class="content">
   <ng-container *ngIf="overview$ | async as data">
-    <app-overview-card *ngFor="let properties of data | keyvalue" [icon]="properties?.value?.icon">
+    <app-overview-card
+      *ngFor="let properties of data | keyvalue"
+      [icon]="properties?.value?.icon"
+    >
       <ng-container class="values" values>
         <mat-card-subtitle>
           {{ properties?.key | titlecase }}
