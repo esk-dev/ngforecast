@@ -13,21 +13,18 @@ const routes: Routes = [
       {
         path: 'search/:city',
         title: `${mainTitle} - search`,
-        loadChildren: () =>
-          import('./page-search/search.module').then((m) => m.SearchModule),
+        loadChildren: () => import('./page-search/search.module').then((m) => m.SearchModule),
       },
       {
         path: 'home',
         title: `${mainTitle} - home`,
         canActivate: [AuthGuard],
-        loadChildren: () =>
-          import('./page-home/home.module').then((m) => m.HomeModule),
+        loadChildren: () => import('./page-home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'login',
         title: 'Authentication',
-        loadChildren: () =>
-          import('./auth/auth.module').then((m) => m.AuthModule),
+        loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
       },
       { path: '**', redirectTo: '/login', pathMatch: 'full' },
     ],

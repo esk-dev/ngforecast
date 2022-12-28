@@ -17,13 +17,7 @@ import { NotAuthDirective } from './directives/not-auth.directive';
 import { MaterialModule } from '../material.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule,
-    MaterialModule,
-    HttpClientModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, MaterialModule, HttpClientModule],
   declarations: [
     ButtonComponent,
     WeathercardComponent,

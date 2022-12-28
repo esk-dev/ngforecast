@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { JwtService, UserStorageService } from '../../_services';
@@ -26,11 +21,9 @@ export class AuthComponent implements OnInit {
     private jwtTokenService: JwtService,
   ) {}
 
-  private authModeSubject$: BehaviorSubject<string> =
-    new BehaviorSubject<string>('log in');
+  private authModeSubject$: BehaviorSubject<string> = new BehaviorSubject<string>('log in');
 
-  public readonly authMode$: Observable<string> =
-    this.authModeSubject$.asObservable();
+  public readonly authMode$: Observable<string> = this.authModeSubject$.asObservable();
 
   public hide: boolean = true;
 
@@ -38,14 +31,8 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     this.authForm = new FormGroup({
-      email: new FormControl<string>('', [
-        Validators.required,
-        Validators.email,
-      ]),
-      password: new FormControl<string>('', [
-        Validators.required,
-        Validators.minLength(8),
-      ]),
+      email: new FormControl<string>('', [Validators.required, Validators.email]),
+      password: new FormControl<string>('', [Validators.required, Validators.minLength(8)]),
     });
   }
 

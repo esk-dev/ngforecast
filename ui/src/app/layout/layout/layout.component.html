@@ -29,11 +29,7 @@
     <mat-sidenav-container>
       <mat-sidenav #sidenav mode="over" hasBackdrop="true">
         <app-sidenav>
-          <app-nav
-            [layoutType$]="layoutType$"
-            (closeEvent)="sidenav.toggle()"
-            navbar
-          ></app-nav>
+          <app-nav [layoutType$]="layoutType$" (closeEvent)="sidenav.toggle()" navbar></app-nav>
         </app-sidenav>
       </mat-sidenav>
       <mat-sidenav-content>

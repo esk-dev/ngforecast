@@ -18,26 +18,18 @@ export class WeatherService {
         wind: response.current.wind_kph,
         humidity: response.current.humidity,
         feelslike: response.current.feelslike_c,
-      }))
+      })),
     );
   }
   public getOverview(city: string): Observable<Overview> {
     return this._api.getWeather(city).pipe(
       map((response: any) => {
-        const {
-          pressure_mb,
-          wind_kph,
-          wind_dir,
-          uv,
-          vis_km,
-          precip_mm,
-          cloud,
-        } = response.current;
+        const { pressure_mb, wind_kph, wind_dir, uv, vis_km, precip_mm, cloud } = response.current;
         return {
           wind: {
             icon: this.iconService.registerIcon(
               '/assets/icons/weather/wi-wind-beaufort-0.svg',
-              'windIcon'
+              'windIcon',
             ),
             values: wind_kph,
             name: 'wind',
@@ -46,23 +38,20 @@ export class WeatherService {
           pressure: {
             icon: this.iconService.registerIcon(
               '/assets/icons/weather/wi-barometer.svg',
-              'pressureIcon'
+              'pressureIcon',
             ),
             name: 'pressure',
             values: pressure_mb,
           },
           uv: {
-            icon: this.iconService.registerIcon(
-              '/assets/icons/weather/wi-raindrop.svg',
-              'uvIcon'
-            ),
+            icon: this.iconService.registerIcon('/assets/icons/weather/wi-raindrop.svg', 'uvIcon'),
             name: 'uv',
             values: uv,
           },
           visibility: {
             icon: this.iconService.registerIcon(
               '/assets/icons/weather/wi-refresh-alt.svg',
-              'visIcon'
+              'visIcon',
             ),
             name: 'visibility',
             values: vis_km,
@@ -70,21 +59,18 @@ export class WeatherService {
           precip: {
             icon: this.iconService.registerIcon(
               '/assets/icons/weather/wi-umbrella.svg',
-              'precipIcon'
+              'precipIcon',
             ),
             name: 'precipation',
             values: precip_mm,
           },
           cloud: {
-            icon: this.iconService.registerIcon(
-              '/assets/icons/weather/wi-cloud.svg',
-              'cloudIcon'
-            ),
+            icon: this.iconService.registerIcon('/assets/icons/weather/wi-cloud.svg', 'cloudIcon'),
             name: 'cloud',
             values: cloud,
           },
         };
-      })
+      }),
     );
   }
 
@@ -98,7 +84,7 @@ export class WeatherService {
           condition: el.day.condition.text,
           temperature: el.day.avgtemp_c,
         }));
-      })
+      }),
     );
   }
 }

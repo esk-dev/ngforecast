@@ -11,10 +11,7 @@
   <div class="box side">
     <div class="block first">
       <ng-container *ngIf="shortWeather$ | async as weather">
-        <app-weathercard
-          class="weather-card"
-          [shortWeather]="shortWeather$ | async"
-        >
+        <app-weathercard class="weather-card" [shortWeather]="shortWeather$ | async">
           <app-favorite-button
             (clickEvent)="toFavorite(weather?.location)"
             [added]="isCityAdded$ | async"

@@ -25,8 +25,7 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   // TODO Разделить логику на разные сервисы
-  private isRefreshing$: BehaviorSubject<boolean> =
-    new BehaviorSubject<boolean>(false);
+  private isRefreshing$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private jwtService: JwtService, private http: HttpClient) {}
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     return next.handle(this.authReq(request)).pipe(
@@ -40,7 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
         } else {
           return throwError(() => error);
         }
-      })
+      }),
     );
   }
   private authReq(request: HttpRequest<any>) {
@@ -64,7 +63,7 @@ export class AuthInterceptor implements HttpInterceptor {
         switchMap((response: AuthResponse) => {
           this.jwtService.saveToken(response.accessToken);
           return next.handle(this.authReq(request));
-        })
+        }),
       );
     } else {
       return next.handle(this.authReq(request));

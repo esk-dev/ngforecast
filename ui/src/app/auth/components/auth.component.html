@@ -2,18 +2,9 @@
   <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
     <h2>{{ authMode$ | async | titlecase }}</h2>
     <mat-form-field appearance="outline">
-      <input
-        matInput
-        placeholder="Email"
-        autocomplete="username"
-        formControlName="email"
-      />
-      <mat-error *ngIf="authForm.get('email').errors?.['required']"
-        >Email required</mat-error
-      >
-      <mat-error *ngIf="authForm.get('email').errors?.['email']"
-        >Email invalid</mat-error
-      >
+      <input matInput placeholder="Email" autocomplete="username" formControlName="email" />
+      <mat-error *ngIf="authForm.get('email').errors?.['required']">Email required</mat-error>
+      <mat-error *ngIf="authForm.get('email').errors?.['email']">Email invalid</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <input
@@ -23,9 +14,7 @@
         placeholder="Password"
         formControlName="password"
       />
-      <mat-error *ngIf="authForm.get('password').errors?.['required']"
-        >Password required</mat-error
-      >
+      <mat-error *ngIf="authForm.get('password').errors?.['required']">Password required</mat-error>
       <mat-error *ngIf="authForm.get('password').errors?.['minlength']"
         >Min password length - 8</mat-error
       >
@@ -37,35 +26,21 @@
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide"
       >
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
     </mat-form-field>
-    <ng-container
-      *ngTemplateOutlet="
-        LogInTemplate;
-        context: { $implicit: (authMode$ | async) }
-      "
-    >
+    <ng-container *ngTemplateOutlet="LogInTemplate; context: { $implicit: (authMode$ | async) }">
     </ng-container>
   </form>
 </div>
 
 <ng-template #LogInTemplate let-authMode>
   <ng-container>
-    <button
-      mat-button
-      color="primary"
-      [disabled]="authForm.invalid"
-      type="submit"
-    >
+    <button mat-button color="primary" [disabled]="authForm.invalid" type="submit">
       {{ authMode | titlecase }}
     </button>
     <button (click)="switchAuthMode()" mat-button type="button">
-      {{
-        authMode === "log in"
-          ? "Dont Have account? Sign up"
-          : "Already have account? Log in"
-      }}
+      {{ authMode === 'log in' ? 'Dont Have account? Sign up' : 'Already have account? Log in' }}
     </button>
   </ng-container>
 </ng-template>

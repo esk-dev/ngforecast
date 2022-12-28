@@ -6,8 +6,7 @@ import { ReplaySubject, Observable, Subject } from 'rxjs';
 })
 export class JwtService {
   private isTokenExistSubject$: ReplaySubject<boolean> = new ReplaySubject();
-  public isTokenExist$: Observable<boolean> =
-    this.isTokenExistSubject$.asObservable();
+  public isTokenExist$: Observable<boolean> = this.isTokenExistSubject$.asObservable();
 
   constructor() {
     this.initToken();

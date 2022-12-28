@@ -24,15 +24,13 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class CatchErrorInterceptor implements HttpInterceptor {
-    
-    constructor(private errorService: ErrorService, private http: HttpClient) {}
-  
-    intercept(request: HttpRequest<any>, next: HttpHandler) {
-        
-        return next.handle(request).pipe(
-            catchError((error: HttpErrorResponse) => {
-                return this.errorService.handleError(error);
-            })
-        )
-    }      
+  constructor(private errorService: ErrorService, private http: HttpClient) {}
+
+  intercept(request: HttpRequest<any>, next: HttpHandler) {
+    return next.handle(request).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return this.errorService.handleError(error);
+      }),
+    );
+  }
 }
