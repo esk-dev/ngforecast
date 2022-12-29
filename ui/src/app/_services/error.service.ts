@@ -34,18 +34,6 @@ export class ErrorService {
     let userMessage = this.messageError(error);
     this.notify.showError(userMessage);
     console.error(error);
-
-    // if (error.status === 0) {
-    //   console.error('An error occurred:', error);
-    //   this.notify.showError(userMessage);
-    // } else {
-    //   console.error(
-    //     `Backend returned code ${error.status}, body was: `,
-    //     error.error
-    //   );
-    //   userMessage = 'The backend returned an unsuccessful response code.';
-    //   this.notify.showError(userMessage);
-    // }
     return throwError(() => error);
   }
 }

@@ -3,9 +3,13 @@
 
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
-    "dev env": {
+    "Run Docker": {
       "name": "Run Docker",
-      "command": "docker-compose -f docker-compose.dev.yml build && docker-compose -f docker-compose.dev.yml up"
+      "command": "docker-compose -f docker-compose.dev.yml up"
+    },
+    "Build Docker": {
+      "name": "Build Docker",
+      "command": "docker-compose -f docker-compose.dev.yml build"
     },
     "ng": {
       "name": "ng",
@@ -41,6 +45,6 @@
       "name": "lint",
       "command": "npm run lint",
       "runAtStart": false
-    },
+    }
   }
 }

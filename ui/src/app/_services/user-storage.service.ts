@@ -19,13 +19,15 @@ import { AuthResponse } from '../auth/models/authresponse.model';
 })
 export class UserStorageService {
   // TODO Remove User MetaData
-  private currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+  private currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(
+    {} as User
+  );
   public userData$: Observable<User> = this.currentUser$.asObservable();
 
-  private favoriteCitiesSubject$: ReplaySubject<Array<string>> = new ReplaySubject<Array<string>>(
-    1,
-  );
-  public favoriteCities$: Observable<Array<string>> = this.favoriteCitiesSubject$.asObservable();
+  private favoriteCitiesSubject$: BehaviorSubject<Array<string>> =
+    new BehaviorSubject<Array<string>>([] as Array<string>);
+  public favoriteCities$: Observable<Array<string>> =
+    this.favoriteCitiesSubject$.asObservable();
 
   constructor(private apiService: ApiService) {}
 
@@ -33,6 +35,11 @@ export class UserStorageService {
     const { user } = response;
     this.currentUser$.next(user);
     this.favoriteCitiesSubject$.next(user.favoriteCities);
+  }
+
+  public removeUser() {
+    this.currentUser$.next({} as User);
+    this.favoriteCitiesSubject$.next([] as Array<string>);
   }
 
   private formattingCityName(city: string): string {
@@ -51,33 +58,33 @@ export class UserStorageService {
         } else {
           return this.pushCityToFavorite(formattedCityName);
         }
-      }),
+      })
     );
   }
 
   private pushCityToFavorite(city: string): Observable<any> {
     return this.apiService.update(city).pipe(
       map((acc: User) => {
-        console.log(acc.favoriteCities);
         this.favoriteCitiesSubject$.next(acc.favoriteCities);
-      }),
+      })
     );
   }
 
   private removeCityFromFavorite(city: string): Observable<any> {
     return this.apiService.delete(city).pipe(
       map((acc: User) => {
-        console.log(acc.favoriteCities);
         this.favoriteCitiesSubject$.next(acc.favoriteCities);
-      }),
+      })
     );
   }
 
   public isCityAdded(city: string): Observable<boolean> {
     const formattedCityName: string = this.formattingCityName(city);
     return this.favoriteCities$.pipe(
-      tap((val) => console.log(val)),
-      map((favoriteCitiesArray) => !!favoriteCitiesArray.includes(formattedCityName)),
+      map(
+        (favoriteCitiesArray) =>
+          !!favoriteCitiesArray.includes(formattedCityName)
+      )
     );
   }
 }

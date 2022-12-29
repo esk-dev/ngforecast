@@ -39,6 +39,7 @@ export class Error401Interceptor implements HttpInterceptor {
         this.isRefreshing$.next(true);
         return this.authService.refreshToken().pipe(
           switchMap((response: AuthResponse) => {
+            console.log('refresh work');
             this.jwtTokenService.saveToken(response.accessToken);
             return next.handle(request);
           }),

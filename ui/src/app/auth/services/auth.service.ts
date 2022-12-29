@@ -23,7 +23,9 @@ import { AuthResponse } from '../models/authresponse.model';
 export class AuthService {
   constructor(
     private http: HttpClient,
-    private errorService: ErrorService, // private jwtService: JwtService, // private userStorageService: UserStorageService,
+    private errorService: ErrorService,
+    private userStorageService: UserStorageService, 
+    private jwtService: JwtService, // private userStorageService: UserStorageService,
   ) {}
 
   private isAuthenticatedSubject$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
@@ -33,6 +35,14 @@ export class AuthService {
   private setAuthenticateState(state: boolean) {
     this.isAuthenticatedSubject$.next(state);
   }
+  
+  // private checkAuthenticated() {
+  //   this.refreshToken().pipe(
+  //     tap((authResponse: AuthResponse) => {
+  //       this.setAuthenticateState(true)
+  //     })
+  //   )
+  // }
 
   public login(email: string, password: string): Observable<AuthResponse> {
     return this.http
@@ -64,6 +74,8 @@ export class AuthService {
     return this.http.post(`${environment.API_URL}/logout`, {}).pipe(
       tap((response: AuthResponse) => {
         this.setAuthenticateState(false);
+        this.userStorageService.removeUser();
+        this.jwtTokenService.deleteToken();
       }),
     );
   }
