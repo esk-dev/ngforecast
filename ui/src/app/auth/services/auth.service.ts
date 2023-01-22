@@ -24,18 +24,20 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private errorService: ErrorService,
-    private userStorageService: UserStorageService, 
-    private jwtService: JwtService, // private userStorageService: UserStorageService,
+    private userStorageService: UserStorageService,
+    private jwtTokenService: JwtService // private userStorageService: UserStorageService,
   ) {}
 
-  private isAuthenticatedSubject$: ReplaySubject<boolean> = new ReplaySubject<boolean>();
+  private isAuthenticatedSubject$: ReplaySubject<boolean> =
+    new ReplaySubject<boolean>();
 
-  public isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject$.asObservable();
+  public isAuthenticated$: Observable<boolean> =
+    this.isAuthenticatedSubject$.asObservable();
 
   private setAuthenticateState(state: boolean) {
     this.isAuthenticatedSubject$.next(state);
   }
-  
+
   // private checkAuthenticated() {
   //   this.refreshToken().pipe(
   //     tap((authResponse: AuthResponse) => {
@@ -53,11 +55,14 @@ export class AuthService {
       .pipe(
         tap((response: AuthResponse) => {
           this.setAuthenticateState(true);
-        }),
+        })
       );
   }
 
-  public registration(email: string, password: string): Observable<AuthResponse> {
+  public registration(
+    email: string,
+    password: string
+  ): Observable<AuthResponse> {
     return this.http
       .post<AuthResponse>(`${environment.API_URL}/registration`, {
         email,
@@ -66,7 +71,7 @@ export class AuthService {
       .pipe(
         tap((response: AuthResponse) => {
           this.setAuthenticateState(true);
-        }),
+        })
       );
   }
 
@@ -76,7 +81,7 @@ export class AuthService {
         this.setAuthenticateState(false);
         this.userStorageService.removeUser();
         this.jwtTokenService.deleteToken();
-      }),
+      })
     );
   }
 

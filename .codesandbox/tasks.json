@@ -1,15 +1,17 @@
 {
   // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [],
 
   // These tasks can be run from CodeSandbox. Running one will open a log in the app.
   "tasks": {
     "Run Docker": {
       "name": "Run Docker",
-      "command": "docker-compose -f docker-compose.dev.yml up"
+      "command": "docker-compose -f docker-compose.dev.yml up",
+      "runAtStart": true
     },
     "Build Docker": {
       "name": "Build Docker",
-      "command": "docker-compose -f docker-compose.dev.yml build"
+      "command": "docker builder prune && docker-compose -f docker-compose.dev.yml build"
     },
     "ng": {
       "name": "ng",

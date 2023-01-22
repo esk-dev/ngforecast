@@ -34,6 +34,7 @@ img {
   display: inline-flex;
   justify-content: space-between;
   align-items: baseline;
+  flex-direction: column;
   // column-gap: 5vw;
 }
 h2 {
