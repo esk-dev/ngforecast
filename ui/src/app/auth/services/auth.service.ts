@@ -1,18 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  Observable,
-  map,
-  tap,
-  catchError,
-  ReplaySubject,
-  throwError,
-  BehaviorSubject,
-  Subject,
-  take,
-  switchMap,
-} from 'rxjs';
+import { Observable, tap, ReplaySubject, switchMap, iif, of, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpErrorResponse } from '@angular/common/http';
 import { JwtService, UserStorageService, ErrorService } from '../../_services';
@@ -23,10 +12,13 @@ import { AuthResponse } from '../models/authresponse.model';
 export class AuthService {
   constructor(
     private http: HttpClient,
-    private errorService: ErrorService,
     private userStorageService: UserStorageService,
-    private jwtTokenService: JwtService // private userStorageService: UserStorageService,
-  ) {}
+    private jwtTokenService: JwtService
+  ) {
+    this.checkAuthenticated()
+      .pipe(take(1))
+      .subscribe((v) => console.log(v));
+  }
 
   private isAuthenticatedSubject$: ReplaySubject<boolean> =
     new ReplaySubject<boolean>();
@@ -38,13 +30,11 @@ export class AuthService {
     this.isAuthenticatedSubject$.next(state);
   }
 
-  // private checkAuthenticated() {
-  //   this.refreshToken().pipe(
-  //     tap((authResponse: AuthResponse) => {
-  //       this.setAuthenticateState(true)
-  //     })
-  //   )
-  // }
+  private checkAuthenticated(): Observable<boolean> {
+    return this.jwtTokenService.isTokenExist$.pipe(
+      tap((v: boolean) => this.setAuthenticateState(v))
+    );
+  }
 
   public login(email: string, password: string): Observable<AuthResponse> {
     return this.http
@@ -53,7 +43,7 @@ export class AuthService {
         password,
       })
       .pipe(
-        tap((response: AuthResponse) => {
+        tap(() => {
           this.setAuthenticateState(true);
         })
       );
@@ -69,7 +59,7 @@ export class AuthService {
         password,
       })
       .pipe(
-        tap((response: AuthResponse) => {
+        tap(() => {
           this.setAuthenticateState(true);
         })
       );
@@ -77,7 +67,7 @@ export class AuthService {
 
   public logout(): Observable<any> {
     return this.http.post(`${environment.API_URL}/logout`, {}).pipe(
-      tap((response: AuthResponse) => {
+      tap(() => {
         this.setAuthenticateState(false);
         this.userStorageService.removeUser();
         this.jwtTokenService.deleteToken();
@@ -86,6 +76,14 @@ export class AuthService {
   }
 
   public refreshToken(): Observable<AuthResponse> {
-    return this.http.get<AuthResponse>(`${environment.API_URL}/refresh`);
+    return this.http.get<AuthResponse>(`${environment.API_URL}/refresh`).pipe(
+      tap(
+        (response: AuthResponse) => {
+          this.setAuthenticateState(true);
+          this.jwtTokenService.saveToken(response.accessToken);
+        },
+        () => this.setAuthenticateState(false)
+      )
+    );
   }
 }

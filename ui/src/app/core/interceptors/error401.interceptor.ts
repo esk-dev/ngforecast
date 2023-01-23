@@ -1,26 +1,18 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpEvent,
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
   HttpErrorResponse,
-  HttpClient,
 } from '@angular/common/http';
 import { AuthService } from '../../auth/services/auth.service';
-import { JwtService, UserStorageService } from '../../_services';
 import {
   catchError,
-  map,
-  retry,
   BehaviorSubject,
-  take,
   throwError,
   switchMap,
-  Observable,
 } from 'rxjs';
 import { AuthResponse } from 'src/app/auth/models/authresponse.model';
-import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class Error401Interceptor implements HttpInterceptor {
@@ -29,8 +21,6 @@ export class Error401Interceptor implements HttpInterceptor {
 
   constructor(
     private authService: AuthService,
-    private jwtTokenService: JwtService,
-    private http: HttpClient,
   ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler) {
@@ -39,8 +29,6 @@ export class Error401Interceptor implements HttpInterceptor {
         this.isRefreshing$.next(true);
         return this.authService.refreshToken().pipe(
           switchMap((response: AuthResponse) => {
-            console.log('refresh work');
-            this.jwtTokenService.saveToken(response.accessToken);
             return next.handle(request);
           }),
         );

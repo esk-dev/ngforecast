@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
 import {
-  HttpEvent,
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
   HttpErrorResponse,
   HttpClient,
 } from '@angular/common/http';
-import { AuthService } from '../../auth/services/auth.service';
-import { JwtService, UserStorageService } from '../../_services';
+import { JwtService } from '../../_services';
 import {
   catchError,
   map,
@@ -24,7 +22,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  // TODO Разделить логику на разные сервисы
+  
   private isRefreshing$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   constructor(private jwtService: JwtService, private http: HttpClient) {}
   intercept(request: HttpRequest<any>, next: HttpHandler) {
@@ -43,7 +41,6 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
   private authReq(request: HttpRequest<any>) {
-    // TODO Убрать id из хедеров
     const accesstoken = this.jwtService.getToken();
     const id = localStorage.getItem('userId');
     return request.clone({

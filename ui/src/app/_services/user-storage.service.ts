@@ -3,16 +3,11 @@ import {
   BehaviorSubject,
   map,
   Observable,
-  ReplaySubject,
   take,
-  tap,
-  of,
-  find,
   switchMap,
 } from 'rxjs';
 import { User } from '../core/models';
 import { ApiService } from './api.service';
-import { JwtService } from './jwt.service';
 import { AuthResponse } from '../auth/models/authresponse.model';
 @Injectable({
   providedIn: 'root',
@@ -51,7 +46,6 @@ export class UserStorageService {
     const formattedCityName = this.formattingCityName(city);
     return this.isCityAdded(formattedCityName).pipe(
       take(1),
-      tap((val) => console.log(val)),
       switchMap((value: boolean) => {
         if (value) {
           return this.removeCityFromFavorite(formattedCityName);
